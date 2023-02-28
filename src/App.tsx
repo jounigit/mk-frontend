@@ -1,16 +1,21 @@
 import { } from 'react'
 import './App.css'
-import { useAlbumsData } from './services/apiService'
+import { useAlbums, useAlbumsData } from './services/apiService'
 
-function App() {
+function App(): JSX.Element {
   const albums = useAlbumsData()
+  const albumsQuery = useAlbums()
 
   console.log(albums)
 
+  if (albumsQuery.isSuccess) {
+    const al = albumsQuery.data
+    console.log('# ALBUMS: ', al)
+  }
+
   return (
     <div className="App">
-      <p>suapa nähä:</p>
-        
+      <p>suapa nähä:</p>       
     </div>
   )
 }
