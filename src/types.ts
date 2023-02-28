@@ -23,3 +23,5 @@ export interface IPicture extends BaseModel {
     file: string;
     pic_order: number;
 }
+
+export type allRecords = IAlbum[] & IPicture[] & ICv[]
