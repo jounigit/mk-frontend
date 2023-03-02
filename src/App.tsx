@@ -1,21 +1,28 @@
-import { } from 'react'
 import './App.css'
-import { useAlbums, useAlbumsData } from './services/apiService'
+import { CreateAlbum } from './components/album/CreateAlbum'
+import { useAlbums,
+  //  useAlbum, useAlbumsData
+} from './hooks/useAlbums'
 
 function App(): JSX.Element {
-  const albums = useAlbumsData()
+  // const albums = useAlbumsData()
   const albumsQuery = useAlbums()
+  // const album = useAlbum(2)
 
-  console.log(albums)
+  // if (album.isSuccess) {
+  //   const al = album.data
+  //   console.log('# ALBUM: ', al)
+  // }
 
   if (albumsQuery.isSuccess) {
     const al = albumsQuery.data
-    console.log('# ALBUMS: ', al)
+    console.log('### ALBUMS: ', al)
   }
-
+ 
   return (
     <div className="App">
-      <p>suapa nähä:</p>       
+      <CreateAlbum />
+      <p>suapa nähä:</p>     
     </div>
   )
 }
