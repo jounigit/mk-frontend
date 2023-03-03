@@ -6,7 +6,7 @@ import {
   UseQueryResult,
 } from 'react-query'
 import {
-  getAll,
+  // getAll,
   getOne,
   // createOne,
   // deleteOne,
@@ -21,14 +21,17 @@ import { AxiosResponse } from 'axios'
 //   newRecord: INewAlbum;
 // }
 // ####################### api calls ########################################
-const getAlbums = async(): Promise<IAlbum[]> => await getAll('albums')
+// const getAlbums = async(): Promise<IAlbum[]> => await getAll('albums')
 const getAlbum = async(id: number): Promise<IAlbum> => await getOne({id, url:'albums'})
 // const createAlbum = async (newRecord: INewAlbum): Promise<unknown> => await createOne('albums', newRecord)
 // const updateAlbum = async({id, newRecord}: IUpdateProps): 
 // Promise<IAlbum> => await updateOne(id, 'albums', newRecord)
 
 // const deleteAlbum =async (id:number): Promise<unknown> => await deleteOne({id, url:'albums'})
-
+const getAlbums = async (): Promise<IAlbum[]> => {
+  const { data } = await apiClient.get('/albums')
+  return data
+}
 // ####################### query hooks ########################################
 export function useAlbums(): UseQueryResult<IAlbum[], unknown> {
   return useQuery({ queryKey: ['albums'], queryFn: getAlbums })

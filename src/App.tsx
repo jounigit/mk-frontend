@@ -1,29 +1,24 @@
-import './App.css'
-import { CreateAlbum } from './components/album/CreateAlbum'
-import { useAlbums,
-  //  useAlbum, useAlbumsData
-} from './hooks/useAlbums'
+import { Route, Routes } from 'react-router-dom'
+import Navbar from './components/layouts/nav/Navbar'
+import GalleriaPage from './pages/GalleriaPage'
+import { HomePge } from './pages/HomePage'
+import GlobalStyles from './styles/GlobalStyles'
+import { SiteContent } from './styles/styles'
 
 function App(): JSX.Element {
-  // const albums = useAlbumsData()
-  const albumsQuery = useAlbums()
-  // const album = useAlbum(2)
 
-  // if (album.isSuccess) {
-  //   const al = album.data
-  //   console.log('# ALBUM: ', al)
-  // }
-
-  if (albumsQuery.isSuccess) {
-    const al = albumsQuery.data
-    console.log('### ALBUMS: ', al)
-  }
  
   return (
-    <div className="App">
-      <CreateAlbum />
-      <p>suapa nähä:</p>     
-    </div>
+    <>
+      <GlobalStyles />
+      <Navbar />
+      <SiteContent>
+        <Routes>
+          <Route path='/' element={<HomePge />} />
+          <Route path='/galleria' element={<GalleriaPage />} />
+        </Routes>
+      </SiteContent>
+    </>
   )
 }
 
