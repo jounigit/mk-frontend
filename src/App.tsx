@@ -15,8 +15,17 @@ function App(): JSX.Element {
   // }
 
   if (albumsQuery.isSuccess) {
-    const al = albumsQuery.data
-    console.log('### ALBUMS: ', al)
+    const albums = albumsQuery.data
+    console.log('### ALBUMS: ', albums)
+    return (
+      <>
+        {albums.map(a => (
+          <h4 key={a.id}>
+            {a.title}
+          </h4>
+        ))}
+      </>
+    )
   }
  
   return (
