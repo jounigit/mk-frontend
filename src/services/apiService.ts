@@ -1,15 +1,16 @@
-import { AllRecords, IdUrlParams, OneRecord } from '@/types'
+import { IdUrlParams, OneRecord } from '@/types'
 import apiClient from '../http-common'
 
-export const getAll =async (url:string): Promise<AllRecords> => {
+export interface GetAllFn<T> {
+  (url:string): Promise<T[]>;
+}
+
+export async function getAll<T>(url:string): Promise<T[]> {
   const { data } = await apiClient.get(`/${url}`)
   return data
 }
 
-export const getOne = async ({id, url}: IdUrlParams): Promise<OneRecord> => {
-  if (typeof id === 'undefined') {
-    Promise.reject(new Error('Invalid id'))
-  }
+export async function getOne<T>({id, url}: IdUrlParams): Promise<T> {
   const { data } = await apiClient.get(`/${url}/${id}`)
   return data
 }
