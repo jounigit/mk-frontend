@@ -6,7 +6,8 @@ import {
   UseQueryResult,
 } from 'react-query'
 import {
-  // getAll,
+  // GetAllFn,
+  getAll,
   getOne,
   // createOne,
   // deleteOne,
@@ -22,25 +23,32 @@ import { AxiosResponse } from 'axios'
 // }
 // ####################### api calls ########################################
 // const getAlbums = async(): Promise<IAlbum[]> => await getAll('albums')
-const getAlbum = async(id: number): Promise<IAlbum> => await getOne({id, url:'albums'})
+
+// const getAlbum = async(id: number): Promise<IAlbum> => await getOne({id, url:'albums'})
 // const createAlbum = async (newRecord: INewAlbum): Promise<unknown> => await createOne('albums', newRecord)
 // const updateAlbum = async({id, newRecord}: IUpdateProps): 
 // Promise<IAlbum> => await updateOne(id, 'albums', newRecord)
 
 // const deleteAlbum =async (id:number): Promise<unknown> => await deleteOne({id, url:'albums'})
-const getAlbums = async (): Promise<IAlbum[]> => {
-  const { data } = await apiClient.get('/albums')
-  return data
-}
+
+// const getAlbums = async (): Promise<IAlbum[]> => {
+//   const { data } = await apiClient.get('/albums')
+//   return data
+// }
+// let getAlbums: GetAllFn<IAlbum> = getAll('albums')
+// const all = getAlbums  getAll<IAlbum>('albums')
+// const getAlbums = await getAll('albums')
 // ####################### query hooks ########################################
 export function useAlbums(): UseQueryResult<IAlbum[], unknown> {
-  return useQuery({ queryKey: ['albums'], queryFn: getAlbums })
+  return useQuery({ queryKey: ['albums'], 
+    queryFn: async () => await getAll<IAlbum>('albums')
+  })
 }
 
 export function useAlbum(id:number): UseQueryResult<IAlbum, unknown> {
   return useQuery({
     queryKey: ['albums', id],
-    queryFn: () => getAlbum(id)
+    queryFn: async () => await getOne<IAlbum>({id, url:'albums'})
   })
 }
 
@@ -105,19 +113,19 @@ UseMutationResult<AxiosResponse<unknown, unknown>, unknown, Props, unknown> {
 }
   
 // ##################################################
-export function useAlbumsData(): IAlbum[] {
-  const albumsQuery = useQuery('albums', getAlbums)
+// export function useAlbumsData(): IAlbum[] {
+//   const albumsQuery = useQuery('albums', getAlbums)
     
-  if (albumsQuery.isError) {
-    throw new Error('Error fetching data.')
-  }
+//   if (albumsQuery.isError) {
+//     throw new Error('Error fetching data.')
+//   }
     
-  if (albumsQuery.isSuccess) {
-    return albumsQuery.data
-  }
-  const emptyData = new Array<IAlbum>()
-  return emptyData
-}
+//   if (albumsQuery.isSuccess) {
+//     return albumsQuery.data
+//   }
+//   const emptyData = new Array<IAlbum>()
+//   return emptyData
+// }
 
 // export function useCreateAlbum(): 
 // UseMutationResult<unknown, unknown, INewAlbum, unknown> {
