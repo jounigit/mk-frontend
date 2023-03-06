@@ -1,12 +1,9 @@
-import { Album } from '@/components/album/Album'
-import { FadeDiv } from '@/components/atoms/FadeIn.styles'
-import { Info } from '@/components/info/Info'
+import { FadeDiv } from '@/components/atoms'
+import { Album } from '@/features/album/Album'
+import { Info } from '@/features/info/Info'
 import { FC } from 'react'
-import { useAlbums } from '../hooks/useAlbums'
 
-export const HomePge: FC = () => {
-  const albumsQuery = useAlbums()
-  console.log(albumsQuery)
+export const HomePage: FC = () => {
 
   return (
     <>
@@ -18,4 +15,3 @@ export const HomePge: FC = () => {
   )
 }
 
-// export default Home

@@ -1,4 +1,4 @@
-import { useAlbum } from '@/hooks/useAlbums'
+import { useAlbum } from './useAlbum'
 
 export const Album = (): JSX.Element => {
   const albumQuery = useAlbum(2)

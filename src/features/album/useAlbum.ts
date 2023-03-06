@@ -5,6 +5,7 @@ import {
   useQueryClient,
   UseQueryResult,
 } from 'react-query'
+
 import {
   // GetAllFn,
   getAll,
@@ -14,8 +15,8 @@ import {
   // updateOne
 } from '@/services/apiService'
 import { IAlbum, INewAlbum } from '@/types'
-import apiClient from '../http-common'
 import { AxiosResponse } from 'axios'
+import { apiClient } from '@/http-common'
 
 // interface IUpdateProps{
 //   id: number;
