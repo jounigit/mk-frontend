@@ -1,9 +1,6 @@
-import React, {
-  FC, useState,
-  // MouseEventHandler,
-} from 'react'
-import LeftNav from './LeftNav'
-import { StyledBurger } from './LeftNav.styles'
+import { FC, useState } from 'react'
+import { StyledBurger } from './NavLinks.styles'
+import { NavLinks } from './NavLinks'
 
 const Burger: FC = () => {
   const [open, setOpen] = useState(false)
@@ -15,7 +12,7 @@ const Burger: FC = () => {
         <div />
         <div />
       </StyledBurger>
-      <LeftNav open={open} toggleOpen={setOpen} />
+      <NavLinks open={open} toggleOpen={setOpen} />
     </>
   )
 }
