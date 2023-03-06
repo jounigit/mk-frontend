@@ -1,5 +1,5 @@
+import { apiClient } from '@/http-common'
 import { IdUrlParams, OneRecord } from '@/types'
-import apiClient from '../http-common'
 
 export interface GetAllFn<T> {
   (url:string): Promise<T[]>;

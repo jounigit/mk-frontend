@@ -3,6 +3,7 @@ import { TABLET } from './theme/breakpoints'
 
 export const SiteContent = styled.div`
     flex: 1 0 auto;
+    margin: 2rem;
 `
 
 export const BaseFooter = styled.div` 
@@ -18,15 +19,6 @@ export const BaseContainer = styled.div`
   box-shadow: var(--shadow-primary);
   border-radius: 5px;
   background: var(--bg-primary);
-`
-interface SpinnerProps {
-    marginTop?: number;
-}
-export const Spinner = styled(SiteContent)<SpinnerProps>`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: ${({ marginTop }) => marginTop ?? 0}px;
 `
 
 export const FormContainer = styled(BaseContainer)`
@@ -51,6 +43,6 @@ export const Input = styled.input`
     color: palevioletred;
   }
 `
-// export default {
-//     Input, Form, FormContainer, Spinner, BaseContainer, BaseFooter, SiteContent
-//   }
+export default {
+  Input, Form, FormContainer, BaseContainer, BaseFooter, SiteContent
+}
