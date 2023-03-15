@@ -9,6 +9,7 @@ import {
 import {
   // GetAllFn,
   getAll,
+  getBySlug,
   getOne,
   // createOne,
   // deleteOne,
@@ -50,6 +51,13 @@ export function useAlbum(id:number): UseQueryResult<IAlbum, unknown> {
   return useQuery({
     queryKey: ['albums', id],
     queryFn: async () => await getOne<IAlbum>({id, url:'albums'})
+  })
+}
+
+export function useAlbumBySlug(slug:string): UseQueryResult<IAlbum, unknown> {
+  return useQuery({
+    queryKey: ['albums', slug],
+    queryFn: async () => await getBySlug<IAlbum>({slug, url:'album'})
   })
 }
 

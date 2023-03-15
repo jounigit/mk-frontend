@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { TABLET } from '@/styles/theme/breakpoints'
 import { NavLink } from 'react-router-dom'
 import { colors } from '@/styles/theme'
+import { TABLET } from '@/styles'
 
 interface INav {
     open: boolean;

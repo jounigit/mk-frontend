@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { TABLET } from './theme/breakpoints'
+import { TABLET } from '.'
 
 export const SiteContent = styled.div`
     flex: 1 0 auto;
@@ -43,6 +43,6 @@ export const Input = styled.input`
     color: palevioletred;
   }
 `
-export default {
-  Input, Form, FormContainer, BaseContainer, BaseFooter, SiteContent
-}
+// export default {
+//   Input, Form, FormContainer, BaseContainer, BaseFooter, SiteContent
+// }
