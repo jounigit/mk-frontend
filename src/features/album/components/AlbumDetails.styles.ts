@@ -1,6 +1,5 @@
+import { BaseContainer, DESKTOP, MOBILE, TABLET } from '@/styles'
 import styled from 'styled-components'
-import { BaseContainer } from '../../styles/styles'
-import { DESKTOP, MOBILE, TABLET } from '../../styles/theme/breakpoints'
 
 interface IAlbumStyle {
     full?: false | true | undefined,

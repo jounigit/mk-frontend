@@ -1,5 +1,5 @@
 import { apiClient } from '@/http-common'
-import { IdUrlParams, OneRecord } from '@/types'
+import { IdUrlParams, OneRecord, SlugUrlParams } from '@/types'
 
 export interface GetAllFn<T> {
   (url:string): Promise<T[]>;
@@ -12,6 +12,11 @@ export async function getAll<T>(url:string): Promise<T[]> {
 
 export async function getOne<T>({id, url}: IdUrlParams): Promise<T> {
   const { data } = await apiClient.get(`/${url}/${id}`)
+  return data
+}
+
+export async function getBySlug<T>({slug, url}: SlugUrlParams): Promise<T> {
+  const { data } = await apiClient.get(`/${url}/${slug}`)
   return data
 }
 
