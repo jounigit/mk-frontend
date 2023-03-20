@@ -25,22 +25,25 @@ const GlobalStyles = createGlobalStyle`
   html  {
     overflow-y: auto;
     overflow-x: auto;
-    background-color: #ffffff;
-    background-position: center;
+    /* background-color: #ffffff; */
+    /* background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;  
-    background-size: cover;
+    background-size: cover; */
+    /* background-color: #ccc; */
   }
 
   html, body, #root {
     width: 100%;
-    height: 100%;
+    height: auto;
   }
 
   #root, body {
     display: flex;
     flex-direction: column;
     background-color: #ccc;
+    background-attachment: fixed;
+    min-height: 100vh;
   }
 
   .headerMiddle {
