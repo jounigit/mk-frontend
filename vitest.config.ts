@@ -1,9 +1,7 @@
-/// <reference types="vitest" />
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import * as path from 'path'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -18,13 +16,11 @@ export default defineConfig({
       assets: path.resolve(__dirname, './src/assets'),
     },
   },
-  // test: {
-  //   globals: true,
-  //   environment: 'jsdom',
-  // }
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    coverage: {
+      reporter: ['text', 'html']
+    }
+  },
 })
-
-
-// resolve: {
-//   alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
-// },
