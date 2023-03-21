@@ -12,7 +12,6 @@ function App(): JSX.Element {
  
   return (
     <>
-      {/* {globalStyle} */}
       <GlobalStyles homePage={homePage} />
       <Navbar />
       <SiteContent>

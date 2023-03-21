@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 import {
   DESKTOP, LAPTOP, MOBILE, TABLET,
 } from './theme/breakpoints'
-import bgImage from '../assets/kolu-etusivu.jpg'
+import bgImage from '../assets/kolu-etusivu.png'
 import { colors } from './theme'
 
 interface BgImageProp {
@@ -40,8 +40,8 @@ const GlobalStyles = createGlobalStyle<BgImageProp>`
   #root, body {
     display: flex;
     flex-direction: column;
-    background: url(${props => ( props.homePage && bgImage)});
-    background-color: ${props => ( !props.homePage && '#cee')};
+    background: url(${props => ( props.homePage && bgImage)}) #cee;
+    /* background-color: ${props => ( !props.homePage && '#cee')}; */
     background-position: center bottom;
     background-repeat: no-repeat;
     background-attachment: fixed;  

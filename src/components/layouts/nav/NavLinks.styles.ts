@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { NavLink } from 'react-router-dom'
 import { colors } from '@/styles/theme'
 import { TABLET } from '@/styles'
@@ -79,15 +79,15 @@ export const Ul = styled.ul<INav>`
 export const NavBarLink = styled(NavLink)`
   margin: '1rem';
   text-decoration: 'none';
-  color: ${colors.white};
+  color: ${colors.grey3};
   /* font-size: '1.9rem'; */
   font-size: x-large;
   font-weight: 600;
   &:hover,
   &:focus{
-    color: ${colors.grey3};
+    color: ${colors.grey4};
   }
   &:active{
-    color: ${colors.grey3};
+    color: ${colors.grey4};
   };
 `
