@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import Burger from './Burger'
 import { NavbarContainer } from './Navbar.styles'
 
@@ -37,7 +37,7 @@ const Navbar: FC = () => {
   }, [state])
 
   // eslint-disable-next-line no-console
-  // console.log(' Show: ', state.show, ' Scrollpos: ', state.scrollPos)
+  console.log(' Show: ', state.show, ' Scrollpos: ', state.scrollPos)
 
   return (
     <Transition>

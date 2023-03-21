@@ -1,7 +1,7 @@
 import { FadeDiv } from '@/components/atoms'
 import { Info } from '@/features/info/Info'
 import { FC } from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 const HomePageContainer = styled.div`
   /* min-height: 100vh; */

@@ -1,5 +1,5 @@
 import { BaseContainer } from '../../styles/styles'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { TABLET } from '@/styles/theme/breakpoints'
 
 export const StyledInfo = styled(BaseContainer)`
@@ -12,8 +12,8 @@ background: var(--bg-secondary);
 
 @media ${TABLET} {
 /* flex-direction: row; */
-max-width: 70%;
-margin-top: 120px;
+max-width: max-content;
+margin-top: 30px;
 }
 `
 export const ItemAll = styled.div`

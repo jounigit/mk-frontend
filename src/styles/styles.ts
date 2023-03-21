@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { TABLET } from '.'
 
 export const SiteContent = styled.div`
