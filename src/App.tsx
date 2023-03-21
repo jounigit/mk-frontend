@@ -1,21 +1,19 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Navbar from './components/layouts/nav/Navbar'
 import { Album } from './features/album'
 import { ArticlePage, CvPage, GalleriaPage, HomePage } from './pages'
-// import { useAlbums } from './features/album/useAlbum'
 import GlobalStyles from './styles/GlobalStyles'
 import { SiteContent } from './styles/styles'
 
 function App(): JSX.Element {
-  // const albumsQuery = useAlbums()
-  // if (albumsQuery.isSuccess) {
-  //   const al = albumsQuery.data
-  //   console.log('# ALBUM: ', al)
-  // }
+  const location = useLocation()
+
+  const homePage = (location.pathname === '/') ? true : false
  
   return (
     <>
-      <GlobalStyles />
+      {/* {globalStyle} */}
+      <GlobalStyles homePage={homePage} />
       <Navbar />
       <SiteContent>
         <Routes>

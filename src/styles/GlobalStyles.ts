@@ -2,10 +2,15 @@ import { createGlobalStyle } from 'styled-components'
 import {
   DESKTOP, LAPTOP, MOBILE, TABLET,
 } from './theme/breakpoints'
-// import bgImage from '../assets/taustakuva-01.jpg'
+import bgImage from '../assets/kolu-etusivu.jpg'
 import { colors } from './theme'
 
-const GlobalStyles = createGlobalStyle`
+interface BgImageProp {
+  bgImage?: false | true | undefined,
+  homePage?: false | true | undefined,
+}
+
+const GlobalStyles = createGlobalStyle<BgImageProp>`
 
   * {
     margin: 0;
@@ -14,7 +19,6 @@ const GlobalStyles = createGlobalStyle`
     outline: 0;
     font-family: Nunito, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       -webkit-font-smoothing: antialiased;
-    /* font-size: 16px; */
     font-size: clamp(16px, 2vw, 20px);
     /* vars */
     --bg-primary: rgb(255,255,255,0.7);
@@ -25,25 +29,23 @@ const GlobalStyles = createGlobalStyle`
   html  {
     overflow-y: auto;
     overflow-x: auto;
-    /* background-color: #ffffff; */
-    /* background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;  
-    background-size: cover; */
-    /* background-color: #ccc; */
   }
 
   html, body, #root {
     width: 100%;
     height: auto;
+    min-height: 100vh;
   }
 
   #root, body {
     display: flex;
     flex-direction: column;
-    background-color: #ccc;
-    background-attachment: fixed;
-    min-height: 100vh;
+    background: url(${props => ( props.homePage && bgImage)});
+    background-color: ${props => ( !props.homePage && '#cee')};
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    /* background-size: cover; */
   }
 
   .headerMiddle {
