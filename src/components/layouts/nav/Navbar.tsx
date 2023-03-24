@@ -37,7 +37,7 @@ const Navbar: FC = () => {
   }, [state])
 
   // eslint-disable-next-line no-console
-  console.log(' Show: ', state.show, ' Scrollpos: ', state.scrollPos)
+  // console.log(' Show: ', state.show, ' Scrollpos: ', state.scrollPos)
 
   return (
     <Transition>

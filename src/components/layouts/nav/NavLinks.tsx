@@ -1,74 +1,56 @@
 import { FC } from 'react'
-import { FaHome } from 'react-icons/fa'
-import { NavBarLink, Ul } from './NavLinks.styles'
+import { FaAngleDown, FaHome } from 'react-icons/fa'
+import {
+  DropLink,
+  LinkTo,
+  Ul
+} from './NavLinks.styles'
 
 type Props = {
   open: boolean;
-  toggleOpen: React.Dispatch<React.SetStateAction<boolean>>
+  toggle: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-interface INavProps extends Props {
-  link: string;
-  text: string | JSX.Element;
+export const NavLinks: FC<Props> = ({ open, toggle }) => {
+  const onclick = (): void => toggle(!open)
+
+  return (
+    <Ul open={open}>
+      <li>
+        <LinkTo to="/" onClick={onclick}>
+          <FaHome />
+        </LinkTo>
+      </li>
+      {/* dropdown section */}
+      <li className='dropdown'>
+        <LinkTo to="#">Galleria <FaAngleDown /></LinkTo>
+        <div className='dropdown-content'>
+          <DropLink to="/galleria/veistokset"  onClick={onclick}>
+            Veistokset
+          </DropLink>
+          <DropLink to="/galleria/piirustuksia" onClick={onclick}>
+            Piirustuksia
+          </DropLink>
+          <DropLink to="/galleria/tilateokset"  onClick={onclick}>
+            Tilateokset
+          </DropLink>
+          <DropLink to="/galleria/esinekoosteet" onClick={onclick}>
+            Esinekoosteet
+          </DropLink>
+          <DropLink to="/galleria/julkiset-teokset" onClick={onclick}>
+            Julkiset teokset
+          </DropLink>
+        </div>
+      </li>
+
+      {/* end section */}
+      <li>
+        <LinkTo to="/articles" onClick={onclick}>Artikkelit</LinkTo>
+      </li>
+      <li>
+        <LinkTo to="/cv" onClick={onclick}>CV</LinkTo>
+      </li>
+    </Ul>
+  )
 }
-
-//** reusable navlink */ 
-const navLinkTmp = ({
-  open, toggleOpen, text = '', link = '/',
-}: INavProps): JSX.Element => (
- 
-  <NavBarLink
-    data-test={`navlink-${link}`}
-    to={`${link}`}
-    onClick={() => toggleOpen(!open)}
-  >
-    {text}
-  </NavBarLink>
-
-)
-
-export const NavLinks: FC<Props> = ({ open, toggleOpen }) => (
-  <Ul data-test="menu" open={open}>
-    <li>
-      {navLinkTmp({
-        open, toggleOpen, text: <FaHome size={25} />, link: '/',
-      })}
-    </li>
-    <li>
-      {navLinkTmp({
-        open, toggleOpen, text: 'Galleria', link: '/galleria',
-      })}
-    </li>
-    {/* <li>
-      {navLinkTmp({
-        open, toggleOpen, text: 'Näyttelyt', link: '/exhibitions',
-      })}
-    </li> */}
-    <li>
-      {navLinkTmp({
-        open, toggleOpen, text: 'Artikkelit', link: '/articles',
-      })}
-    </li>
-    <li>
-      {navLinkTmp({
-        open, toggleOpen, text: 'CV', link: '/cv',
-      })}
-    </li>
-
-    {localStorage.getItem('token')
-        && (
-          <li>
-            {navLinkTmp({
-              open, toggleOpen, text: 'admin', link: '/admin',
-            })}
-          </li>
-        )}
-
-    {/* <li>
-      <LinkText>
-        <Dropdown activatorText="Galleria" />
-      </LinkText>
-    </li> */}
-  </Ul>
-)
 
