@@ -12,7 +12,7 @@ const Burger: FC = () => {
         <div />
         <div />
       </StyledBurger>
-      <NavLinks open={open} toggleOpen={setOpen} />
+      <NavLinks open={open} toggle={setOpen} />
     </>
   )
 }

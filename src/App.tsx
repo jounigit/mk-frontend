@@ -2,8 +2,8 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import Navbar from './components/layouts/nav/Navbar'
 import { Album } from './features/album'
 import { ArticlePage, CvPage, GalleriaPage, HomePage } from './pages'
+import { SiteContent } from './styles'
 import GlobalStyles from './styles/GlobalStyles'
-import { SiteContent } from './styles/styles'
 
 function App(): JSX.Element {
   const location = useLocation()

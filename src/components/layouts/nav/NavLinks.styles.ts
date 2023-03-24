@@ -58,6 +58,37 @@ export const Ul = styled.ul<INav>`
     padding: 18px 10px;
   }
 
+  .dropdown {
+      display: inline-block;
+
+      & > .dropdown-content {
+        display: none;
+        position: absolute;
+        margin-top: -10px;
+        background-color: #f9f9f9;
+        border: 2px solid ${colors.grey2};
+        border-radius: 5px;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+
+        & > a {
+          color: ${colors.grey4};
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+          &:hover {
+            background-color: ${colors.grey2};
+          }
+        }
+      }
+
+      &:hover .dropdown-content {
+        display: block
+      }
+  }
+
   @media (max-width: 768px) {
     flex-flow: column nowrap;
     background-color: black;
@@ -76,7 +107,7 @@ export const Ul = styled.ul<INav>`
     }
   }
 `
-export const NavBarLink = styled(NavLink)`
+export const LinkTo = styled(NavLink)`
   margin: '1rem';
   text-decoration: 'none';
   color: ${colors.grey3};
@@ -90,4 +121,14 @@ export const NavBarLink = styled(NavLink)`
   &:active{
     color: ${colors.grey4};
   };
+`
+export const DropLink = styled(NavLink)`
+  color: ${colors.grey4};
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  &:hover {
+    background-color: ${colors.grey2};
+  }
 `
