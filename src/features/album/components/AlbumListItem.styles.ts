@@ -1,6 +1,7 @@
-import { BaseContainer, TABLET } from '@/styles'
-import { colors } from '@/styles/theme'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
+import { BaseContainer } from '../../../styles/styles'
+import { colors } from '../../../styles/theme'
+import { TABLET } from '../../../styles/theme/breakpoints'
 
 interface IImageGridProps {
     width: number,
@@ -25,6 +26,11 @@ export const ImageBox = styled.div`
 `
 export const ImageGridListItem = styled.div<IImageGridProps>`
 
+  div {
+    height: ${({ height }) => height}px;
+    margin: auto;
+  }
+
   img {
     width: ${({ width }) => width}px;
     height: ${({ height }) => height}px;
@@ -36,16 +42,6 @@ export const ImageGridListItem = styled.div<IImageGridProps>`
     grid-template-columns: 1fr 1fr;
     grid-gap: .5rem;
 
-  div {
-    height: ${({ height }) => height}px;
-    margin: auto;
-  }
-
-  img {
-    width: ${({ width }) => width}px;
-    height: ${({ height }) => height}px;
-    object-fit: cover;
-    }
   }
 `
 export const Info = styled.div`

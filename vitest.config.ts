@@ -14,6 +14,11 @@ export default defineConfig({
       styles: path.resolve(__dirname, './src/styles'),
       types: `${path.resolve(__dirname, './src/@types')}`,
       assets: path.resolve(__dirname, './src/assets'),
+      album: `${path.resolve(__dirname, './src/features/album')}`,
+      albumpictures: `${path.resolve(__dirname, './src/features/albumpictures')}`,
+      article: `${path.resolve(__dirname, './src/features/article')}`,
+      cv: `${path.resolve(__dirname, './src/features/cv')}`,
+      picture: `${path.resolve(__dirname, './src/features/picture')}`,
     },
   },
   test: {

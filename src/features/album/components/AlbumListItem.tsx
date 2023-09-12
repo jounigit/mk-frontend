@@ -1,6 +1,8 @@
-/* eslint-disable react/no-danger */
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
+import { ImagesInDiv } from '../../../components/atoms/ImagesInDiv'
+import config from '../../../data/config'
+import { IAlbum } from '../../../types'
 import {
   AlbumListItemContainer,
   ImageBox,
@@ -8,22 +10,17 @@ import {
   Info,
   InfoText,
 } from './AlbumListItem.styles'
-import { IPicture} from '@/types'
-import config from '@/data/config'
-import { ImagesInDiv } from '@/components/atoms/ImagesInDiv'
 
-export interface AlbumListItemProps {
-    id: number,
-    title: string,
-    slug: string,
-    pictures: IPicture[]
+interface ListProps {
+  album: IAlbum,
 }
 
-export const AlbumListItem:
-FC<AlbumListItemProps> = ({title, slug, pictures}) => {
-  const picFolder = config.IMAGES_BIG_URL
-  let showPics = <h4>no images yet.</h4>
-  
+export const AlbumListItem: FC<ListProps> = (props) => {
+  const { title, slug, pictures } = props.album
+  const picFolder = config.IMAGES_BIG_URL as string
+
+  let showPics = <h3>no images yet.</h3>
+
   const textForGalleria = (
     <h4>
       {pictures.length}
@@ -34,7 +31,7 @@ FC<AlbumListItemProps> = ({title, slug, pictures}) => {
 
   if (pictures.length > 0) {
     const twoPics = pictures.slice(0, 2)
-    showPics = <ImagesInDiv data={twoPics} url={picFolder} />
+    showPics = <ImagesInDiv data={twoPics} url={picFolder} showInfo={false} />
   }
 
   return (

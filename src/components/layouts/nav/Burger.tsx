@@ -1,18 +1,19 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { StyledBurger } from './NavLinks.styles'
 import { NavLinks } from './NavLinks'
+import { useToggle } from '../../../hooks/useToggle'
 
 const Burger: FC = () => {
-  const [open, setOpen] = useState(false)
+  const [isOpen, toggleOpen] = useToggle(false)
 
   return (
     <>
-      <StyledBurger open={open} onClick={() => setOpen(!open)}>
+      <StyledBurger open={isOpen} onClick={toggleOpen}>
         <div />
         <div />
         <div />
       </StyledBurger>
-      <NavLinks open={open} toggle={setOpen} />
+      <NavLinks open={isOpen} toggle={toggleOpen} />
     </>
   )
 }

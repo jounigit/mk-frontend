@@ -1,5 +1,5 @@
-import { TABLET } from '@/styles'
 import styled from 'styled-components'
+import { TABLET } from '../../../styles/theme/breakpoints'
 
 export interface ImageGridProps {
   width: number,

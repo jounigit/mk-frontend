@@ -1,11 +1,10 @@
 import styled from 'styled-components/macro'
 import { NavLink } from 'react-router-dom'
-import { colors } from '@/styles/theme'
 import { TABLET } from '@/styles'
+import { colors } from '@/styles/theme'
 
 interface INav {
     open: boolean;
-    href?: string;
   }
 
 export const StyledBurger = styled.div<INav>`
@@ -26,7 +25,7 @@ export const StyledBurger = styled.div<INav>`
   div {
     width: 2rem;
     height: 0.25rem;
-    background-color: ${({ open }) => (open ? '#ccc' : '#333')};
+    background-color: ${({ open }) => (open ? '#ccc' : '#ededed')};
     border-radius: 10px;
     transform-origin: 1px;
     transition: all 0.3s linear;
@@ -54,8 +53,27 @@ export const Ul = styled.ul<INav>`
   max-width: 400px;
   align-items: center;
 
+  @media (max-width: 768px) {
+    flex-flow: column nowrap;
+    background-color: black;
+    position: fixed;
+    transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 50vW;
+    padding-top: 3.5rem;
+    z-index: 10;
+    transition: transform 0.3s ease-in-out;
+
+    li {
+      color: ${colors.grey1};
+    }
+  }
+
   li {
     padding: 18px 10px;
+    color: white;
   }
 
   .dropdown {
@@ -64,7 +82,7 @@ export const Ul = styled.ul<INav>`
       & > .dropdown-content {
         display: none;
         position: absolute;
-        margin-top: -10px;
+        margin-top: -2px;
         background-color: #f9f9f9;
         border: 2px solid ${colors.grey2};
         border-radius: 5px;
@@ -89,38 +107,25 @@ export const Ul = styled.ul<INav>`
       }
   }
 
-  @media (max-width: 768px) {
-    flex-flow: column nowrap;
-    background-color: black;
-    position: fixed;
-    transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 50vW;
-    padding-top: 3.5rem;
-    z-index: 10;
-    transition: transform 0.3s ease-in-out;
-
-    li {
-      color: #fff;
-    }
-  }
 `
 export const LinkTo = styled(NavLink)`
-  margin: '1rem';
-  text-decoration: 'none';
-  color: ${colors.grey3};
-  /* font-size: '1.9rem'; */
-  font-size: x-large;
-  font-weight: 600;
-  &:hover,
-  &:focus{
-    color: ${colors.grey4};
-  }
-  &:active{
-    color: ${colors.grey4};
+    display: flex;
+    flex-direction: row;
+    margin: '1rem';
+    text-decoration: 'none' !important;
+    font-size: x-large;
+    font-weight: 700;
+    /* color: white; */
+    /* color: white  !important; */
+    &:link,
+    &:visited{
+      color: ${colors.grey1};
   };
+    &:hover,
+    &:focus,
+    &:active{
+      color: ${colors.grey4};
+    };
 `
 export const DropLink = styled(NavLink)`
   color: ${colors.grey4};
@@ -132,3 +137,5 @@ export const DropLink = styled(NavLink)`
     background-color: ${colors.grey2};
   }
 `
+
+/* color: ${colors.grey3}; */

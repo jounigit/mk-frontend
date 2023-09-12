@@ -1,14 +1,37 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
+import {
+  // QueryCache,
+  QueryClient,
+  QueryClientProvider,
+  QueryFunctionContext
+} from '@tanstack/react-query'
 import { BrowserRouter } from 'react-router-dom'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import config from './data/config'
+import { apiClient } from './http-common'
 import App from './App'
-import './index.css'
 
-const queryClient = new QueryClient()
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+const defaultQueryFn = async ({ queryKey }: QueryFunctionContext) => {
+  const { data } = await apiClient.get(`${config.API_URL}${queryKey[0]}`)
+  return data
+}
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 20,
+      queryFn: defaultQueryFn,
+      refetchOnWindowFocus: false,
+      retry: 2
+    },
+  },
+})
+
+ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+).render(
   <React.StrictMode>
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>

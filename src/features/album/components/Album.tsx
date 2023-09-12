@@ -1,28 +1,32 @@
+import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
-import { useAlbumBySlug } from '../useAlbum'
+// import { ErrorHandler, LoadingHandler } from '../../../components/handlers'
+import { IAlbum } from '@/types'
+// import { IAlbum } from '../../../types'
+// import { useAlbumBySlug } from '../useAlbum'
 import { AlbumDetails } from './AlbumDetails'
+import { AlbumContainer } from './AlbumDetails.styles'
+import { ErrorHandler, LoadingHandler } from '@/components/handlers'
 
-// type AlbumParams = {
-//   slug: string;
-// }
-
-export const Album = (): JSX.Element => {
+const Album = (): JSX.Element => {
   const { slug } = useParams() as {slug:string}
-  const albumQuery = useAlbumBySlug(slug)
+  // const albumQuery = useAlbumBySlug(slug)
 
-  if (albumQuery.isSuccess) {
-    const album = albumQuery.data
-    console.log({album})
-    return (
-      <>
-        <AlbumDetails album={album} full />
-      </>
-    )
-  }
+  const { isLoading, data, isError, error } = useQuery<IAlbum>({
+    queryKey: [`/album/${slug}`],
+    enabled: !!slug,
+  })
 
+  if (isLoading) return <LoadingHandler />
+  if (isError) return <ErrorHandler error={(error as Error)} />
+  console.log('-ALBUM slug: ', data)
+  const showData = data && <AlbumDetails album={data} full />
   return (
-    <>
-      <h3>No albums yet.</h3>
-    </>
+    <AlbumContainer>
+      {showData && showData}
+      { !showData && <p>No data yet.</p>}
+    </AlbumContainer>
   )
-} 
+}
+
+export default Album

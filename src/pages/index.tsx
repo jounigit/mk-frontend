@@ -1,4 +1,4 @@
-export { HomePage } from './HomePage'
-export { ArticlePage } from './ArticlePage'
-export { CvPage } from './CvPage'
-export { GalleriaPage } from './GalleriaPage'
+export { default as HomePage } from './HomePage'
+export { default as ArticlePage } from './ArticlePage'
+export { default as CvPage } from './CvPage'
+export { default as GalleriaPage } from './GalleriaPage'

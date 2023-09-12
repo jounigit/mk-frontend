@@ -1,36 +1,35 @@
-import { FC } from 'react'
-import { IAlbum } from '@/types'
+import { FC, Fragment } from 'react'
 import {
-  AlbumContainer, ImageBox, Text, Title,
+  ImageBox, Text, Title,
 } from './AlbumDetails.styles'
-import { PictureGalleria } from '@/features/picture/PictureGalleria'
+import { IAlbum } from '@/types'
+import { PictureGalleria } from '@/features/picture/components/PictureGalleria'
 
 interface Props {
     album: IAlbum
-    // eslint-disable-next-line react/require-default-props
     full?: boolean;
 }
 
-export const AlbumDetails: FC<Props> = ({
-  album, full = false,
-}) => {
-  // const picsByYear = filterPictures(pictures)
-  console.log(album.pictures)
+export const AlbumDetails: FC<Props> = ({ album }) => {
+
+  const images =
+  <ImageBox>
+    <PictureGalleria
+      imageList={album.pictures}
+      width={250}
+      height={250}
+    />
+  </ImageBox>
+
   return (
-    <AlbumContainer>
+    <Fragment>
       <Title>
         <h2>{album.title}</h2>
       </Title>
-      <ImageBox full={full}>
-        <PictureGalleria
-          imageList={album.pictures}
-          width={250}
-          height={250}
-        />
-      </ImageBox>
+      { images }
       <Text>
         {album.content}
       </Text>
-    </AlbumContainer>
+    </Fragment>
   )
 }

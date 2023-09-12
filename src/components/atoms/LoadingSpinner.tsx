@@ -1,6 +1,6 @@
-import { SiteContent } from '@/styles/styles'
-import styled from 'styled-components'
 import { TailSpin } from 'react-loader-spinner'
+import styled from 'styled-components'
+import { SiteContent } from '../../styles/styles'
 
 interface SpinnerProps {
     marginTop?: number;
@@ -18,8 +18,8 @@ type Props = {
     w?: number;
 }
 
-export const LoadingSpinner = ({mt=50, c='red', h=80, w=80}: Props): 
-JSX.Element =>  
+export const LoadingSpinner = ({ mt=50, c='red', h=80, w=80 }: Props):
+JSX.Element =>
   <SpinnerComponent marginTop={mt}>
     <TailSpin
       color={c}

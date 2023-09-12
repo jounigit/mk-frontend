@@ -1,3 +1,3 @@
-export function formatUrl(url: string, img: string): string {
-  return url+img
-} 
+export function formatUrl(url: string, src: string): string {
+  return url+src
+}
