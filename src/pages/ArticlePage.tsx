@@ -1,5 +1,12 @@
-export const ArticlePage = (): JSX.Element => {
+import { FadeDiv } from '@/components/atoms'
+import { ArticleList } from '@/features/article'
+
+const ArticlePage = (): JSX.Element => {
   return (
-    <h2>Article page</h2>
+    <FadeDiv timein='0.3s'>
+      <ArticleList />
+    </FadeDiv>
   )
 }
+
+export default ArticlePage

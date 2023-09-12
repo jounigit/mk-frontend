@@ -1,4 +1,4 @@
-import { IPicture } from '@/types'
+import { IPicture } from '../../types'
 import { formatUrl } from './utils'
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
     onDivClick: (item: IPicture) => void;
   }
 
-export function ImagesLinkDiv({data, url, onDivClick}: Props): JSX.Element {
+export function ImagesLinkDiv({ data, url, onDivClick }: Props): JSX.Element {
   return (
     <>
       {

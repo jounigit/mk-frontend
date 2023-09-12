@@ -5,10 +5,10 @@ export const size = {
   xl: '1200px',
 }
 export const device = {
-  mobile: `(min-width: ${size.xs})`,
-  tablet: `(min-width: ${size.sm})`,
-  labtop: `(min-width: ${size.lg})`,
-  desktop: `(min-width: ${size.xl})`,
+  mobile: ` screen and (min-width: ${size.xs})`,
+  tablet: ` screen and (min-width: ${size.sm})`,
+  labtop: ` screen and (min-width: ${size.lg})`,
+  desktop: ` screen and (min-width: ${size.xl})`,
 }
 
 export const MOBILE = device.mobile

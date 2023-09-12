@@ -1,5 +1,12 @@
-export const CvPage = (): JSX.Element => {
+import { FadeDiv } from '@/components/atoms'
+import { CvList } from '@/features/cv/components/CvList'
+
+const CvPage = (): JSX.Element => {
   return (
-    <h2>CV page</h2>
+    <FadeDiv timein='0.3s'>
+      <CvList />
+    </FadeDiv>
   )
 }
+
+export default CvPage

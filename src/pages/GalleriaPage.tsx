@@ -1,9 +1,13 @@
+import { FadeDiv } from '@/components/atoms'
 import { AlbumsList } from '@/features/album'
 
-export const GalleriaPage = (): JSX.Element => {
+
+const GalleriaPage = (): JSX.Element => {
   return (
-    <>
+    <FadeDiv timein="0.3s">
       <AlbumsList />
-    </>
+    </FadeDiv>
   )
 }
+
+export default GalleriaPage

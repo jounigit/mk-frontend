@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 
 export interface BaseModel {
     id: number;
@@ -16,7 +17,15 @@ export interface IAlbum extends BaseModel {
     pictures: IPicture[];
 }
 
-export interface IPicture extends BaseModel {
+export interface IArticle extends BaseModel {
+    year: number;
+    media: string;
+    pub_nm: string;
+    author: string;
+    file: string;
+}
+
+export interface IPicture extends BaseModel  {
     year: number;
     technique: string;
     size: string;
@@ -26,11 +35,51 @@ export interface IPicture extends BaseModel {
     pic_order: number;
 }
 
+export interface IAlbumPicture {
+  id: number;
+  album_id: string;
+  picture_id: string;
+}
+
+export interface IUser {
+  id: number;
+  name: string;
+  email: string;
+}
+
+export interface AuthState {
+  authUser: IUser | null;
+  token: string | null;
+  isLoggedIn: boolean;
+}
+
+export interface IUserServer extends Omit<IUser, 'token'> {
+  email_verified_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ILoginData {
+  status: boolean;
+  message: string;
+  user: IUserServer;
+  token: string;
+}
+
+export interface ILogin {
+  email: string;
+  password: string;
+}
+
 export type Path = 'albums' | 'pictures' | 'cvs'
 // ##################### New types #########################
-export type INewAlbum = Omit<IAlbum, 'id' | 'slug'>
+export type INewAlbum = Omit<IAlbum, 'id' | 'slug' | 'pictures' | 'status'>
 export type INewPicture = Omit<IPicture, 'id'>
 export type INewCV = Omit<ICv, 'id'>
+export interface INewAlbumPicture{
+  album_id: number;
+  picture_id: number;
+}
 
 // ####################### Intersection Types #########################
 export type NewRecord = INewAlbum & INewCV & INewPicture
@@ -53,23 +102,29 @@ export interface CreateOneParams<T> {
     newRecord: T;
 }
 
-// ########################## utils ###################################
-export function isString(v: unknown): v is string {
-  return typeof v === 'string'
+// ####################### Utils #########################
+export function
+hasOwnProperty<X extends 'object', Y extends PropertyKey>(obj: X, prop: Y)
+: obj is X & Record<Y, unknown> {
+  return obj.hasOwnProperty(prop)
 }
 
-export function isArray<T>(value: T | undefined) : value is T {
-  if (!Array.isArray(value)) {
-    return false
+export function isAlbum(value: unknown): value is IAlbum {
+  if (
+    value!== null
+    && typeof value === 'object' && 'pictures' in value
+  ) {
+    return true
   }
-  return true
+
+  return false
 }
 
 export function isPictureArray(value : unknown) : value is IPicture[] {
   if (!Array.isArray(value)) {
     return false
   }
-  
+
   if (value.some((v) => typeof v !== 'object')) {
     return false
   }

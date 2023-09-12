@@ -1,52 +1,43 @@
-import { IPicture } from '@/types'
+import styled from 'styled-components'
+import { IPicture } from '../../types'
 import { formatUrl } from './utils'
 
 interface Props {
     data: IPicture[];
     url: string;
-  }
+    showInfo?: false | true | undefined;
+}
 
-export function ImagesInDiv({data, url}: Props): JSX.Element {
-//   function picUrl (img: string): string  { return url+img }
-  //   if (data && data.length) {
-  //     return null
-  //   }
+const Txt = styled.p`
+  color: var(--gray-4);
+  font-size: 0.95rem;
+`
+
+export function ImagesInDiv({ data, url, showInfo=true }: Props): JSX.Element {
+
   return (
     <>
       {
         data.map((item) => (
           <div key={item.id}>
             <img src={formatUrl(url, item.image)} alt="" />
+            {showInfo &&
+              picData(item)
+            }
           </div>
         )
         )
       }
     </>
   )
+
+  function picData(item: IPicture) {
+    return <>
+      {item.title && <h4>{item.title}</h4>}
+      {item.year && <Txt>{item.year}</Txt>}
+      {item.size && <Txt>{item.size}</Txt>}
+      {item.content && <Txt>{item.content}</Txt>}
+      {item.photographer && <Txt>Kuva: {item.photographer}</Txt>}
+    </>
+  }
 }
-
-// interface IObject {
-//     id: string | number;
-//     image: string;
-//   }
-
-// export function ImagesInDiv<T extends IObject>(data: Array<T>): JSX.Element | null {
-
-//   if (data && data.length) {
-//     return null
-//   }
-//   return (
-//     <>
-//       {
-//         data.map((item) => (
-//           <div
-//             key={item.id}
-//           >
-//             <img src={item.image} alt="" />
-//           </div>
-//         )
-//         )
-//       }
-//     </>
-//   )
-// }
