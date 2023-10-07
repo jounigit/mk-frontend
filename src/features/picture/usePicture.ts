@@ -38,6 +38,7 @@ export const updatePicture = async ({ id, newPicture }: IUpdateProps)
 : Promise<IPicture> => {
   try {
     const response = await apiClient.put(`/pictures/${id}`, newPicture)
+    console.table([response.data])
     return response.data
   } catch (error) {
     throw new Error('Can not update picture')

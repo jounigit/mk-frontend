@@ -2,8 +2,6 @@ import { FadeDiv } from '@/components/atoms'
 import { FC } from 'react'
 import styled from 'styled-components/macro'
 import painter from '@/assets/maalari-1.png'
-import { useUser } from '@/features/user/useUser'
-import { authUser } from '@/services/authUser.service'
 import { InfoB } from '@/features/info/Info-2'
 
 
@@ -30,23 +28,17 @@ const Cnt = styled.div`
   /*  */
 `
 
-const HomePage: FC = () => {
-  const userQuery = useUser()
-  const localUser = authUser()
-
-  console.log('Home userLocal: ', localUser && localUser)
-  console.log('Home user hook: ', userQuery.isSuccess && userQuery.data)
-
-  return (
-    <Wrapper>
-      <FadeDiv timein="0.6s">
-        <Cnt>
-          <InfoB />
-        </Cnt>
-      </FadeDiv>
-    </Wrapper>
-  )
-}
+const HomePage: FC = () => 
+  <Wrapper>
+    <FadeDiv timein="0.6s">
+      {/* <img
+        alt="United States"
+        src="http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"/> */}
+      <Cnt>
+        <InfoB />
+      </Cnt>
+    </FadeDiv>
+  </Wrapper>
 
 export default HomePage
 

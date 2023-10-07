@@ -3,6 +3,7 @@
 export interface BaseModel {
     id: number;
     title: string;
+    en_title?: string;
 }
 
 export interface ICv extends BaseModel {
@@ -11,8 +12,10 @@ export interface ICv extends BaseModel {
 
 export interface IAlbum extends BaseModel {
     slug: string;
-    year: number;
+    // en_slug: string;
+    year?: number;
     content?: string;
+    en_content?: string;
     status: number;
     pictures: IPicture[];
 }
@@ -27,10 +30,12 @@ export interface IArticle extends BaseModel {
 
 export interface IPicture extends BaseModel  {
     year: number;
-    technique: string;
-    size: string;
-    content: string;
-    photographer: string;
+    technique?: string;
+    en_technique?: string;
+    size?: string;
+    content?: string;
+    en_content?: string;
+    photographer?: string;
     image: string;
     pic_order: number;
 }

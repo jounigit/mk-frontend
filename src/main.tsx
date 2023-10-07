@@ -11,6 +11,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import config from './data/config'
 import { apiClient } from './http-common'
 import App from './App'
+import './i18n'
 
 
 const defaultQueryFn = async ({ queryKey }: QueryFunctionContext) => {
@@ -33,7 +34,7 @@ ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 ).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <QueryClientProvider client={queryClient}>
         <App />
         <ReactQueryDevtools initialIsOpen={false} />

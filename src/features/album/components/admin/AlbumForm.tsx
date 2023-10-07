@@ -1,29 +1,34 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import {
+  Divider,
   Form,
   FormContainer,
-  // Input,
   InputWrapper,
-  // Label
 } from '../../../../styles/styles'
 import { GreenButton } from '../../../../components/atoms'
-import * as yup from 'yup'
+import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { IAlbum, INewAlbum } from '../../../../types'
 import { FormInput } from '../../../utils/FormInput'
 import { useGoBack } from '../../../../hooks/useGoBack'
 import { Button } from '../../../../components/atoms/Button'
 
-const schema = yup.object().shape({
-  title: yup.string().required(),
-  // year: yup.number().required(),
-  // info: yup.string(),
+const schema = Yup.object().shape({
+  title: Yup.string().required(),
+  // en_title: Yup.string().optional(),
+  // year: Yup.number().optional(),
+  // content: Yup.string().optional(),
+  // en_content: Yup.string().optional(),  
 })
+
+// type SchemaType = Yup.InferType<typeof schema>
 
 type Inputs = {
     title: string;
-    year: number;
-    content: string;
+    en_title?: string;
+    year?: number;
+    content?: string;
+    en_content?: string;
 }
 
 type Props = {
@@ -43,8 +48,10 @@ function AlbumForm({ handleData, album, formName }: Props) {
 
     const newAlbum = {
       title: data.title,
-      year: data.year,
-      content: data.content,
+      year: data?.year,
+      content: data?.content,
+      en_title: data?.en_title,
+      en_content: data?.en_content,
     }
 
     handleData(newAlbum)
@@ -61,27 +68,47 @@ function AlbumForm({ handleData, album, formName }: Props) {
           <h3 style={{ color: 'white' }}>{formName}</h3>
 
           <InputWrapper>
+
+            {/* ...................... */}
+            <FormInput<Inputs>
+              name='year'
+              defaultValue={album?.year}
+              label='Vuosi/Year'
+              register={register}
+              errors={errors}
+            />
+            <Divider />
             {/* ...................... */}
             <FormInput<Inputs>
               name='title'
               defaultValue={album?.title}
-              label='Title'
+              label='Nimi'
               register={register}
               errors={errors}
             />
 
             {/* ...................... */}
             <FormInput<Inputs>
-              name='year'
-              defaultValue={album?.year}
-              label='Year'
-              register={register}
-              errors={errors}
-            />
-            {/* ...................... */}
-            <FormInput<Inputs>
               name='content'
               defaultValue={album?.content}
+              label='Kuvaus'
+              register={register}
+            />
+
+            <Divider />
+            <h4> in english</h4>
+            {/* ...................... */}
+            <FormInput<Inputs>
+              name='en_title'
+              defaultValue={album?.en_title}
+              label='Title'
+              register={register}
+            />
+
+            {/* ...................... */}
+            <FormInput<Inputs>
+              name='en_content'
+              defaultValue={album?.en_content}
               label='Content'
               register={register}
             />
@@ -97,6 +124,14 @@ function AlbumForm({ handleData, album, formName }: Props) {
 }
 
 export default AlbumForm
+
+// const schema: Yup.Schema<INewAlbum> = Yup.object().shape({
+//   title: Yup.string().required(),
+//   en_title: Yup.number().optional(),
+//   year: Yup.number().optional(),
+//   content: Yup.number().optional(),
+//   en_content: Yup.number().optional(),  
+// })
 
 {/* <TextInput
 fieldName='content'

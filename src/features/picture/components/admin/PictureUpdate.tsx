@@ -19,7 +19,7 @@ export function PictureUpdate() {
       toast.success('Picture updated successfully.')
       goBack()
     }
-  }, [status])
+  }, [goBack, status])
 
   /************** get current  *************************/
 
@@ -35,7 +35,8 @@ export function PictureUpdate() {
 
   const handleData = (data: IUpdatePicture) => {
     console.table([data])
-    mutate({ id, newPicture:data })
+    const newPicture = data
+    mutate({ id, newPicture })
   }
 
   /************** return *************************/
