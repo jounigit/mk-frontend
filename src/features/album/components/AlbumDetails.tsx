@@ -4,6 +4,7 @@ import {
 } from './AlbumDetails.styles'
 import { IAlbum } from '@/types'
 import { PictureGalleria } from '@/features/picture/components/PictureGalleria'
+import { StrToCurrentLang } from '@/components/atoms/StrToCurrentLang'
 
 interface Props {
     album: IAlbum
@@ -21,10 +22,12 @@ export const AlbumDetails: FC<Props> = ({ album }) => {
     />
   </ImageBox>
 
+  const title = StrToCurrentLang(album.title, album.en_title) 
+
   return (
     <Fragment>
       <Title>
-        <h2>{album.title}</h2>
+        <h2>{title}</h2>
       </Title>
       { images }
       <Text>

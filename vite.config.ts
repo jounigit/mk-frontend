@@ -26,13 +26,17 @@ export default defineConfig({
       picture: `${path.resolve(__dirname, './src/features/picture')}`,
     },
   },
-  // test: {
-  //   globals: true,
-  //   environment: 'jsdom',
-  // }
+  build: {
+    chunkSizeWarningLimit: 1600,
+    rollupOptions: {
+      onwarn(warning, warn) {
+        if (warning.code === 'MODULE_LEVEL_DIRECTIVE') {
+          return
+        }
+        warn(warning)
+      }
+    }
+  },
 })
 
 
-// resolve: {
-//   alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
-// },

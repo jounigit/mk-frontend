@@ -3,15 +3,19 @@ import { DropLink, LinkTo, Ul } from './NavLinks.styles'
 import { FaAngleDown, FaHome } from 'react-icons/fa'
 import { userToken } from '@/services/authUser.service'
 import { Logout } from '@/features/login/components/Logout'
+import { useTranslation } from 'react-i18next'
+import SelectLangFlag from '@/components/SelectLangFlag'
 
 type Props = {
-  open:  boolean,
+  open: boolean,
   toggle: () => void,
 }
 
 export const NavLinks: FC<Props> = ({ open, toggle }) => {
   const token = userToken()
-  console.log('Navlinks token 2: ', token)
+  const { i18n, t } = useTranslation()
+
+  console.log('Navlinks lang: ', i18n.language)
 
   return (
     <Ul open={open}>
@@ -24,26 +28,26 @@ export const NavLinks: FC<Props> = ({ open, toggle }) => {
       {/* dropdown section */}
       <li className='dropdown'>
         <LinkTo to="#">
-          Galleria
+          {t('Galleria')}
           <span style={{ position: 'relative', top: '0.3rem' }}>
             <FaAngleDown />
           </span>
         </LinkTo>
         <div className='dropdown-content'>
-          <DropLink to="/galleria/veistokset"  onClick={toggle}>
-            Veistokset
+          <DropLink to="/galleria/veistokset" onClick={toggle}>
+            {t('Veistokset')}
           </DropLink>
           <DropLink to="/galleria/piirustuksia" onClick={toggle}>
-            Piirustuksia
+            {t('Piirustukset')}
           </DropLink>
-          <DropLink to="/galleria/tilateokset"  onClick={toggle}>
-            Tilateokset
+          <DropLink to="/galleria/tilateokset" onClick={toggle}>
+            {t('Tilateokset')}
           </DropLink>
           <DropLink to="/galleria/esinekoosteet" onClick={toggle}>
             Esinekoosteet
           </DropLink>
           <DropLink to="/galleria/julkiset-teokset" onClick={toggle}>
-            Julkiset teokset
+            {t('Julkiset teokset')}
           </DropLink>
           <DropLink to="/galleria/portrettikioski" onClick={toggle}>
             Portrettikioski
@@ -54,27 +58,29 @@ export const NavLinks: FC<Props> = ({ open, toggle }) => {
       {/* end section */}
 
       <li>
-        <LinkTo to="/articles" onClick={toggle}>Artikkelit</LinkTo>
+        <LinkTo to="/articles" onClick={toggle}>{t('Artikkelit')}</LinkTo>
       </li>
       <li>
         <LinkTo to="/cv" onClick={toggle}>CV</LinkTo>
       </li>
-      { token &&
-      <li>
-        <LinkTo to="/dashboard" onClick={toggle}>admin</LinkTo>
-      </li>
+      {token &&
+        <li>
+          <LinkTo to="/dashboard" onClick={toggle}>admin</LinkTo>
+        </li>
       }
-      { token &&
-      <li>
-        <Logout />
-      </li>
+      {token &&
+        <li>
+          <Logout />
+        </li>
       }
-      { !token &&
-      <li>
-        <LinkTo to="/login" onClick={toggle}>login</LinkTo>
-      </li>
+      {!token &&
+        <li>
+          <LinkTo to="/login" onClick={toggle}>login</LinkTo>
+        </li>
       }
-
+      <li>
+        <SelectLangFlag />
+      </li>
     </Ul>
   )
 }

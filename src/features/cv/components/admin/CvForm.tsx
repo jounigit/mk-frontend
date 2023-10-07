@@ -16,11 +16,12 @@ import { FormInput } from '../../../utils/FormInput'
 
 const schema = yup.object().shape({
   title: yup.string().required(),
-  // info: yup.string(),
+  en_title: yup.string(),
 })
 
 type Inputs = {
     title: string;
+    // en_title?: string;
 }
 
 type Props = {

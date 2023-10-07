@@ -85,26 +85,3 @@ const FileUploader = ({ handleFile }: Props) => {
 }
 
 export default FileUploader
-
-{/* <Input type="file"
-ref={hiddenFileInput}
-onChange={handleChange}
-/>
-<Button onClick={() => handleClick()}>
-Upload a file
-</Button> */}
-
-// const Input = styled.input.attrs(props => ({
-//   type: 'file'
-//   // size: props.small ? 5 : undefined,
-// }))`
-//   border-radius: 3px;
-//   border: 1px solid #BF4F74;
-//   display: block;
-//   margin: 0 0 1em;
-//   padding: ${props => props.padding};
-
-//   ::placeholder {
-//     color: #BF4F74;
-//   }
-// `

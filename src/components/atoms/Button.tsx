@@ -26,6 +26,13 @@ export const Button = styled.button<Props>`
     color: white;
   }
 `
+
+export const TransButton = styled(Button)`
+  color: #fcfcfc;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid #fcfcfc;
+`
+
 export const GreenButton = styled(Button)`
   color: #fcfcfc;
   background-color: green;
