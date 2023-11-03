@@ -14,5 +14,5 @@ interface Props {
 
 export const FadeDiv = styled.div<Props>`
 animation: ${fadeIn} ${(p) => p.timein} ease-in;
-opacity: 1;
+/* opacity: 1; */
 `

@@ -15,45 +15,42 @@ import { Button } from '@/components/atoms/Button'
 
 const AlbumAdmin = (): JSX.Element => {
   const { slug } = useParams() as {slug:string}
-  const { isLoading, data, isError, error } = useQuery<IAlbum>({
+  const albumQuery = useQuery<IAlbum>({
     queryKey: [`/album/${slug}`],
     enabled: !!slug,
   })
   const goBack = useGoBack()
 
-  if (isError) return <ErrorHandler error={(error as Error)} />
-  if (isLoading) return <LoadingHandler />
+  if (albumQuery.data) {
+    const showData = albumQuery.data && <AlbumDetailsAdmin album={albumQuery.data} />
 
-  const showData = data && <AlbumDetailsAdmin album={data} />
+    const { linkUpdate, linkPictures } = ActionLinks({ id: albumQuery.data.id })
+    return (
+      <>
+        <Button onClick={goBack}>...takaisin</Button>
+        <Grid size={2}>
+          <Row>
+            <Col size={1}>
+            </Col>
+            <Col size={1}>
+              {linkUpdate}
+              {linkPictures}
+              {/*  <Links>{linkRemove}</Links>  */}
+            </Col>
+          </Row>
+        </Grid>
+  
+        <AlbumAdminContainer>
+          {showData && showData}
+          { !showData && <p>No data yet.</p>}
+        </AlbumAdminContainer>
+      </>
+    )
+  }
 
-  const { linkUpdate, linkPictures } = ActionLinks({ id: data.id })
+  if (albumQuery.isError) return <ErrorHandler error={(albumQuery.error as Error)} />
 
-  /************** return *** onClick={() => navigate('/dashboard/albums')}*****/
-  return (
-    <>
-      <Button onClick={goBack}>...takaisin</Button>
-      <Grid size={2}>
-        <Row>
-          <Col size={1}>
-          </Col>
-          <Col size={1}>
-            {linkUpdate}
-            {linkPictures}
-            {/* <Links>{linkUpdate}</Links>
-            <Links>{linkRemove}</Links>
-            <Links>{linkPictures}</Links> */}
-          </Col>
-        </Row>
-      </Grid>
-
-
-      <AlbumAdminContainer>
-        {showData && showData}
-        { !showData && <p>No data yet.</p>}
-      </AlbumAdminContainer>
-    </>
-
-  )
+  return <LoadingHandler />
 }
 
 export default AlbumAdmin

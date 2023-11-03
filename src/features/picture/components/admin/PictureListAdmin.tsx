@@ -18,23 +18,23 @@ const Wrapper = styled(MainContainer)`
 `
 
 export const PictureListAdmin = () => {
-  const { isLoading, isError, data, error } =
-    usePictures()
+  const { isError, data, error } = usePictures()
 
-  if (isLoading) return <LoadingHandler />
+  if (data) {
+    const showdata = data?.map(p =>
+      <PictureListItemAdmin key={p.id} picture={p} />
+    )
+  
+    return (
+      <Wrapper>
+        <ChooseGrid>
+          {showdata && showdata}
+        </ChooseGrid>
+      </Wrapper>
+    )
+  }
 
   if (isError) return <ErrorHandler error={(error as Error)} />
 
-  const showdata = data?.map(p =>
-    <PictureListItemAdmin key={p.id} picture={p} />
-  )
-
-  // ###################################################################
-  return (
-    <Wrapper>
-      <ChooseGrid>
-        {showdata && showdata}
-      </ChooseGrid>
-    </Wrapper>
-  )
+  return <LoadingHandler />
 }

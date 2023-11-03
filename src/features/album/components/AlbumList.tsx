@@ -5,19 +5,20 @@ import { ErrorHandler, LoadingHandler } from '@/components/handlers'
 import { IAlbum } from '@/types'
 
 export const AlbumsList = (): JSX.Element => {
-  const { isLoading, data, isError, error } =
-  useQuery<IAlbum[]>({ queryKey: ['/albums'] })
+  const albumQuery = useQuery<IAlbum[]>({ queryKey: ['/albums'] })
 
-  if (isLoading) return <LoadingHandler />
+  if (albumQuery.data) {
+    const showAlbums = albumQuery.data?.map(a => <AlbumListItem key={a.id} album={a} />)
+    return (
+      <AlbumListContainer>
+        {showAlbums && showAlbums}
+        {showAlbums && !showAlbums.length && <p>no albums yet.</p>}
+      </AlbumListContainer>
+    )
+  }
 
-  if (isError) return <ErrorHandler error={(error as Error)} />
+  if (albumQuery.isError) return <ErrorHandler error={(albumQuery.error as Error)} />
 
-  const showAlbums = data?.map(a => <AlbumListItem key={a.id} album={a} />)
+  return <LoadingHandler />
 
-  return (
-    <AlbumListContainer>
-      {showAlbums && showAlbums}
-      {showAlbums && !showAlbums.length && <p>no albums yet.</p>}
-    </AlbumListContainer>
-  )
 }

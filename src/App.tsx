@@ -3,10 +3,14 @@ import GlobalStyles from './styles/GlobalStyles'
 import { routePage } from './routes'
 import { Fragment } from 'react'
 import { Toaster } from 'react-hot-toast'
+import { useUser } from './features/user/useUser'
 
 function App(): JSX.Element {
   const location = useLocation()
   const routesContent = useRoutes(routePage)
+  const userQuery = useUser()
+
+  console.log('Public user: ', userQuery.isSuccess && userQuery.data)
 
   const homePage = (location.pathname === '/') ? true : false
   const isDashboard = location.pathname.includes('dashboard')
@@ -22,16 +26,3 @@ function App(): JSX.Element {
 
 export default App
 
-{/* <GlobalStyles homePage={homePage} />
-<Navbar />
-<SiteContent>
-  <Routes>
-    <Route path='/' element={<HomePage />} />
-    <Route path='/cv' element={<CvPage />} />
-    <Route path='/articles' element={<ArticlePage />} />
-    <Route path='/galleria'>
-      <Route index element={<GalleriaPage />} />
-      <Route path=':slug' element={<Album />} />
-    </Route>
-  </Routes>
-</SiteContent> */}

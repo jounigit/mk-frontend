@@ -44,13 +44,13 @@ export const NavLinks: FC<Props> = ({ open, toggle }) => {
             {t('Tilateokset')}
           </DropLink>
           <DropLink to="/galleria/esinekoosteet" onClick={toggle}>
-            Esinekoosteet
+            {t('Esinekoosteet')}
           </DropLink>
           <DropLink to="/galleria/julkiset-teokset" onClick={toggle}>
             {t('Julkiset teokset')}
           </DropLink>
           <DropLink to="/galleria/portrettikioski" onClick={toggle}>
-            Portrettikioski
+            {t('Portrettikioski')}
           </DropLink>
         </div>
       </li>
