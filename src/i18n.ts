@@ -10,24 +10,28 @@ i18n.use(initReactI18next).init({
   resources: {
     en: {
       translation: {
-        Artikkelit: 'Articles',
-        Galleria: 'Gallery',
-        Veistokset: 'Sculptures',
-        Piirustukset: 'Drawings',
-        Piirustuksia: 'Drawings',
-        Tilateokset: 'Installations',
-        Julkiset_teokset: 'Public works',
+        'Artikkelit': 'Articles',
+        'Galleria': 'Gallery',
+        'Veistokset': 'Sculptures',
+        'Piirustukset': 'Drawings',
+        'Piirustuksia': 'Drawings',
+        'Tilateokset': 'Installations',
+        'Julkiset teokset': 'Public works',
+        'Esinekoosteet': 'Readymades',
+        'Portrettikioski': 'Interactive Portraitworkshop',
       }
     },
     fi: {
       translation: {
-        Artikkelit: 'Artikkelit',
-        Galleria: 'Galleria',
-        Veistokset: 'Veistokset',
-        Piirustukset: 'Piirustukset',
-        Piirustuksia: 'Piirustukset',
-        Tilateokset: 'Tilateokset',
-        Julkiset_teokset: 'Julkiset teokset',
+        'Artikkelit': 'Artikkelit',
+        'Galleria': 'Galleria',
+        'Veistokset': 'Veistokset',
+        'Piirustukset': 'Piirustukset',
+        'Piirustuksia': 'Piirustukset',
+        'Tilateokset': 'Tilateokset',
+        'Julkiset teokset': 'Julkiset teokset',
+        'Esinekoosteet': 'Esinekoosteet',
+        'Portrettikioski': 'Portrettikioski',
       }
     }
   },

@@ -36,23 +36,8 @@ export const PictureListItemAdmin: FC<Props> = (props) => {
   const { isShown, toggle } = useModal()
   const { id, title, image } = props.picture
   const picFolder = config.IMAGES_BIG_URL as string
-  // const picFolder2 = config.JA_IMAGES_BIG_URL as string
-
-  //   console.table([id, title, content, image])
-  //   console.log({ picFolder })
-
-  // const remove = (): void => {
-  //   toggle && toggle()
-  // }
-
-  // const pattern = image as string
-  // const defineFolder = picFolder ?? picFolder2
   const pic1 = formatUrl(picFolder, image)
-  // const pic2 = formatUrl(picFolder2, image)
-  // const getPic = pic1.includes(pattern) ? pic1 : pic2
-  // console.log({ getPic })
-
-  // console.table([pic1, pic2])
+  
   // :::::::::::::::::::::::::::::::::::: //
   const { linkUpdate, linkRemove } =
   ActionLinks({ id, path: 'pictures', toggle })
