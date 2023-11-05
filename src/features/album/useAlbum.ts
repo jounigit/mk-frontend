@@ -16,9 +16,13 @@ import { apiClient } from '@/http-common'
 // ####################### services ########################################
 //**  Get all */
 export const fetchAlbumList = async (): Promise<IAlbum[]> => {
-  const response = await apiClient.get('albums')
+  const response = await apiClient.get('albumss')
   return response.data
 }
+
+export const fetchTime =  setTimeout(() => {
+  fetchAlbumList
+}, 2000)
 
 //**  Delete */
 export const deleteAlbum = async (id: number): Promise<unknown> => {

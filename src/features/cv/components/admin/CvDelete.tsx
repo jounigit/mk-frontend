@@ -21,7 +21,7 @@ export const CvDelete = ({ id, title, toggle }: Props): JSX.Element => {
       toggle && toggle()
       navigate('/dashboard/cv')
     }
-  }, [status])
+  }, [navigate, status, toggle])
 
   if (status === 'error') {
     return <ErrorHandler error={(error as Error)} />
