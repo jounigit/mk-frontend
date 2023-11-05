@@ -21,7 +21,7 @@ export const PictureDelete = ({ id, title, toggle }: Props): JSX.Element => {
       toggle && toggle()
       navigate('/dashboard/pictures')
     }
-  }, [status])
+  }, [navigate, status, toggle])
 
   if (status === 'error') {
     return <ErrorHandler error={(error as Error)} />

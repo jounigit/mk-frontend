@@ -3,7 +3,6 @@ import { RouteObject, } from 'react-router-dom'
 import MainLayout from './MainLayout'
 import NotFoundPage from '@/pages/NotFoundPage'
 import React from 'react'
-import { LoadingHandler } from '@/components/handlers'
 import { Login } from '@/features/login/components/Login'
 import { DashboardLayout } from '@/components/dashboard'
 import DashboardPage from '@/pages/DashboardPage'
@@ -51,14 +50,12 @@ const routes: RouteObject[] = [
         children: [
           {
             index: true,
-            element: <GalleriaPage />,
+            element: <GalleriaPage />
           },
           {
             path: ':slug',
             element:
-            <React.Suspense fallback={<LoadingHandler />}>
               <Album />
-            </React.Suspense>,
           }
         ]
       },

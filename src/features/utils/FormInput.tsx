@@ -37,7 +37,7 @@ export const FormInput = <TFormValues extends Record<string, unknown>>({
 
   // errors && console.table([errorMessages])
   return (
-    <div>
+    (<div>
       <Label>{label}</Label>
       <Input
         defaultValue={defaultValue}
@@ -51,19 +51,17 @@ export const FormInput = <TFormValues extends Record<string, unknown>>({
       {/* {hasError &&
       <p style={{ color: 'red' }}>{errorMessages.message}</p>
       } */}
-
       {hasError &&
             <ErrorMessage
               errors={errors}
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               name={name as any}
               render={({ message }) => (
-                <p style={{ color: 'red' }}>{message}</p>
+                (<p style={{ color: 'red' }}>{message}</p>)
               // <FormErrorMessage className="mt-1">{message}</FormErrorMessage>
               )}
             />
       }
-    </div>
-
+    </div>)
   )
 }

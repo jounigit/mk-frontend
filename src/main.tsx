@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {
+  QueryCache,
   // QueryCache,
   QueryClient,
   QueryClientProvider,
@@ -12,6 +13,7 @@ import config from './data/config'
 import { apiClient } from './http-common'
 import App from './App'
 import './i18n'
+import toast from 'react-hot-toast'
 
 
 const defaultQueryFn = async ({ queryKey }: QueryFunctionContext) => {
@@ -20,11 +22,16 @@ const defaultQueryFn = async ({ queryKey }: QueryFunctionContext) => {
 }
 
 const queryClient = new QueryClient({
+  queryCache: new QueryCache({
+    onError: (error) =>
+      toast.error(`Something went wrong: ${error.message}`),
+  }),
   defaultOptions: {
     queries: {
       staleTime: 1000 * 20,
       queryFn: defaultQueryFn,
-      refetchOnWindowFocus: false,
+      suspense: true,
+      // refetchOnWindowFocus: false,
       retry: 2
     },
   },
