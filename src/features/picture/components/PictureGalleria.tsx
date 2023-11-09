@@ -1,27 +1,27 @@
 import { FC, useState } from 'react'
 import { ImageGrid, ImageGridProps } from './pictureGalleria.style'
-import { IPicture } from '../../../types'
-import { useModal } from '../../../hooks/useModal'
-import config from '../../../data/config'
-import { ImagesLinkDiv } from '../../../components/atoms/ImagesLinkDiv'
-import { Modal } from '../../../components/modal/modal'
-import { ImageModal } from '../../../components/image-modal/image-modal'
-import { formatUrl } from '../../../components/atoms/utils'
 import { useWindowSize } from 'usehooks-ts'
-import { ImagesInDiv } from '../../../components/atoms/ImagesInDiv'
+import { ImagesInDiv } from '@/components/atoms/ImagesInDiv'
+import { formatUrl } from '@/components/atoms/utils'
+import { IPicture } from '@/types'
+import config from '@/data/config'
+import { useModal } from '@/hooks/useModal'
+import { ImagesLinkDiv } from '@/components/atoms/ImagesLinkDiv'
+import { Modal } from '@/components/modal/modal'
+import { ImageModal } from '@/components/image-modal/image-modal'
 
 
 interface PictureMediaProps extends ImageGridProps {
     imageList: IPicture[]
 }
 
+const picFolder = config.IMAGES_BIG_URL as string
+
 export const PictureGalleria: FC<PictureMediaProps> =
 ({ imageList, width, height }) => {
   const { isShown, toggle } = useModal()
   const [img, setImg] = useState<IPicture>()
   const { width: winWidth } = useWindowSize()
-
-  const picFolder = config.IMAGES_BIG_URL as string
 
   const mobile = winWidth < 768 ? true : false
 
@@ -30,11 +30,8 @@ export const PictureGalleria: FC<PictureMediaProps> =
     toggle()
   }
 
-  // console.log('width: ', winWidth)
-
   return (
     <>
-
       <ImageGrid width={width} height={height}>
 
         { mobile &&

@@ -15,8 +15,9 @@ export const ChooseGrid = styled.div`
 `
 
 export const ImageBox = styled.div`
-display: flex;
-flex-flow: column;
+  display: flex;
+  flex-flow: column;
+  max-width: 250px;
   height: 100%;
   border: 1px solid var(--gray-3);
   padding: .4rem;

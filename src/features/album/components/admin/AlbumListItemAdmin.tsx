@@ -1,4 +1,3 @@
-/* eslint-disable no-self-assign */
 import { FC, Fragment } from 'react'
 import {
   ImageGridListItem,
@@ -28,21 +27,19 @@ const Content = styled.div`
     padding: 1.5rem;
 `
 const Links = styled.div`
-
 `
 
 interface ListProps {
   album: IAlbum,
 }
 
+const picFolder = config.IMAGES_THUMB_URL as string
+
 export const AlbumListItemAdmin: FC<ListProps> = (props) => {
   const { isShown, toggle } = useModal()
   const { id, title, slug, pictures } = props.album
-  const picFolder = config.IMAGES_THUMB_URL as string
-  const firstPic = pictures[0]
-  console.log('album: ', title ,'pics: ', pictures)
-  let showPic = <h4>no images yet.</h4>
 
+  // ******************************************************************* //
   const textForGalleria = (
     <h4>
       {pictures.length}
@@ -51,22 +48,23 @@ export const AlbumListItemAdmin: FC<ListProps> = (props) => {
     </h4>
   )
 
-  if (firstPic) {
-    showPic = <ImageInDiv data={firstPic} url={picFolder} />
-  }
+  const showFirstPic = pictures[0] ?
+    <ImageInDiv data={pictures[0]} url={picFolder} /> : 
+    <h4 style={{ paddingLeft: '40px' }}>no images yet.</h4>
 
+  // ****************** actions *********************************** //
   const {
     link, linkUpdate, linkRemove, linkPictures
   } = ActionLinks({ id, slug, toggle })
 
-  // :::::::::::::::::: style={{ marginRight: '2rem' }}:::::::::::::::::: //
+  // **************** return ***************************************** //
   return (
     <Fragment>
       <Grid size={5}>
         <Row bgColor={colors.grey1}>
           <Col size={1}>
             <ImageItem width={150} height={150}>
-              {showPic}
+              {showFirstPic}
             </ImageItem>
           </Col>
           <Col size={2}>
@@ -99,7 +97,7 @@ export const AlbumListItemAdmin: FC<ListProps> = (props) => {
         hide={toggle}
         headerText='Albumin poisto'
         modalContent={
-          <AlbumDelete id={id} title={title} />
+          <AlbumDelete id={id} title={title} toggle={toggle} />
         }
       />
     </Fragment>

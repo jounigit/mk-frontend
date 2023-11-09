@@ -3,6 +3,7 @@ import GlobalStyles from './styles/GlobalStyles'
 import { routePage } from './routes'
 import { Fragment } from 'react'
 import { Toaster } from 'react-hot-toast'
+import { QueryBoundaries } from './components/queryboundary/QueryBoundaries'
 // import { useUser } from './features/user/useUser'
 
 function App(): JSX.Element {
@@ -19,7 +20,9 @@ function App(): JSX.Element {
     <Fragment>
       <Toaster />
       <GlobalStyles homePage={homePage} dashboard={isDashboard} />
-      {routesContent}
+      <QueryBoundaries>
+        {routesContent}
+      </QueryBoundaries>
     </Fragment>
   )
 }

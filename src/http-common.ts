@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import axios from 'axios'
 import config from './data/config'
 import { userToken } from './services/authUser.service'

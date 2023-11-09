@@ -6,7 +6,9 @@ import {
   UseMutationResult,
   useQuery,
   useQueryClient,
-  UseQueryResult
+  UseQueryResult,
+  useSuspenseQuery,
+  UseSuspenseQueryResult
 } from '@tanstack/react-query'
 
 // ###################### services #########################################
@@ -56,12 +58,29 @@ export function useCvs(): UseQueryResult<ICv[], unknown> {
   })
 }
 
+export function useSuspenseCvs():
+ UseSuspenseQueryResult<ICv[], unknown> {
+  return useSuspenseQuery({
+    queryKey: ['cvs'],
+    queryFn: async () => await getAll<ICv>('cvs')
+  })
+}
+
 export function useCv(id: number): UseQueryResult<ICv, unknown> {
   return useQuery({
     queryKey: ['cvs', id],
     queryFn: async () => await getOne<ICv>({ id, url: 'cvs' })
   })
 }
+
+export function useSuspenseCv(id: number):
+ UseSuspenseQueryResult<ICv, unknown> {
+  return useSuspenseQuery({
+    queryKey: ['cvs', id],
+    queryFn: async () => await getOne<ICv>({ id, url: 'cvs' })
+  })
+}
+
 // ####################### mutations ########################################
 export function useCreateCv():
   UseMutationResult<unknown, unknown, INewCV, unknown> {

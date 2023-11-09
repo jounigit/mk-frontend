@@ -80,6 +80,7 @@ export type Path = 'albums' | 'pictures' | 'cvs'
 // ##################### New types #########################
 export type INewAlbum = Omit<IAlbum, 'id' | 'slug' | 'pictures' | 'status'>
 export type INewPicture = Omit<IPicture, 'id'>
+export type IUpdatePicture = Omit<IPicture, 'id' | 'image' | 'pic_order'>
 export type INewCV = Omit<ICv, 'id'>
 export interface INewAlbumPicture{
   album_id: number;

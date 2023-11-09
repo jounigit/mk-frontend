@@ -17,6 +17,7 @@ import CvCreateRoute from './CvCreateRoute'
 import PictureListAdminRoute from './PictureListAdminRoute'
 import PictureUpdateRoute from './PictureUpdateRoute'
 import UploadPictureRoute from './UploadPictureRoute'
+import { QueryBoundaries } from '@/components/queryboundary/QueryBoundaries'
 const HomePage = loadable(() => import('@/pages/HomePage'))
 const GalleriaPage = loadable(() => import('@/pages/GalleriaPage'))
 const CvPage = loadable(() => import('@/pages/CvPage'))
@@ -38,7 +39,10 @@ const routes: RouteObject[] = [
       },
       {
         path: 'cv',
-        element: <CvPage />,
+        element: 
+        <QueryBoundaries>
+          <CvPage />
+        </QueryBoundaries>
       },
       {
         path: 'articles',
@@ -50,12 +54,18 @@ const routes: RouteObject[] = [
         children: [
           {
             index: true,
-            element: <GalleriaPage />
+            element: 
+            <QueryBoundaries>
+              <GalleriaPage />
+            </QueryBoundaries>
+            
           },
           {
             path: ':slug',
             element:
+            <QueryBoundaries>
               <Album />
+            </QueryBoundaries>
           }
         ]
       },
@@ -71,7 +81,8 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <DashboardPage />,
+        element: 
+        <DashboardPage />,
       },
       {
         path: 'albums',

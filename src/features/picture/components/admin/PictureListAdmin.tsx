@@ -1,13 +1,11 @@
-// import { useQuery } from '@tanstack/react-query'
-// import { IPicture } from '../../../../types'
-import { ErrorHandler, LoadingHandler } from '../../../../components/handlers'
 import { PictureListItemAdmin } from './PictureListItemAdmin'
-import { MainContainer }
-  from '../../../../components/dashboard/components/Dashboard.styles'
-import { ChooseGrid } from '../../../album/components/admin/Choose.styles'
+import { colors } from '@/styles/theme'
 import { usePictures } from '../../usePicture'
+import { ChooseGrid } from '@/features/album/components/admin/Choose.styles'
 import styled from 'styled-components'
-import { colors } from '../../../../styles/theme'
+import { 
+  MainContainer 
+} from '@/components/dashboard/components/Dashboard.styles'
 
 const Wrapper = styled(MainContainer)`
   max-width: 95%;
@@ -18,23 +16,17 @@ const Wrapper = styled(MainContainer)`
 `
 
 export const PictureListAdmin = () => {
-  const { isError, data, error } = usePictures()
+  const { data } = usePictures()
 
-  if (data) {
-    const showdata = data?.map(p =>
-      <PictureListItemAdmin key={p.id} picture={p} />
-    )
+  const showdata = data ?
+    data.map(p => <PictureListItemAdmin key={p.id} picture={p} /> ) :
+    <h4>no images yet.</h4>
   
-    return (
-      <Wrapper>
-        <ChooseGrid>
-          {showdata && showdata}
-        </ChooseGrid>
-      </Wrapper>
-    )
-  }
-
-  if (isError) return <ErrorHandler error={(error as Error)} />
-
-  return <LoadingHandler />
+  return (
+    <Wrapper>
+      <ChooseGrid>
+        {showdata}
+      </ChooseGrid>
+    </Wrapper>
+  )
 }

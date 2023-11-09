@@ -1,17 +1,14 @@
+import { apiClient } from '@/http-common'
 import { IUserServer } from '@/types'
-import { UseQueryResult, useQuery } from '@tanstack/react-query'
+import { UseSuspenseQueryResult, useSuspenseQuery } from '@tanstack/react-query'
 
-export function useUser(): UseQueryResult<IUserServer, unknown> {
-  console.log('Get  user data!')
-  return useQuery<IUserServer>({ queryKey: ['/user'],
-    onSuccess: (data) => {
-      console.log('Get  user data success!')
-      console.log('-UseUser: ', data)
-      localStorage.setItem('authUser', JSON.stringify(data))
-    },
-    onError: () => {
-      console.log('Get user data ERROR!')
-      localStorage.clear()
-    }
+export function useUser(): UseSuspenseQueryResult<IUserServer, unknown> {
+  return useSuspenseQuery<IUserServer, unknown>({ 
+    queryKey: ['user'],
+    queryFn: async () => await apiClient.get('/user')
+    // onError: () => {
+    //   console.log('Get user data ERROR!')
+    //   localStorage.clear()
+    // }
   })
 }

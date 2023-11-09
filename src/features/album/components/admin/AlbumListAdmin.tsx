@@ -1,8 +1,6 @@
-// import { useQuery } from '@tanstack/react-query'
-import { ErrorHandler, LoadingHandler } from '@/components/handlers'
 import { AlbumListContainer } from '../AlbumList.styles'
 import { AlbumListItemAdmin } from './AlbumListItemAdmin'
-import { useAlbum, useAlbums } from '../../useAlbum'
+import { useAlbums } from '../../useAlbum'
 import styled from 'styled-components/macro'
 import { TABLET } from '@/styles/theme/breakpoints'
 
@@ -15,20 +13,15 @@ const Container = styled(AlbumListContainer)`
 `
 
 const AlbumListAdmin = (): JSX.Element => {
-  const { isLoading, data, isError, error } = useAlbums()
-  const { isSuccess: suc, data: detailA, } = useAlbum(6)
+  const { data: Albums } = useAlbums()
 
-  if (isError) return <ErrorHandler error={(error as Error)} />
-  if (isLoading) return <LoadingHandler />
-
-
-  if (suc) console.log('Album: ', { detailA })
-  const showAlbums = data?.map(a => <AlbumListItemAdmin key={a.id} album={a} />)
+  const showAlbums = Albums && Albums.length ? 
+    Albums.map(a => <AlbumListItemAdmin key={a.id} album={a} />) :
+    <p>no albums yet.</p>
 
   return (
     <Container>
-      {showAlbums && showAlbums}
-      {showAlbums && !showAlbums.length && <p>no albums yet.</p>}
+      {showAlbums}
     </Container>
   )
 }

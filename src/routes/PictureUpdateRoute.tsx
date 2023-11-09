@@ -1,4 +1,6 @@
-import { PictureUpdate } from '@/features/picture/components/admin/PictureUpdate'
+import { 
+  PictureUpdate 
+} from '@/features/picture/components/admin/PictureUpdate'
 
 const PictureUpdateRoute = {
   path: 'update/:id',

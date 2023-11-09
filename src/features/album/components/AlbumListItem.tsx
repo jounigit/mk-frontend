@@ -15,12 +15,12 @@ interface ListProps {
   album: IAlbum,
 }
 
+const picFolder = config.IMAGES_BIG_URL as string
+
 export const AlbumListItem: FC<ListProps> = (props) => {
   const { title, slug, pictures } = props.album
-  const picFolder = config.IMAGES_BIG_URL as string
 
-  let showPics = <h3>no images yet.</h3>
-
+  // ******************************************************************* //
   const textForGalleria = (
     <h4>
       {pictures.length}
@@ -29,11 +29,13 @@ export const AlbumListItem: FC<ListProps> = (props) => {
     </h4>
   )
 
-  if (pictures.length > 0) {
-    const twoPics = pictures.slice(0, 2)
-    showPics = <ImagesInDiv data={twoPics} url={picFolder} showInfo={false} />
-  }
-
+  const twoPics = pictures.slice(0, 2)
+    
+  const showPics = twoPics.length > 0 ?
+    <ImagesInDiv data={twoPics} url={picFolder} showInfo={false} /> : 
+    <h4>no images yet.</h4>
+ 
+  // **************** return ***************************************** //
   return (
     <AlbumListItemContainer>
       <Link

@@ -8,12 +8,13 @@ import {
 import { useEffect } from 'react'
 import NavbarDb from './components/NavbarDb'
 import SidebarDb from './components/SidebarDb'
-import { useUser } from '@/features/user/useUser'
+// import { useUser } from '@/features/user/useUser'
 import { userToken } from '@/services/authUser.service'
+import { QueryBoundaries } from '../queryboundary/QueryBoundaries'
 
 function DashboardLayout() {
   const navigate = useNavigate()
-  const userQuery = useUser()
+  // const userQuery = useUser()
   const token = userToken()
 
   // console.log('Dash user: ', localUser)
@@ -24,7 +25,7 @@ function DashboardLayout() {
     if (!token) {
       navigate('/login')
     }
-  }, [navigate, token, userQuery])
+  }, [navigate, token])
 
   return (
     <GridDb>
@@ -35,13 +36,12 @@ function DashboardLayout() {
         <SidebarDb />
       </AsideDb>
       <MainDb>
-        <Outlet />
+        <QueryBoundaries>
+          <Outlet />
+        </QueryBoundaries>       
       </MainDb>
     </GridDb>
   )
 }
 
 export default DashboardLayout
-
-
-// const { isLoggedIn } = useAuth() as IAuthContext

@@ -4,8 +4,7 @@ import { Content, Title } from '../Cv.styles'
 import {
   Col,
   Grid, Row
-}
-  from '../../../../components/dashboard/components/Dashboard.styles'
+} from '../../../../components/dashboard/components/Dashboard.styles'
 import styled from 'styled-components'
 import { ActionLinks } from '../../../utils/ActionLinks'
 import { CvDelete } from './CvDelete'
@@ -17,9 +16,7 @@ export interface CvProps {
 }
 
 const Links = styled.div`
-
 `
-
 const ColRight = styled(Col)`
    display: flex;
    justify-content: right;
@@ -68,5 +65,3 @@ export const CvListItemAdmin: FC<CvProps> = (props) => {
     </Fragment>
   )
 }
-
-// style={{ float: 'right', background: 'red', width:'100%' }}

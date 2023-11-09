@@ -18,7 +18,7 @@ type Props = {
     w?: number;
 }
 
-export const LoadingSpinner = ({ mt=50, c='red', h=80, w=80 }: Props):
+export const LoadingSpinner = ({ mt=50, c='red', h=40, w=40 }: Props):
 JSX.Element =>
   <SpinnerComponent marginTop={mt}>
     <TailSpin

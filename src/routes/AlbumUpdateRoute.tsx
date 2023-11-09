@@ -2,7 +2,7 @@ import { AlbumUpdate } from '@/features/album/components/admin/AlbumUpdate'
 
 const AlbumUpdateRoute = {
   path: 'update/:id',
-  element: <AlbumUpdate />,
+  element: <AlbumUpdate />
 }
   
 export default AlbumUpdateRoute

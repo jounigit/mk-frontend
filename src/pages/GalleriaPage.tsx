@@ -1,17 +1,13 @@
-// import { FadeDiv } from '@/components/atoms'
-import { LoadingHandler } from '@/components/handlers'
+import { FadeDiv } from '@/components/atoms'
 import { AlbumsList } from '@/features/album'
-import React from 'react'
-
 
 const GalleriaPage = (): JSX.Element => {
   return (
-    // <FadeDiv timein="0.3s">
-    <React.Suspense fallback={<LoadingHandler />}>
+    <FadeDiv timein="0.3s">
       <AlbumsList />
-    </React.Suspense>
-    // </FadeDiv>
+    </FadeDiv>
   )
 }
 
 export default GalleriaPage
+
