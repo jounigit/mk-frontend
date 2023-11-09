@@ -17,7 +17,7 @@ export const PictureLinks = () => {
 
   console.table([data])
 
-  const showLinks = data.map((a) =>
+  const showLinks = data?.map((a) =>
     <li key={a.id}><LinkToAlbum album={a} /></li>
   )
 

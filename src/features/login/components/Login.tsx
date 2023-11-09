@@ -13,7 +13,7 @@ interface Params {
 }
 
 export const Login = (): JSX.Element => {
-  const { mutate, isLoading, isSuccess, data } = useLogin()
+  const { mutate, isPending, isSuccess, data } = useLogin()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export const Login = (): JSX.Element => {
     }
   }, [data, isSuccess, navigate])
 
-  if (isLoading) return <LoadingHandler />
+  if (isPending) return <LoadingHandler />
 
   const handleData = addTokenAndUser(mutate)
 

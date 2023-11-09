@@ -2,7 +2,7 @@ import ChoosePictures from '@/features/album/components/admin/ChoosePictures'
 
 const ChoosePicturesRoute = {
   path: 'choose-pictures/:id',
-  element: <ChoosePictures />,
+  element: <ChoosePictures />
 }
     
 export default ChoosePicturesRoute

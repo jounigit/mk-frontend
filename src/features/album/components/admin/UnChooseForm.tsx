@@ -7,13 +7,12 @@ import { ChooseButton } from '../../../albumpictures/ChooseForm.styles'
 type Props = {
     handleDelete: (id: number) => void
     picture: IPicture
-    // label: string
 }
 
+const picFolder = config.IMAGES_THUMB_URL as string
+
 function UnChooseForm({ handleDelete, picture, }: Props) {
-  // const [checked, setChecked] = useState(false)
   const { id, image, title } = picture
-  const picFolder = config.IMAGES_THUMB_URL as string
 
   const handleCheck = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -21,21 +20,19 @@ function UnChooseForm({ handleDelete, picture, }: Props) {
   }
 
   return (
-    <div>
-      <ImageBox>
+    <ImageBox>
+      <form onSubmit={(handleCheck)}>
         <Image src={formatUrl(picFolder, image)} />
         <details>
           <summary>{title}</summary>
           <p>{picture.year} {picture.size}</p>
           <p>{picture.content}</p>
         </details>
-      </ImageBox>
-      <form onSubmit={(handleCheck)}>
         <ChooseButton color='red' pd='5px' type='submit'>
           Poista kuva
         </ChooseButton>
       </form>
-    </div>
+    </ImageBox>
   )
 }
 

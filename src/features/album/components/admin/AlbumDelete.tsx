@@ -1,38 +1,39 @@
-import { RedButton } from '../../../../components/atoms'
-import { ErrorHandler } from '../../../../components/handlers'
+import { RedButton } from '@/components/atoms'
 import { useDeleteAlbum } from '../../useAlbum'
+import { DeleteWrapper } from '@/styles/styles'
+import { useEffect } from 'react'
 
 type Props = {
   id: number,
   title: string
+  toggle: () => void
 }
 
-export const AlbumDelete = ({ id, title }: Props): JSX.Element => {
-  const { status, error, mutate: DeleteAlbum } = useDeleteAlbum()
+export const AlbumDelete = ({ id, title, toggle }: Props): JSX.Element => {
+  const { status, mutate: DeleteAlbum } = useDeleteAlbum()
+
+  useEffect(() => {
+    if (status === 'success' || status === 'error') {
+      toggle()
+    }
+  }, [status, toggle])
 
   /************** handle remove mutation ***********************/
-  const remove = (): unknown => {
-    // const ok = window.confirm(`remove album '' '${id}'?`)
-    // if (ok === false) {
-    //   return
-    // }
-
+  const remove = (): void => {
     DeleteAlbum(id)
-
-    if (status === 'error') {
-      return <ErrorHandler error={(error as Error)} />
-    }
   }
 
+  /************************************************************/
   return (
-    <>
-      <h3>Haluatko poistaa albumin - {title}</h3>
+    <DeleteWrapper>
+      <h3>Haluatko poistaa albumin:</h3>
+      <h4>{title}</h4>
       <RedButton
-        size={0.5}
+        size={0.1}
         onClick={() => remove()}
       >
         Poista album
       </RedButton>
-    </>
+    </DeleteWrapper>
   )
 }

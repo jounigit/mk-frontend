@@ -79,6 +79,21 @@ export const Form = styled.form`
     border-radius: 5px;
     padding: 1.5rem;
 `
+export const InputWrapperTwoCol = styled.div` 
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+`
+
+export const TwoColChild = styled.div`
+    flex: 1;
+    /* border: 1px solid white; */
+    padding: 0.8rem;
+    /* &:first-child {
+      margin-right: 1rem;
+    } */
+`
+
 export const InputWrapper = styled.div` 
   margin-left: auto;
   margin-right: auto;
@@ -117,4 +132,13 @@ export const Label = styled.label`
   color: var(--gray-4);
   padding: 10px;
   margin-top: 1rem;
+`
+export const DeleteWrapper = styled.div`
+  padding: 1em;
+  h3 {
+    color: var(--gray-3);
+  }
+  h4 {
+    padding: .6em;
+  }
 `

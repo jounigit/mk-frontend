@@ -1,24 +1,17 @@
-import { useQuery } from '@tanstack/react-query'
 import { CvContainer } from './Cv.styles'
 import { CvListItem } from './CvListItem'
-import { ICv } from '@/types'
-import { ErrorHandler, LoadingHandler } from '@/components/handlers'
+import { useSuspenseCvs } from '../useCv'
 
 export const CvList = (): JSX.Element => {
-  const { isError, data, error } =
-  useQuery<ICv[]>({ queryKey: ['/cvs'] })
+  const { data } = useSuspenseCvs()
 
-  if (data) {
-    const showdata = data?.map(c => <CvListItem key={c.id} cv={c} />)
-    return (
-      <CvContainer>
-        {showdata && showdata}
-        {showdata && !showdata.length && <p>No CVs yet.</p>}
-      </CvContainer>
-    )
-  }
+  const showdata = data.length ? 
+    data.map(c => <CvListItem key={c.id} cv={c} />) :
+    <h4>No CVs yet.</h4>
 
-  if (isError) return <ErrorHandler error={(error as Error)} />
-
-  return <LoadingHandler />
+  return (
+    <CvContainer>
+      {showdata}
+    </CvContainer>
+  )
 }

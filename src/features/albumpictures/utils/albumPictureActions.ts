@@ -1,4 +1,3 @@
-import toast from 'react-hot-toast'
 import { IAlbumPicture, INewAlbumPicture } from '../../../types'
 import { UseMutateFunction } from '@tanstack/react-query'
 
@@ -6,42 +5,32 @@ import { UseMutateFunction } from '@tanstack/react-query'
 export function deleteAlbumPicture(
   albumPictures: IAlbumPicture[],
   albumId: number,
-  deleteAPic: UseMutateFunction<unknown, unknown, number, unknown>,
-  isDeleted: boolean
+  deleteAPic: UseMutateFunction<unknown, unknown, number, unknown>
 ) {
   return (id: number) => {
+    console.log('Del pid: ', id, ' - aid: ', albumId)
+    // find albumPicture id by picture - and album ids
     const getAbmPic = albumPictures.find((item) =>
       item.picture_id === id.toString()
       && item.album_id === albumId.toString()
     )
 
-    const albumPicId = getAbmPic?.id
-    const ok = window.confirm(`remove album '' '${id}'?`)
-    if (ok === false) {
-      return
-    }
+    const albumPictureId = getAbmPic?.id
 
-    albumPicId && deleteAPic(albumPicId)
-    if (isDeleted)
-      toast.success('Picture removed successfully.', { duration: 3000 })
+    console.log('AlbumPic ID: ', albumPictureId && albumPictureId)
+    albumPictureId && deleteAPic(albumPictureId)
   }
 }
 
 export function addPictureToAlbum(
   albumId: number,
-  mutate: UseMutateFunction<unknown, unknown, INewAlbumPicture, unknown>,
-  isSuccess: boolean
+  mutate: UseMutateFunction<unknown, unknown, INewAlbumPicture, unknown>
 ) {
   return (id: number) => {
-    console.log('handleSelected: ', id)
     const newAlbumPic: INewAlbumPicture = {
       album_id: albumId,
       picture_id: id
     }
     mutate(newAlbumPic)
-    if (isSuccess)
-      toast.success('Picture added successfully.', { duration: 3000 })
   }
 }
-
-// toast.success('Picture added successfully.', { duration: 3000 })

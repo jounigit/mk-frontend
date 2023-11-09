@@ -1,13 +1,13 @@
+import { formatUrl } from '@/components/atoms/utils'
+import { Modal } from '@/components/modal/modal'
+import config from '@/data/config'
+import { ActionLinks } from '@/features/utils/ActionLinks'
+import { useModal } from '@/hooks/useModal'
+import { colors } from '@/styles/theme'
+import { IPicture } from '@/types'
 import { FC, Fragment } from 'react'
-import { IPicture } from '../../../../types'
-import config from '../../../../data/config'
-import { formatUrl } from '../../../../components/atoms/utils'
 import styled from 'styled-components/macro'
-import { colors } from '../../../../styles/theme'
-import { Modal } from '../../../../components/modal/modal'
-import { useModal } from '../../../../hooks/useModal'
 import { PictureDelete } from './PictureDelete'
-import { ActionLinks } from '../../../utils/ActionLinks'
 
 const Wrapper = styled.div`
     display: flex;
@@ -32,17 +32,18 @@ interface Props {
     picture: IPicture
 }
 
+const picFolder = config.IMAGES_BIG_URL as string
+
 export const PictureListItemAdmin: FC<Props> = (props) => {
   const { isShown, toggle } = useModal()
   const { id, title, image } = props.picture
-  const picFolder = config.IMAGES_BIG_URL as string
   const pic1 = formatUrl(picFolder, image)
   
-  // :::::::::::::::::::::::::::::::::::: //
+  /************** actions *************************/
   const { linkUpdate, linkRemove } =
   ActionLinks({ id, path: 'pictures', toggle })
 
-  // :::::::::::::::::::::::::::::::::::: //
+  /************** return *************************/
   return (
     <Fragment>
       <Wrapper>

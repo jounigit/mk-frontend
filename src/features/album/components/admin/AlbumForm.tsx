@@ -1,27 +1,16 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
-import {
-  Divider,
-  Form,
-  FormContainer,
-  InputWrapper,
-} from '../../../../styles/styles'
-import { GreenButton } from '../../../../components/atoms'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { IAlbum, INewAlbum } from '../../../../types'
-import { FormInput } from '../../../utils/FormInput'
-import { useGoBack } from '../../../../hooks/useGoBack'
-import { Button } from '../../../../components/atoms/Button'
+import { IAlbum, INewAlbum } from '@/types'
+import { useGoBack } from '@/hooks/useGoBack'
+import { Button, GreenButton } from '@/components/atoms/Button'
+import { FormContainer } from '@/styles'
+import { Divider, Form, InputWrapperTwoCol, TwoColChild } from '@/styles/styles'
+import { FormInput } from '@/features/utils/FormInput'
 
 const schema = Yup.object().shape({
   title: Yup.string().required(),
-  // en_title: Yup.string().optional(),
-  // year: Yup.number().optional(),
-  // content: Yup.string().optional(),
-  // en_content: Yup.string().optional(),  
 })
-
-// type SchemaType = Yup.InferType<typeof schema>
 
 type Inputs = {
     title: string;
@@ -67,55 +56,59 @@ function AlbumForm({ handleData, album, formName }: Props) {
 
           <h3 style={{ color: 'white' }}>{formName}</h3>
 
-          <InputWrapper>
+          <InputWrapperTwoCol>
 
-            {/* ...................... */}
-            <FormInput<Inputs>
-              name='year'
-              defaultValue={album?.year}
-              label='Vuosi/Year'
-              register={register}
-              errors={errors}
-            />
+            <TwoColChild>
+              <h4> suomeksi</h4>
+              
+              <FormInput<Inputs>
+                name='title'
+                defaultValue={album?.title}
+                label='Nimi'
+                register={register}
+                errors={errors}
+              />
+
+              <FormInput<Inputs>
+                name='content'
+                defaultValue={album?.content}
+                label='Kuvaus'
+                register={register}
+              />
+              
+              <FormInput<Inputs>
+                name='year'
+                defaultValue={album?.year}
+                label='Vuosi/Year'
+                register={register}
+                errors={errors}
+              />
+
+            </TwoColChild>
+
             <Divider />
-            {/* ...................... */}
-            <FormInput<Inputs>
-              name='title'
-              defaultValue={album?.title}
-              label='Nimi'
-              register={register}
-              errors={errors}
-            />
+            
+            <TwoColChild>
+              <h4> in english</h4>
+              
+              <FormInput<Inputs>
+                name='en_title'
+                defaultValue={album?.en_title}
+                label='Title'
+                register={register}
+              />
 
-            {/* ...................... */}
-            <FormInput<Inputs>
-              name='content'
-              defaultValue={album?.content}
-              label='Kuvaus'
-              register={register}
-            />
+              <FormInput<Inputs>
+                name='en_content'
+                defaultValue={album?.en_content}
+                label='Content'
+                register={register}
+              />
+            </TwoColChild>
 
-            <Divider />
-            <h4> in english</h4>
-            {/* ...................... */}
-            <FormInput<Inputs>
-              name='en_title'
-              defaultValue={album?.en_title}
-              label='Title'
-              register={register}
-            />
-
-            {/* ...................... */}
-            <FormInput<Inputs>
-              name='en_content'
-              defaultValue={album?.en_content}
-              label='Content'
-              register={register}
-            />
-
-            {/* ...................... */}
-            <GreenButton type='submit' size={0.5}>Lähetä</GreenButton>
-          </InputWrapper>
+          </InputWrapperTwoCol>
+          
+          <GreenButton type='submit' size={0.5}>Lähetä</GreenButton>
 
         </Form>
       </FormContainer>
@@ -124,44 +117,3 @@ function AlbumForm({ handleData, album, formName }: Props) {
 }
 
 export default AlbumForm
-
-// const schema: Yup.Schema<INewAlbum> = Yup.object().shape({
-//   title: Yup.string().required(),
-//   en_title: Yup.number().optional(),
-//   year: Yup.number().optional(),
-//   content: Yup.number().optional(),
-//   en_content: Yup.number().optional(),  
-// })
-
-{/* <TextInput
-fieldName='content'
-defaultValue={album?.content}
-register={'title'}
-/> */}
-
-{/* <Label>Title</Label>
-<Input
-  defaultValue={album?.title}
-  {...register('title')}
-/>
-<p style={{ color: 'red' }}>{errors.title?.message}</p>
-
-{/* ...................... */}
-{/* <Label>Year</Label>
-<Input
-  defaultValue={album?.year}
-  {...register('year')}
-/>
-<p style={{ color: 'red' }}>{errors.year?.message}</p> */}
-{/* <Label>Year</Label>
-          <Input
-            defaultValue={album?.year}
-            {...register('year')}
-          />
-          <p style={{ color: 'red' }}>{errors.year?.message}</p> */}
-{/* <Label>Title</Label>
-          <Input
-            defaultValue={album?.title}
-            {...register('title')}
-          />
-          <p style={{ color: 'red' }}>{errors.title?.message}</p> */}
