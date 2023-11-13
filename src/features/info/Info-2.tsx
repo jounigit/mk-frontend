@@ -1,14 +1,15 @@
 import { FC } from 'react'
 import { ItemAllB, StyledInfoB } from './Info.styles'
+import config from '@/data/config'
 
 export const InfoB: FC = () => (
 
   <StyledInfoB>
     <ItemAllB>
-      <h2>Marja Kolu</h2>
-      <h4>Kuvataiteilija </h4>
-      <h5>+358 503410232</h5>
-      <h4>marja.kolu@gmail.com</h4>
+      <h2>{config.OWNER_NAME}</h2>
+      <h4>{config.OWNER_OCCUPATION}</h4>
+      <h5>{config.OWNER_PHONE}</h5>
+      <h4>{config.OWNER_EMAIL}</h4>
     </ItemAllB>
     {/* <Item>
         <Text muted>
