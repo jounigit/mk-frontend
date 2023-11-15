@@ -28,7 +28,7 @@ export interface IArticle extends BaseModel {
     file: string;
 }
 
-export interface IPicture extends BaseModel  {
+export interface IPicture extends BaseModel {
     year: number;
     technique?: string;
     en_technique?: string;
@@ -117,8 +117,8 @@ hasOwnProperty<X extends 'object', Y extends PropertyKey>(obj: X, prop: Y)
 
 export function isAlbum(value: unknown): value is IAlbum {
   if (
-    value!== null
-    && typeof value === 'object' && 'pictures' in value
+    value!== null &&
+    typeof value === 'object' && 'pictures' in value
   ) {
     return true
   }

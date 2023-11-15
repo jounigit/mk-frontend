@@ -3,10 +3,10 @@ import AlbumAdmin from '@/features/album/components/admin/AlbumAdmin'
 
 const AlbumAdminRoute = {
   path: ':slug',
-  element: 
+  element:
   <QueryBoundaries>
     <AlbumAdmin />
   </QueryBoundaries>
 }
-      
+
 export default AlbumAdminRoute

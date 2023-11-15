@@ -4,5 +4,5 @@ const CvListAdminRoute = {
   index: true,
   element: <CvListAdmin />,
 }
-          
+
 export default CvListAdminRoute

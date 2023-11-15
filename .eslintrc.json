@@ -27,8 +27,7 @@
         "react",
         "@typescript-eslint",
         "react-hooks",
-        "@tanstack/query",
-        "@stylistic/js"
+        "@tanstack/query"
     ],
     "rules": {
         "react-hooks/rules-of-hooks": "error",
@@ -44,15 +43,23 @@
         "no-shadow": "off",
         "@typescript-eslint/no-shadow": ["error"],
         "import/prefer-default-export": "off",
-        "react/jsx-filename-extension": [
-            1, 
-            { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
-        ],
         "indent": [ "error", 2 ],
         "linebreak-style": [ "error", "unix" ],
         "quotes": [ "error", "single" ],
         "semi": [ "error", "never" ],
         "eqeqeq": "error",
-        "react/jsx-no-useless-fragment": "off"
+        "react/jsx-no-useless-fragment": "off",
+        "no-trailing-spaces": "error",
+        "operator-linebreak": ["error", "after"],
+        "object-curly-spacing": ["error", "always"],
+        "no-multi-spaces": "error",
+        "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
+        "object-curly-newline": ["error", { "consistent": true }],
+        "multiline-ternary": ["error", "always-multiline"],
+        // "key-spacing": ["error", { "align": "value" }],
+        "react/jsx-filename-extension": [
+            1, 
+            { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+        ]
     }
 }

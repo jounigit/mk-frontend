@@ -3,8 +3,7 @@ import {
   useState
 } from 'react'
 import { MdCloudUpload,
-  MdDelete
-} from 'react-icons/md'
+  MdDelete } from 'react-icons/md'
 import { AiFillFileImage } from 'react-icons/ai'
 import { GreenButton } from '../../../../components/atoms'
 import {
@@ -51,14 +50,13 @@ const FileUploader = ({ handleFile }: Props) => {
       <FileForm
         onClick={() => handleClick()}
       >
-        <input type='file' accept='image/*'  hidden
+        <input type='file' accept='image/*' hidden
           ref={hiddenFileInput}
           onChange={handleChange}
         />
 
         { previewUrl ?
-          <img src={previewUrl} width={250} height={250} alt={fileName} />
-          :
+          <img src={previewUrl} width={250} height={250} alt={fileName} /> :
           <>
             <MdCloudUpload color='#1475cf' size={60} />
             <p>Browse Files to upload</p>

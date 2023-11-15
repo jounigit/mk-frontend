@@ -27,7 +27,9 @@ const GlobalStyles = createGlobalStyle<Prop>`
     --bg-primary: rgb(255,255,255,0.7);
     --bg-secondary: rgb(255,255,255,0.6);
     --shadow-primary: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    --bg-color: ${props => (props.bgColor ? props.bgColor : '#B8860B')};
+    --bg-color: ${props => (props.bgColor ?
+    props.bgColor :
+    '#B8860B')};
     --gray-1: ${colors.grey1};
     --gray-2: ${colors.grey2};
     --gray-3: ${colors.grey3};

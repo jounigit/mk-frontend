@@ -64,7 +64,8 @@ export const updateAlbum = async ({ id, newAlbum }: IUpdateProps)
 
 // ####################### query hooks ########################################
 export function useAlbums(): UseQueryResult<IAlbum[], unknown> {
-  return useQuery({ queryKey: ['albums'],
+  return useQuery({
+    queryKey: ['albums'],
     queryFn: fetchAlbumList,
     throwOnError: true
   },
@@ -74,7 +75,7 @@ export function useAlbums(): UseQueryResult<IAlbum[], unknown> {
 export function useAlbum(id:number): UseQueryResult<IAlbum, unknown> {
   return useQuery({
     queryKey: ['albums', id],
-    queryFn: async () => await getOne<IAlbum>({id, url:'albums'}),
+    queryFn: async () => await getOne<IAlbum>({ id, url:'albums' }),
     throwOnError: true
   })
 }
@@ -82,7 +83,7 @@ export function useAlbum(id:number): UseQueryResult<IAlbum, unknown> {
 export function useAlbumBySlug(slug:string): UseQueryResult<IAlbum, unknown> {
   return useQuery({
     queryKey: ['albums', slug],
-    queryFn: async () => await getBySlug<IAlbum>({slug, url:'album'}),
+    queryFn: async () => await getBySlug<IAlbum>({ slug, url:'album' }),
     throwOnError: true
   })
 }
@@ -91,7 +92,7 @@ export function useSuspenseAlbumBySlug(slug:string):
  UseSuspenseQueryResult<IAlbum, unknown> {
   return useSuspenseQuery<IAlbum, unknown>({
     queryKey: ['albums', slug],
-    queryFn: async () => await getBySlug<IAlbum>({slug, url:'album'})
+    queryFn: async () => await getBySlug<IAlbum>({ slug, url:'album' })
   })
 }
 
@@ -104,30 +105,23 @@ UseMutationResult<unknown, unknown, INewAlbum, unknown> {
 export function useUpdateAlbum():
 UseMutationResult<unknown, unknown, IUpdateProps, unknown> {
   const useClient = useQueryClient()
-  return useMutation({ mutationFn: updateAlbum, 
+  return useMutation({ mutationFn: updateAlbum,
     onSuccess: () => {
       useClient.invalidateQueries({ queryKey: ['albums'] })
     },
     onError: () => {
       toast.error('Failed to update Album!')
-    }
-  })
+    } })
 }
 
 export function useDeleteAlbum():
 UseMutationResult<unknown, unknown, number, unknown> {
   const useClient = useQueryClient()
-  return useMutation({ mutationFn: deleteAlbum, 
+  return useMutation({ mutationFn: deleteAlbum,
     onSuccess: () => {
       toast.success('Album deleted successfully.')
       useClient.invalidateQueries({ queryKey: ['albums'] })
-    }, 
-    // throwOnError: true
-    // onError: (error: Error) => {
-    //   toast.error(`Failed to delete Album! - ${error.message}`)
-    //   console.log(error.message)
-    // } 
-  })
+    } })
 }
-  
+
 // ##################################################

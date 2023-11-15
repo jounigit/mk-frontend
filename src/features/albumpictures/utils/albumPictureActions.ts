@@ -11,8 +11,8 @@ export function deleteAlbumPicture(
     console.log('Del pid: ', id, ' - aid: ', albumId)
     // find albumPicture id by picture - and album ids
     const getAbmPic = albumPictures.find((item) =>
-      item.picture_id === id.toString()
-      && item.album_id === albumId.toString()
+      item.picture_id === id.toString() &&
+      item.album_id === albumId.toString()
     )
 
     const albumPictureId = getAbmPic?.id

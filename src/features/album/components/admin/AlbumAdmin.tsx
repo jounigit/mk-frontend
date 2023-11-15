@@ -28,7 +28,7 @@ const AlbumAdmin = (): JSX.Element => {
           </Col>
         </Row>
       </Grid>
-  
+
       <AlbumAdminContainer>
         <AlbumDetailsAdmin album={data} />
       </AlbumAdminContainer>

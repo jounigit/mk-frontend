@@ -2,9 +2,9 @@ import { renderHook, waitFor } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import { useAlbums } from './useAlbum'
 import { wrapper } from '@/test-utils/wrapper'
-import nock from 'nock' 
+import nock from 'nock'
 
-describe('useAlbums hook', async () => { 
+describe('useAlbums hook', async () => {
   it('get all albums', async () => {
     const { result } = renderHook(() => useAlbums(), { wrapper })
 
@@ -25,7 +25,7 @@ describe('useAlbums hook', async () => {
         pictures: [],
       })
 
-    console.log({expectation})
+    console.log({ expectation })
     const { result } = renderHook(() => useAlbums(), { wrapper })
     await waitFor(() => expect(result.current.isSuccess).toBe(true))
   })

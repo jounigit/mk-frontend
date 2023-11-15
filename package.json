@@ -41,7 +41,6 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "@stylistic/eslint-plugin-js": "^1.0.0",
     "@tanstack/eslint-plugin-query": "^5.0.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/react-hooks": "^8.0.1",

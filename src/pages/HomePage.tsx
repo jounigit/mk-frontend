@@ -2,6 +2,8 @@ import { FC } from 'react'
 import styled from 'styled-components/macro'
 import painter from '@/assets/maalari-1.png'
 import { InfoB } from '@/features/info/Info-2'
+// import { IsAuthUser, User } from '@/features/user/User'
+// import { useUser } from '@/features/user/useUser'
 
 
 const Wrapper = styled.div`
@@ -20,7 +22,7 @@ const Cnt = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  animation: fadein 5s;
+  animation: fadein 4s;
 
   @keyframes fadein {
     from {
@@ -37,12 +39,23 @@ const Cnt = styled.div`
   /*  */
 `
 
-const HomePage: FC = () => 
-  <Wrapper>
-    <Cnt>
-      <InfoB />
-    </Cnt>
-  </Wrapper>
+const HomePage: FC = () => {
+  // const isA = IsAuthUser()
+  // const userQuery = useUser()
+
+  // console.log('Pub user: ', isA)
+  // console.log('Public user: ',
+  //  userQuery.status==='success' && userQuery.data)
+
+  return (
+    <Wrapper>
+      <Cnt>
+        <InfoB />
+      </Cnt>
+    </Wrapper>
+  )
+}
+
 
 export default HomePage
 

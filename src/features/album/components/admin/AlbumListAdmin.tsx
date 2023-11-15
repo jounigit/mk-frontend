@@ -15,7 +15,7 @@ const Container = styled(AlbumListContainer)`
 const AlbumListAdmin = (): JSX.Element => {
   const { data: Albums } = useAlbums()
 
-  const showAlbums = Albums && Albums.length ? 
+  const showAlbums = Albums && Albums.length ?
     Albums.map(a => <AlbumListItemAdmin key={a.id} album={a} />) :
     <p>no albums yet.</p>
 

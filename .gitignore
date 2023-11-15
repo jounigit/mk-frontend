@@ -11,6 +11,7 @@ node_modules
 dist
 dist-ssr
 coverage
+requests
 *.local
 src/i18n.ts
 src/assets

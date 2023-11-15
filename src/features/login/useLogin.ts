@@ -3,6 +3,7 @@ import { IUserServer } from '@/types'
 import {
   UseMutationResult,
   useMutation,
+  useQueryClient,
 } from '@tanstack/react-query'
 
   interface Params {
@@ -17,7 +18,7 @@ export interface ILoginResponse {
     token: string;
   }
 
-  interface ILogoutResponse  {
+  interface ILogoutResponse {
     message: string;
   }
 
@@ -40,11 +41,14 @@ export const logout = async (): Promise<ILogoutResponse> => {
 
 export function useLogin():
 UseMutationResult<unknown, unknown, Params, unknown> {
-  return useMutation({ mutationFn: login, onSuccess: (data) => {
-    console.log('-UseLogin: ', data)
-    localStorage.setItem('authUser', JSON.stringify(data.user))
-    localStorage.setItem('token', JSON.stringify(data.token))
-  } })
+  const useClient = useQueryClient()
+  return useMutation({ mutationFn: login,
+    onSuccess: (data) => {
+      useClient.invalidateQueries({ queryKey: ['user'] })
+      console.log('-UseLogin: ', data)
+      localStorage.setItem('authUser', JSON.stringify(data.user))
+      localStorage.setItem('token', JSON.stringify(data.token))
+    } })
 }
 
 export function useLogout():

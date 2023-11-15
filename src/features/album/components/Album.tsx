@@ -7,9 +7,10 @@ const Album = (): JSX.Element => {
   const { slug } = useParams() as {slug:string}
   const { data } = useAlbumBySlug(slug)
 
-  const showData = data ? 
-    <AlbumDetails album={data} full /> : <p>No data yet.</p>
-    
+  const showData = data ?
+    <AlbumDetails album={data} full /> :
+    <p>No data yet.</p>
+
   return (
     <AlbumContainer>
       {showData}

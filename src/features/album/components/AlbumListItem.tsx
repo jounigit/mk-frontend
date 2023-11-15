@@ -30,11 +30,11 @@ export const AlbumListItem: FC<ListProps> = (props) => {
   )
 
   const twoPics = pictures.slice(0, 2)
-    
+
   const showPics = twoPics.length > 0 ?
-    <ImagesInDiv data={twoPics} url={picFolder} showInfo={false} /> : 
+    <ImagesInDiv data={twoPics} url={picFolder} showInfo={false} /> :
     <h4>no images yet.</h4>
- 
+
   // **************** return ***************************************** //
   return (
     <AlbumListItemContainer>

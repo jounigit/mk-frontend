@@ -1,11 +1,12 @@
 import { QueryErrorResetBoundary } from '@tanstack/react-query'
 import React from 'react'
-import { ErrorBoundary,
-  //  FallbackProps 
+import {
+  ErrorBoundary,
+  //  FallbackProps
 } from 'react-error-boundary'
 import { ErrorHandler, LoadingHandler } from '../handlers'
 
-// 
+//
 export const QueryBoundaries = ({ children }
   : { children: React.ReactNode }) => (
   <QueryErrorResetBoundary>

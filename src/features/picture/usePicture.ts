@@ -44,7 +44,7 @@ export const updatePicture = async ({ id, newPicture }: IUpdateProps) => {
     error: (e) => 'Failed to update picture -\n' + e.message,
   })
   return response.data
-  
+
 }
 
 //**  delete */
@@ -85,14 +85,11 @@ export function useSuspensePicture(id: number):
 
 // ####################### mutations ########################################
 export const useCreatePicture = () => {
-  return useMutation({
-    mutationFn: createPicture, 
-    onSuccess: (data, variables) => {
+  return useMutation({ mutationFn: createPicture,
+    onSuccess: (data) => {
       console.log({ data })
-      console.log({ variables })
-    }, onError: (error, variables) => {
+    }, onError: (error) => {
       console.log({ error })
-      console.log({ variables })
     } })
 }
 
@@ -100,7 +97,7 @@ export function useUpdatePicture():
   UseMutationResult<unknown, unknown, IUpdateProps, unknown> {
   const useClient = useQueryClient()
   return useMutation({
-    mutationFn: updatePicture, 
+    mutationFn: updatePicture,
     onSuccess: () => {
       useClient.invalidateQueries({ queryKey: ['pictures'] })
     },
@@ -114,7 +111,7 @@ export function useDeletePicture():
   UseMutationResult<unknown, unknown, number, unknown> {
   const useClient = useQueryClient()
   return useMutation({
-    mutationFn: deletePicture, 
+    mutationFn: deletePicture,
     onSuccess: () => {
       console.log('- Use delete success')
       useClient.invalidateQueries()

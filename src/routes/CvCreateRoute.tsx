@@ -4,5 +4,5 @@ const CvCreateRoute = {
   path: 'create',
   element: <CvCreate />,
 }
-          
+
 export default CvCreateRoute

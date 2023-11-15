@@ -3,8 +3,8 @@ import { colors } from '@/styles/theme'
 import { usePictures } from '../../usePicture'
 import { ChooseGrid } from '@/features/album/components/admin/Choose.styles'
 import styled from 'styled-components'
-import { 
-  MainContainer 
+import {
+  MainContainer
 } from '@/components/dashboard/components/Dashboard.styles'
 
 const Wrapper = styled(MainContainer)`
@@ -21,7 +21,7 @@ export const PictureListAdmin = () => {
   const showdata = data ?
     data.map(p => <PictureListItemAdmin key={p.id} picture={p} /> ) :
     <h4>no images yet.</h4>
-  
+
   return (
     <Wrapper>
       <ChooseGrid>

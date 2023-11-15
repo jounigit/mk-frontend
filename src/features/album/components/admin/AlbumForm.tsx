@@ -27,8 +27,8 @@ type Props = {
 }
 
 function AlbumForm({ handleData, album, formName }: Props) {
-  const { register, handleSubmit, formState: { errors }, reset }
-  = useForm<Inputs>({ resolver: yupResolver(schema) })
+  const { register, handleSubmit, formState: { errors }, reset } =
+  useForm<Inputs>({ resolver: yupResolver(schema) })
   const goBack = useGoBack()
 
   //************* handle submit *************/
@@ -60,7 +60,7 @@ function AlbumForm({ handleData, album, formName }: Props) {
 
             <TwoColChild>
               <h4> suomeksi</h4>
-              
+
               <FormInput<Inputs>
                 name='title'
                 defaultValue={album?.title}
@@ -75,7 +75,7 @@ function AlbumForm({ handleData, album, formName }: Props) {
                 label='Kuvaus'
                 register={register}
               />
-              
+
               <FormInput<Inputs>
                 name='year'
                 defaultValue={album?.year}
@@ -87,10 +87,10 @@ function AlbumForm({ handleData, album, formName }: Props) {
             </TwoColChild>
 
             <Divider />
-            
+
             <TwoColChild>
               <h4> in english</h4>
-              
+
               <FormInput<Inputs>
                 name='en_title'
                 defaultValue={album?.en_title}
@@ -107,7 +107,7 @@ function AlbumForm({ handleData, album, formName }: Props) {
             </TwoColChild>
 
           </InputWrapperTwoCol>
-          
+
           <GreenButton type='submit' size={0.5}>Lähetä</GreenButton>
 
         </Form>

@@ -4,5 +4,5 @@ const CvUpdateRoute = {
   path: 'update/:id',
   element: <CvUpdate />,
 }
-          
+
 export default CvUpdateRoute

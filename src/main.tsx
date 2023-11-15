@@ -23,8 +23,11 @@ const defaultQueryFn = async ({ queryKey }: QueryFunctionContext) => {
 
 const queryClient = new QueryClient({
   queryCache: new QueryCache({
-    onError: (error) =>
-      toast.error(`Something went wrong: ${error.message}`),
+    onError: (error, query) => {
+      if (query.state.data !== undefined) {
+        toast.error(`Something went wrong: ${error.message}`)
+      }
+    },
   }),
   defaultOptions: {
     queries: {

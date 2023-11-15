@@ -6,5 +6,5 @@ const PictureListAdminRoute = {
   index: true,
   element: <PictureListAdmin />,
 }
-          
+
 export default PictureListAdminRoute

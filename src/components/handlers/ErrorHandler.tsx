@@ -9,7 +9,7 @@ interface Props {
 
 export function ErrorHandler({ error }: Props) {
   const goBack = useGoBack()
-  
+
   return (
     <HandlingWrapper brColor='red'>
       <FaTimes color='red' />

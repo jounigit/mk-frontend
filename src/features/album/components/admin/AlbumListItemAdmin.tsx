@@ -49,7 +49,7 @@ export const AlbumListItemAdmin: FC<ListProps> = (props) => {
   )
 
   const showFirstPic = pictures[0] ?
-    <ImageInDiv data={pictures[0]} url={picFolder} /> : 
+    <ImageInDiv data={pictures[0]} url={picFolder} /> :
     <h4 style={{ paddingLeft: '40px' }}>no images yet.</h4>
 
   // ****************** actions *********************************** //

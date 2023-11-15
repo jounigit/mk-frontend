@@ -4,7 +4,7 @@ export {
   BaseFooter,
   FormContainer
 } from './styles'
-export {  } from './styles'
+export { } from './styles'
 
 export {
   MOBILE,

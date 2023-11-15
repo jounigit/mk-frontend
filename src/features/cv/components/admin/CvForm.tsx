@@ -32,8 +32,8 @@ type Props = {
 
 function CvForm({ cvItem, handleData, formName }: Props) {
   const [content, setContent] = useState(cvItem?.content)
-  const { register, handleSubmit, formState: { errors }, reset, }
-  = useForm<Inputs>({ resolver: yupResolver(schema) })
+  const { register, handleSubmit, formState: { errors }, reset, } =
+  useForm<Inputs>({ resolver: yupResolver(schema) })
 
   //************* handle submit *************/
   const onSubmit: SubmitHandler<Inputs> = (data) => {

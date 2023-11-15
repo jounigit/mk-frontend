@@ -5,7 +5,9 @@ import { Outlet, useLocation } from 'react-router-dom'
 
 export default function MainLayout() {
   const location = useLocation()
-  const homePage = (location.pathname === '/') ? true : false
+  const homePage = (location.pathname === '/') ?
+    true :
+    false
 
   return (
     <Fragment>

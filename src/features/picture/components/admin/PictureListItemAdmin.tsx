@@ -38,7 +38,7 @@ export const PictureListItemAdmin: FC<Props> = (props) => {
   const { isShown, toggle } = useModal()
   const { id, title, image } = props.picture
   const pic1 = formatUrl(picFolder, image)
-  
+
   /************** actions *************************/
   const { linkUpdate, linkRemove } =
   ActionLinks({ id, path: 'pictures', toggle })

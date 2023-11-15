@@ -22,7 +22,7 @@ export const AlbumDetails: FC<Props> = ({ album }) => {
     />
   </ImageBox>
 
-  const title = StrToCurrentLang(album.title, album.en_title) 
+  const title = StrToCurrentLang(album.title, album.en_title)
 
   return (
     <Fragment>

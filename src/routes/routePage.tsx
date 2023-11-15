@@ -39,7 +39,7 @@ const routes: RouteObject[] = [
       },
       {
         path: 'cv',
-        element: 
+        element:
         <QueryBoundaries>
           <CvPage />
         </QueryBoundaries>
@@ -54,11 +54,11 @@ const routes: RouteObject[] = [
         children: [
           {
             index: true,
-            element: 
+            element:
             <QueryBoundaries>
               <GalleriaPage />
             </QueryBoundaries>
-            
+
           },
           {
             path: ':slug',
@@ -81,7 +81,7 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: 
+        element:
         <DashboardPage />,
       },
       {

@@ -39,7 +39,9 @@ const ChoosePictures = () => {
 
     // ::::::::: handle pictures ::::::::::::::::: //
     const notAlbumPics = Pictures.map((pic) =>
-      albumPics.some((aPic) => aPic.id === pic.id) ? null : pic)
+      albumPics.some((aPic) => aPic.id === pic.id) ?
+        null :
+        pic)
       .filter(p => p !== null)
 
     const chosenPics = albumPics.map((p, index) =>

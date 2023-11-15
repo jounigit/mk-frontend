@@ -8,16 +8,18 @@ import {
 import { useEffect } from 'react'
 import NavbarDb from './components/NavbarDb'
 import SidebarDb from './components/SidebarDb'
-// import { useUser } from '@/features/user/useUser'
 import { userToken } from '@/services/authUser.service'
 import { QueryBoundaries } from '../queryboundary/QueryBoundaries'
+// import { IsAuthUser } from '@/features/user/User'
 
 function DashboardLayout() {
   const navigate = useNavigate()
   // const userQuery = useUser()
   const token = userToken()
 
-  // console.log('Dash user: ', localUser)
+  // console.log('Dashboard user: ',
+  //   userQuery.status==='success' && userQuery.data)
+  // console.log('Dash user: ', IsAuthUser())
   // console.log('Dash token: ', token)
   // console.log('Dash user hook: ', userQuery.isSuccess && userQuery.data)
 
@@ -38,7 +40,7 @@ function DashboardLayout() {
       <MainDb>
         <QueryBoundaries>
           <Outlet />
-        </QueryBoundaries>       
+        </QueryBoundaries>
       </MainDb>
     </GridDb>
   )

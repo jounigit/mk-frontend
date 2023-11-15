@@ -28,15 +28,15 @@ const SelectLangFlag = () => {
   }
   return (
     <Box>
-      <span 
+      <span
         onClick={onChangeLang}
         title='fi'
         className="flag flag-country-fi flag-icon"
       />
-      <span style={{margin: '0 5px'}}>|</span>
+      <span style={{ margin: '0 5px' }}>|</span>
       <span
         onClick={onChangeLang}
-        title='en' 
+        title='en'
         className="flag flag-country-gb flag-icon"
       />
     </Box>

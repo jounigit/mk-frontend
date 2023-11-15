@@ -14,7 +14,7 @@ import classNames from 'classnames'
 
 // export type InputType = 'text' | 'email';
 
-interface FormInputProps<TFormValues extends FieldValues>  {
+interface FormInputProps<TFormValues extends FieldValues> {
     name: Path<TFormValues>
     defaultValue?: string | number;
     label?: string;

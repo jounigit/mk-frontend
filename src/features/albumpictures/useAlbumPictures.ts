@@ -45,7 +45,8 @@ export function useAlbumPictures(): UseQueryResult<IAlbumPicture[], unknown> {
 export function useAddAlbumPicture():
 UseMutationResult<unknown, unknown, INewAlbumPicture, unknown> {
   const useClient = useQueryClient()
-  return useMutation({ mutationFn: addAlbumPicture,
+  return useMutation({
+    mutationFn: addAlbumPicture,
     onSuccess: () => {
       useClient.invalidateQueries()
     }
@@ -55,7 +56,7 @@ UseMutationResult<unknown, unknown, INewAlbumPicture, unknown> {
 export function useDeleteAlbumPicture():
 UseMutationResult<unknown, unknown, number, unknown> {
   const useClient = useQueryClient()
-  return useMutation({ mutationFn: deleteAlbumPicture, 
+  return useMutation({ mutationFn: deleteAlbumPicture,
     onSuccess: () => {
       console.log('- Use delete success')
       useClient.invalidateQueries()

@@ -7,13 +7,13 @@ import { IPicture, IUpdatePicture } from '@/types'
 import config from '@/data/config'
 import { ImageInDiv } from '@/components/atoms/ImageInDiv'
 import { FormContainer } from '@/styles'
-import { 
-  Divider, 
-  Form, 
-  InputWrapperTwoCol, 
-  Label, 
-  Textarea, 
-  TwoColChild 
+import {
+  Divider,
+  Form,
+  InputWrapperTwoCol,
+  Label,
+  Textarea,
+  TwoColChild
 } from '@/styles/styles'
 import { FormInput } from '@/features/utils/FormInput'
 import { GreenButton } from '@/components/atoms'
@@ -54,8 +54,8 @@ const picFolder = config.IMAGES_THUMB_URL as string
 function PictureForm({ handleData, picture, formName }: Props) {
   const [content, setContent] = useState(picture?.content)
   const [enContent, setEnContent] = useState(picture?.en_content)
-  const { register, handleSubmit, formState: { errors }, reset }
-  = useForm<Inputs>({ resolver: yupResolver(schema) })
+  const { register, handleSubmit, formState: { errors }, reset } =
+  useForm<Inputs>({ resolver: yupResolver(schema) })
 
   const showPic = picture &&
     <ImageInDiv data={picture} url={picFolder} />
@@ -85,7 +85,7 @@ function PictureForm({ handleData, picture, formName }: Props) {
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value)
   }
-  
+
   const onChangeEn = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setEnContent(e.target.value)
   }
@@ -102,7 +102,7 @@ function PictureForm({ handleData, picture, formName }: Props) {
 
           <TwoColChild>
             <h4> suomeksi</h4>
-            
+
             <FormInput<Inputs>
               name='title'
               defaultValue={picture?.title}
@@ -164,10 +164,10 @@ function PictureForm({ handleData, picture, formName }: Props) {
             />
 
             <Label>Content</Label>
-            <Textarea 
-              name='en_content' 
-              value={enContent} 
-              onChange={onChangeEn} 
+            <Textarea
+              name='en_content'
+              value={enContent}
+              onChange={onChangeEn}
             />
           </TwoColChild>
 
