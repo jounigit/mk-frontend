@@ -8,14 +8,15 @@ import {
 import { useEffect } from 'react'
 import NavbarDb from './components/NavbarDb'
 import SidebarDb from './components/SidebarDb'
-import { userToken } from '@/services/authUser.service'
 import { QueryBoundaries } from '../queryboundary/QueryBoundaries'
+import { useTokenStore } from '@/store/tokenStore'
 // import { IsAuthUser } from '@/features/user/User'
 
 function DashboardLayout() {
   const navigate = useNavigate()
   // const userQuery = useUser()
-  const token = userToken()
+  // const token = userToken()
+  const token = useTokenStore(state => state.token)
 
   // console.log('Dashboard user: ',
   //   userQuery.status==='success' && userQuery.data)

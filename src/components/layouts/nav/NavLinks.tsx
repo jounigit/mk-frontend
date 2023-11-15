@@ -1,10 +1,11 @@
 import { FC } from 'react'
 import { DropLink, LinkTo, Ul } from './NavLinks.styles'
 import { FaAngleDown, FaHome } from 'react-icons/fa'
-import { userToken } from '@/services/authUser.service'
+// import { userToken } from '@/services/authUser.service'
 import { Logout } from '@/features/login/components/Logout'
 import { useTranslation } from 'react-i18next'
 import SelectLangFlag from '@/components/SelectLangFlag'
+import { useTokenStore } from '@/store/tokenStore'
 
 type Props = {
   open: boolean,
@@ -12,10 +13,12 @@ type Props = {
 }
 
 export const NavLinks: FC<Props> = ({ open, toggle }) => {
-  const token = userToken()
-  const { i18n, t } = useTranslation()
+  // const token = userToken()
+  const token = useTokenStore(state => state.token)
+  const { t } = useTranslation()
 
-  console.log('Navlinks lang: ', i18n.language)
+  console.log('Navlinks token: ', token)
+  // console.log('Navlinks lang: ', i18n.language)
 
   return (
     <Ul open={open}>

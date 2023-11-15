@@ -46,14 +46,15 @@ UseMutationResult<unknown, unknown, Params, unknown> {
     onSuccess: (data) => {
       useClient.invalidateQueries({ queryKey: ['user'] })
       console.log('-UseLogin: ', data)
-      localStorage.setItem('authUser', JSON.stringify(data.user))
-      localStorage.setItem('token', JSON.stringify(data.token))
+      // localStorage.setItem('authUser', JSON.stringify(data.user))
+      // localStorage.setItem('token', JSON.stringify(data.token))
     } })
 }
 
 export function useLogout():
 UseMutationResult<unknown, unknown, null, unknown> {
-  return useMutation({ mutationFn: logout, onSuccess: (data) => {
-    console.log('-UseLogout: ', data)
-  } })
+  return useMutation({ mutationFn: logout,
+    onSuccess: (data) => {
+      console.log('-UseLogout: ', data)
+    } })
 }

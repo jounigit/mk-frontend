@@ -52,8 +52,8 @@ type Props = {
 const picFolder = config.IMAGES_THUMB_URL as string
 
 function PictureForm({ handleData, picture, formName }: Props) {
-  const [content, setContent] = useState(picture?.content)
-  const [enContent, setEnContent] = useState(picture?.en_content)
+  const [content, setContent] = useState(picture?.content || '' )
+  const [enContent, setEnContent] = useState(picture?.en_content || '')
   const { register, handleSubmit, formState: { errors }, reset } =
   useForm<Inputs>({ resolver: yupResolver(schema) })
 
@@ -61,20 +61,17 @@ function PictureForm({ handleData, picture, formName }: Props) {
     <ImageInDiv data={picture} url={picFolder} />
   //************* handle submit *************/
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    const cnt = content ? content : undefined
-    const enCnt = enContent ? enContent : undefined
-    console.log(cnt)
 
     const newPicture = {
       title: data.title,
       year: data.year,
       technique: data?.technique,
       size: data?.size,
-      content: cnt,
+      content: content,
       photographer: data?.photographer,
       en_title: data?.en_title,
       en_technique: data?.en_technique,
-      en_content: enCnt
+      en_content: enContent
     }
 
     handleData(newPicture)

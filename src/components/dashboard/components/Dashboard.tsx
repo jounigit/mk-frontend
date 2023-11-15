@@ -1,4 +1,4 @@
-import { authUser } from '@/services/authUser.service'
+import { UserStore } from '@/store/userStore'
 import { SiteContent } from '@/styles'
 import styled from 'styled-components/macro'
 
@@ -14,12 +14,12 @@ const Article = styled.article`
 `
 
 function Dashboard() {
-  const userAuth = authUser()
+  const user = UserStore()
 
   return (
     <DashboardWrapper>
       <Article>
-        <h2>Moi, {userAuth && userAuth.name}</h2>
+        <h2>Moi, {user?.name}</h2>
         <p>tämä on hallintasivu.</p>
       </Article>
       <Article>
