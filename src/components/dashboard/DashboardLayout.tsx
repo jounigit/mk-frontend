@@ -3,7 +3,8 @@ import {
   AsideDb,
   GridDb,
   HeaderDb,
-  MainDb
+  MainDb,
+  RightSide
 } from './components/Dashboard.styles'
 import { useEffect } from 'react'
 import NavbarDb from './components/NavbarDb'
@@ -43,6 +44,7 @@ function DashboardLayout() {
           <Outlet />
         </QueryBoundaries>
       </MainDb>
+      <RightSide></RightSide>
     </GridDb>
   )
 }

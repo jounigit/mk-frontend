@@ -18,10 +18,6 @@ export const StyledBurger = styled.div<INav>`
     width: 2rem;
     height: 2rem;
 
-  @media ${TABLET} {
-    display: none;
-  }
-
   div {
     width: 2rem;
     height: 0.25rem;
@@ -43,6 +39,10 @@ export const StyledBurger = styled.div<INav>`
       transform: ${({ open }) => (open ? 'rotate(-45deg)' : 'rotate(0)')};
     }
   }
+
+@media ${TABLET} {
+  display: none;
+}
 `
 export const Ul = styled.ul<INav>`
   display: flex;
@@ -106,7 +106,6 @@ export const Ul = styled.ul<INav>`
         display: block
       }
   }
-
 `
 export const LinkTo = styled(NavLink)`
     display: flex;

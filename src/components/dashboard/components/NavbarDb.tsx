@@ -2,6 +2,7 @@ import { FC } from 'react'
 import styled from 'styled-components/macro'
 import { colors } from '@/styles/theme'
 import { NavbarLink } from './Dashboard.styles'
+import { BurgerDb } from './BurgerDb'
 
 const Container = styled.div`   
     position: fixed;
@@ -23,7 +24,8 @@ const Container = styled.div`
 
 const NavbarDb: FC = () => (
   <Container>
-    <NavbarLink to="/">
+    <BurgerDb />
+    <NavbarLink to="/" style={{ marginLeft: '50%' }}>
       Etusivu/yleisösivu
     </NavbarLink>
     <div className="name">

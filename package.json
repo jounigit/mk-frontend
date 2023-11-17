@@ -1,13 +1,14 @@
 {
   "name": "kolu-frontend",
+  "homepage": "https://marjakolu.fi/demo",
   "private": true,
   "version": "3.0.0",
   "type": "module",
   "main": "vite.config.js",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "build:zip": "rm -rf build && yarn build && zip -r ../kolubuild.zip dist",
+    "build": "tsc && vite build --base=/demo/",
+    "build:zip": "rm -rf build && yarn build && zip -r ../kolubuild_v5.zip dist",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
     "test": "vitest",

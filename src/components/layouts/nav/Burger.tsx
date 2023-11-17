@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { StyledBurger } from './NavLinks.styles'
 import { NavLinks } from './NavLinks'
-import { useToggle } from '../../../hooks/useToggle'
+import { useToggle } from '@/hooks/useToggle'
 
 const Burger: FC = () => {
   const [isOpen, toggleOpen] = useToggle(false)
