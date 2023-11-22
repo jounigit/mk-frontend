@@ -1,19 +1,8 @@
 import { PictureListItemAdmin } from './PictureListItemAdmin'
-import { colors } from '@/styles/theme'
 import { usePictures } from '../../usePicture'
-import { ChooseGrid } from '@/features/album/components/admin/Choose.styles'
-import styled from 'styled-components'
 import {
-  MainContainer
-} from '@/components/dashboard/components/Dashboard.styles'
-
-const Wrapper = styled(MainContainer)`
-  max-width: 95%;
-  background: ${colors.grey3};
-  padding-left: 1rem;
-  padding-top: 1rem;
-  padding-bottom: 4rem;
-`
+  GridImgArray, ImageArrBox
+} from '@/features/shared/GridImageArray.styles'
 
 export const PictureListAdmin = () => {
   const { data } = usePictures()
@@ -23,10 +12,10 @@ export const PictureListAdmin = () => {
     <h4>no images yet.</h4>
 
   return (
-    <Wrapper>
-      <ChooseGrid>
-        {showdata}
-      </ChooseGrid>
-    </Wrapper>
+    <ImageArrBox>
+      <GridImgArray width={200} imgheight={200}>
+        { showdata }
+      </GridImgArray>
+    </ImageArrBox>
   )
 }

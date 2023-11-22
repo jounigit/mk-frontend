@@ -3,18 +3,16 @@ import styled from 'styled-components/macro'
 export const ChooseWrapper = styled.div`
   padding: 1.4rem;
   border: 0.1rem solid var(--gray-4);
-  margin-bottom: 2rem;
+  margin: 2rem;
 `
 
 export const ChooseGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: .7rem;
-  justify-content: center;
-    align-items: stretch;
 `
 
-export const ImageBox = styled.div`
+export const ChooseImgBox = styled.div`
   display: flex;
   flex-flow: column;
   max-width: 250px;
@@ -27,12 +25,10 @@ export const ImageBox = styled.div`
     font-weight: 600;
   }
 `
-
-
-export const Image = styled.img`
+export const ChooseImg = styled.img`
   width: 100%;
-  max-height: 200px;
-  /* object-fit: contain; */
+  max-height: 180px;
+  object-fit: cover;
 `
 export const CheckboxWrapper = styled.div`
   display: flex;
@@ -57,5 +53,18 @@ export const LabelText = styled.span`
   font-size: .8rem;
   ${Input}:checked + && {
     color: red;
+  }
+`
+export const ChooseButton = styled.button<{ color?:string, pd?:string }>`
+    font-size: 0.6rem;
+    background-color: ${({ color }) => color};
+    color: white;
+    padding: ${({ pd }) => pd};
+    border: 0;
+    cursor: pointer;
+
+    :hover {
+    background-color: #5a6268;
+    color: white;
   }
 `

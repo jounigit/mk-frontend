@@ -28,7 +28,7 @@ img {
   display: grid;
   grid-template-columns: 
   repeat(auto-fit, minmax(${({ width }) => width}px, 1fr));
-  padding: 15px;
+  padding: 1rem;
   grid-gap: .5rem;
 
   div {

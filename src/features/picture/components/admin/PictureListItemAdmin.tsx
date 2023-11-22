@@ -3,30 +3,10 @@ import { Modal } from '@/components/modal/modal'
 import config from '@/data/config'
 import { ActionLinks } from '@/features/utils/ActionLinks'
 import { useModal } from '@/hooks/useModal'
-import { colors } from '@/styles/theme'
 import { IPicture } from '@/types'
-import { FC, Fragment } from 'react'
-import styled from 'styled-components/macro'
+import { FC } from 'react'
 import { PictureDelete } from './PictureDelete'
-
-const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 10rem;
-    padding: 10px 10px;
-    border: 1px solid ${colors.grey3};
-    border-radius: 0.2rem;
-    background-color: white;
-`
-
-const Image = styled.img`
-  width: 100%;
-  height: auto;
-`
-const LinksWrapper = styled.div`
-    flex-direction: row;
-    padding-bottom: 0;
-`
+import { BtnInline } from '@/styles/styles'
 
 interface Props {
     picture: IPicture
@@ -45,29 +25,42 @@ export const PictureListItemAdmin: FC<Props> = (props) => {
 
   /************** return *************************/
   return (
-    <Fragment>
-      <Wrapper>
-        <Image
-          src={pic1}
-        />
+    <>
+      <article>
+        <div>
+          <img src={pic1} />
+        </div>
 
-        <LinksWrapper>
-          <span>
-            {linkUpdate}
-          </span>
-          <span>
-            {linkRemove}
-          </span>
-        </LinksWrapper>
-      </Wrapper>
+        <BtnInline>
+          {linkUpdate}
+          {linkRemove}
+        </BtnInline>
+      </article>
       <Modal
         isShown={isShown}
         hide={toggle}
         headerText='Kuvan poisto'
         modalContent={
-          <PictureDelete id={id} title={title} toggle={toggle} />
-        }
-      />
-    </Fragment>
+          <PictureDelete id={id} title={title} toggle={toggle}
+          />} />
+    </>
   )
 }
+
+
+{/* <Fragment>
+<Wrapper>
+  <Image
+    src={pic1}
+  />
+
+  <LinksWrapper>
+    <span>
+      {linkUpdate}
+    </span>
+    <span>
+      {linkRemove}
+    </span>
+  </LinksWrapper>
+</Wrapper>
+</Fragment> */}

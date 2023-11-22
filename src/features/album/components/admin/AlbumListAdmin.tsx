@@ -1,15 +1,9 @@
-import { AlbumListContainer } from '../AlbumList.styles'
 import { AlbumListItemAdmin } from './AlbumListItemAdmin'
 import { useAlbums } from '../../useAlbum'
 import styled from 'styled-components/macro'
-import { TABLET } from '@/styles/theme/breakpoints'
 
-const Container = styled(AlbumListContainer)`
-   margin-right: 4rem;
-   margin-bottom: 2rem;
-    @media ${TABLET} {
-    max-width: 100%;
-  }
+const Wrapper = styled.div`
+  padding: 1rem;
 `
 
 const AlbumListAdmin = (): JSX.Element => {
@@ -20,9 +14,9 @@ const AlbumListAdmin = (): JSX.Element => {
     <p>no albums yet.</p>
 
   return (
-    <Container>
+    <Wrapper>
       {showAlbums}
-    </Container>
+    </Wrapper>
   )
 }
 

@@ -10,12 +10,6 @@ interface Props {
 
 export function ActionLinks({ id, path, slug, toggle }: Props) {
 
-
-  /************** handle remove mutation ***********************/
-  const remove = (): void => {
-    toggle && toggle()
-  }
-
   /************** links *************************/
   const link = (
     <Link to={`/dashboard/${path}/${slug}`}>
@@ -36,7 +30,7 @@ export function ActionLinks({ id, path, slug, toggle }: Props) {
   const linkRemove = (
     <SmallButton
       color='red'
-      onClick={() => remove()}
+      onClick={() => toggle && toggle()}
     >
         Poista
     </SmallButton >

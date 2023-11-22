@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro'
-import { TABLET } from './theme/breakpoints'
+import { BIGSCREEN, DESKTOP, LAPTOP, MOBILE, TABLET } from './theme/breakpoints'
+import { colors } from './theme'
 
 
 
@@ -66,16 +67,20 @@ export const HandlingWrapper = styled(BaseContainer)<HandlingProps>`
    }
 `
 
+export const BtnInline = styled.div`
+    flex-direction: row;
+    max-height: 50px;
+`
+
+/* ************* forms ****************************/
 export const FormContainer = styled.div`
     display: flex;
     justify-content: center;
     padding: 1.4rem;
 `
 export const Form = styled.form`
-    /* text-align: center; */
     min-width: 400px;
     background: var(--gray-2);
-    /* border: solid red 2px;  */
     border-radius: 5px;
     padding: 1.5rem;
 `
@@ -87,7 +92,6 @@ export const InputWrapperTwoCol = styled.div`
 
 export const TwoColChild = styled.div`
     flex: 1;
-    /* border: 1px solid white; */
     padding: 0.8rem;
     /* &:first-child {
       margin-right: 1rem;
@@ -142,3 +146,77 @@ export const DeleteWrapper = styled.div`
     padding: .6em;
   }
 `
+
+/* ************* cards ****************************/
+export const Cards = styled.section<{ width: number }>`
+display: flex;
+flex-wrap: wrap;
+width: 100%;
+margin: 0 auto;
+
+  @media ${MOBILE} {
+    display: grid;
+    grid-template-columns: 
+    repeat(auto-fit, minmax(${({ width }) => width}px, 1fr));
+    padding: 1rem;
+    grid-gap: .5rem;
+  }
+`
+export const Card = styled.article`
+  flex: 1 0 300px;
+  box-sizing: border-box;
+  border: 1px solid ${colors.grey3};
+  border-radius: 0.2rem;
+  margin: 1rem .25em;
+
+  .content {
+    padding: 1.4em;
+  }
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: .5em;
+    font-weight: bold;
+  }
+
+  img {
+    display: block;
+    border: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  max-width: calc(100% - 1em);
+
+  /* @media ${MOBILE} {
+    max-width: calc(50% - 1em);
+  }
+
+  @media ${LAPTOP} {
+    max-width: calc(33% - 1em);
+  }
+
+  @media ${DESKTOP} {
+    max-width: calc(25% - 1em);
+  }
+
+  @media ${BIGSCREEN} {
+    max-width: calc(20% - 1em);
+  } */
+`
+// export Cardcontent {
+//   padding: 1.4em;
+// }
+
+// h2 {
+//   margin-top: 0;
+//   margin-bottom: .5em;
+//   font-weight: bold;
+// }
+
+// img {
+//   display: block;
+//   border: 0;
+//   width: 100%;
+//   height: auto;
+// }

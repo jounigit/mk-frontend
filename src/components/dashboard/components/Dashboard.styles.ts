@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import { BIGSCREEN, LAPTOP, TABLET } from '@/styles/theme/breakpoints'
+import { DESKTOP, LAPTOP, TABLET } from '@/styles/theme/breakpoints'
 
 interface Props {
     size?: number;
@@ -10,61 +10,56 @@ interface Props {
 export const GridDb = styled.div`
     display: grid;
     grid-template-rows: auto;
-    margin-right: 4rem;
-    /* grid-template-columns: 1fr; */
     grid-template-areas: 
-    "header"
+    "hd"
     "main";
     @media ${LAPTOP} {
-        grid-template-columns: 250px 1fr 10px;
+        grid-template-columns: repeat(16, 1fr);
         grid-template-areas: 
-        "header header header"
-        "sidebar main rightside";
+        "hd hd hd hd hd hd hd hd hd hd hd hd hd hd hd hd"
+        "sd sd sd main main main main
+         main main main main main main main main main";
+    }
+
+    @media ${DESKTOP} {
+        grid-template-columns: repeat(16, 1fr);
+        grid-template-areas: 
+        "hd hd hd hd hd hd hd hd hd hd hd hd hd hd hd hd"
+        "sd sd sd main main main main
+         main main main main main main main main main";
     }
 `
 
 export const HeaderDb = styled.div`
-    grid-area: header; 
-    height: 4rem;
+    grid-area: hd; 
+    height: 1rem;
     width: 100vh;
-`
-export const RightSide = styled.div`
-    grid-area: rightside; 
-    height: 100vh;
-    width: 2rem;
-        background-color: rgb(30, 100, 97);
+    background-color: rgb(30, 100, 97);
 `
 
 export const AsideDb = styled.div`
-    display: none;
+    background-color: rgb(30, 100, 97);
     @media ${LAPTOP} {
-        display: contents;
-        grid-area: sidebar;
-        position: fixed;
-        left: 0;
-        top: 4rem;
-        background-color: rgb(30, 100, 97);
-        height: 100vh;
-        width: 14rem;
+        grid-area: sd;
+        height: 100%;
+        min-height: 100vh;
     }
 `
 
 export const MainDb = styled.div`
     grid-area: main;
-    width: 100%;
-    margin-top: 2rem;
-    margin: 2rem auto;
-    padding-right: 2rem;
-    @media ${LAPTOP} {
-        margin: 2rem 1px;
-    }
+    /* width: 100%; */
 `
-export const MainContainer = styled.div`
-    margin: 0 auto 2rem;
+export const MainWrapper = styled.div<Props>`
+    margin: 4rem auto 2rem;
+    width: 100%;
+    height: 100vh;
+    background-color: ${(props) => props.bgColor};
 
     @media ${TABLET} {
-        max-width: 90%;
-  }
+        /* max-width: 95%; */
+        overflow-y: auto;
+    }
 `
 
 export const Image = styled.img`
@@ -89,25 +84,25 @@ export const NavbarLink = styled(Link)`
     }
 `
 
-export const Grid = styled.div<Props>`
-    margin: 0 auto;
-    margin-bottom: ${(props) => props.size}px;
-    width: 100%;
-    @media ${LAPTOP} {
-        margin: 0 1rem;
-        width: 75%;
-    }
-    @media ${BIGSCREEN} {
-        margin: 0 1rem;
-        width: 80%;
-    }
-`
+// export const Grid = styled.div<Props>`
+//     margin-bottom: ${(props) => props.size}px;
+//     width: 100%;
+//     @media ${LAPTOP} {
+//         /* margin: 0 1rem; */
+//         /* width: 75%; */
+//     }
+//     @media ${BIGSCREEN} {
+//         /* margin: 0 1rem; */
+//         width: 100%;
+//     }
+// `
 
-export const Row = styled.div<Props>`
-    display: flex;
-    border: 1px solid grey;
-    background-color: ${(props) => props.bgColor};
-`
-export const Col = styled.div<Props>`
-    flex: ${(props) => props.size};
-`
+// export const Row = styled.div<Props>`
+//     display: flex;
+//     border: 1px solid grey;
+//     min-width: 100%;
+//     background-color: ${(props) => props.bgColor};
+// `
+// export const Col = styled.div<Props>`
+//     flex: ${(props) => props.size};
+// `

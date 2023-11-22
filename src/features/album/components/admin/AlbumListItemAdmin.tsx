@@ -6,17 +6,13 @@ import {
 import config from '@/data/config'
 import { IAlbum } from '@/types'
 import styled from 'styled-components'
-import {
-  Col,
-  Grid,
-  Row
-} from '@/components/dashboard/components/Dashboard.styles'
 import { ActionLinks } from './ActionLinks'
 import { Modal } from '@/components/modal/modal'
 import { useModal } from '@/hooks/useModal'
 import { AlbumDelete } from './AlbumDelete'
 import { ImageInDiv } from '@/components/atoms/ImageInDiv'
 import { colors } from '@/styles/theme'
+import { MOBILE } from '@/styles'
 
 const ImageItem = styled(ImageGridListItem)`
     grid-template-columns: 1fr;
@@ -27,6 +23,17 @@ const Content = styled.div`
     padding: 1.5rem;
 `
 const Links = styled.div`
+`
+
+const Container = styled.div`
+  background: ${colors.grey1};
+  border: 1px solid grey;
+
+  @media ${MOBILE} {
+    display: grid;  
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+  
 `
 
 interface ListProps {
@@ -60,7 +67,48 @@ export const AlbumListItemAdmin: FC<ListProps> = (props) => {
   // **************** return ***************************************** //
   return (
     <Fragment>
-      <Grid size={5}>
+
+      <Container>
+        <ImageItem width={150} height={150}>
+          {showFirstPic}
+        </ImageItem>
+
+        <Content>
+          <h3>{title}</h3>
+          <InfoText>
+            {textForGalleria}
+          </InfoText>
+        </Content>
+
+        <section>
+          <Links>
+            {link}
+          </Links>
+          <Links>
+            {linkUpdate}
+          </Links>
+          <Links>
+            {linkPictures}
+          </Links>
+          <Links>
+            {linkRemove}
+          </Links>
+        </section>
+      </Container>
+
+      <Modal
+        isShown={isShown}
+        hide={toggle}
+        headerText='Albumin poisto'
+        modalContent={
+          <AlbumDelete id={id} title={title} toggle={toggle} />
+        }
+      />
+    </Fragment>
+  )
+}
+
+{/* <Grid size={5}>
         <Row bgColor={colors.grey1}>
           <Col size={1}>
             <ImageItem width={150} height={150}>
@@ -91,16 +139,4 @@ export const AlbumListItemAdmin: FC<ListProps> = (props) => {
           </Col>
         </Row>
 
-      </Grid>
-      <Modal
-        isShown={isShown}
-        hide={toggle}
-        headerText='Albumin poisto'
-        modalContent={
-          <AlbumDelete id={id} title={title} toggle={toggle} />
-        }
-      />
-    </Fragment>
-  )
-}
-
+      </Grid> */}

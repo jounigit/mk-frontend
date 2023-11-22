@@ -2,21 +2,20 @@ import { useParams } from 'react-router-dom'
 import {
   isPictureArray
 } from '@/types'
-import {
-  MainContainer
-} from '@/components/dashboard/components/Dashboard.styles'
-import { ChooseGrid, ChooseWrapper } from './Choose.styles'
 import { useAlbum } from '../../useAlbum'
+import { useGoBack } from '@/hooks/useGoBack'
+import { Button } from '@/components/atoms/Button'
+import { usePictures } from '@/features/picture/usePicture'
+import { addPictureToAlbum, deleteAlbumPicture } from '@/features/albumpictures'
 import {
   useAddAlbumPicture,
   useAlbumPictures,
-  useDeleteAlbumPicture
-} from '../../../albumpictures/useAlbumPictures'
-import { addPictureToAlbum, deleteAlbumPicture } from '../../../albumpictures'
-import { useGoBack } from '@/hooks/useGoBack'
-import { Button } from '@/components/atoms/Button'
-import PictureChoiseForm from './PictureChoiseForm'
-import { usePictures } from '@/features/picture/usePicture'
+  useDeleteAlbumPicture,
+} from '@/features/albumpictures/useAlbumPictures'
+import ImageChoise from '@/features/shared/ImageChoise'
+import {
+  GridImgArray, ImageArrBox
+} from '@/features/shared/GridImageArray.styles'
 
 const ChoosePictures = () => {
   const params = useParams()
@@ -46,7 +45,7 @@ const ChoosePictures = () => {
 
     const chosenPics = albumPics.map((p, index) =>
       <div key={index}>
-        <PictureChoiseForm
+        <ImageChoise
           picture={p}
           btnTxt='Poista kuva'
           btnColor='red'
@@ -58,7 +57,7 @@ const ChoosePictures = () => {
     const chooseablePics = isPictureArray(notAlbumPics) &&
     notAlbumPics.map((p, index) =>
       <div key={index}>
-        <PictureChoiseForm
+        <ImageChoise
           picture={p}
           btnTxt='Valitse kuva'
           btnColor='green'
@@ -69,27 +68,26 @@ const ChoosePictures = () => {
 
     // :::::::::::::::::::::::::::::::::::: //
     return (
-      <MainContainer>
+      <>
         <Button onClick={goBack}>...takaisin</Button>
+        <h2 style={{ marginLeft: '20px' }}>{title} - valitse kuvia</h2>
 
-        <h2>{title} - valitse kuvia</h2>
-
-        <h4 style={{ marginTop: '10px' }}>
+        <h4 style={{ margin: '10px 0 0 20px' }}>
           VALITUT KUVAT:
         </h4>
-        <ChooseWrapper>
-          <ChooseGrid>
+        <ImageArrBox>
+          <GridImgArray width={180} imgheight={180} gap='.8rem'>
             {chosenPics}
-          </ChooseGrid>
-        </ChooseWrapper>
+          </GridImgArray>
+        </ImageArrBox>
 
-        <h4>VALITTAVAT KUVAT:</h4>
-        <ChooseWrapper>
-          <ChooseGrid>
+        <h4 style={{ marginLeft: '20px' }}>VALITTAVAT KUVAT:</h4>
+        <ImageArrBox>
+          <GridImgArray width={190} imgheight={180} gap='.8rem'>
             {chooseablePics}
-          </ChooseGrid>
-        </ChooseWrapper>
-      </MainContainer>
+          </GridImgArray>
+        </ImageArrBox>
+      </>
     )
   }
   return <p>No data here.</p>

@@ -1,11 +1,19 @@
+import { LAPTOP } from '@/styles'
+import { Divider } from '@/styles/styles'
 import { colors } from '@/styles/theme'
 import { FaHome } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 interface Props { toggle?: () => void }
 
-const Wrap = styled.div<Props>``
+const Wrap = styled.div`
+  @media ${LAPTOP} {
+    margin: 1.5rem;
+    position: fixed;
+    top: 4rem;
+  }
+`
 
 const SidebarLink = styled(NavLink)`
    display: block;
@@ -37,7 +45,7 @@ export const NavLinksDetailsDb = ({ toggle }: Props) => {
       <SidebarLink to="/dashboard/cv" onClick={toggle}>
       CV
       </SidebarLink>
-      <p>.................</p>
+      <Divider />
       <SidebarLink to="/dashboard/albums/create" onClick={toggle}>
      - Uusi albumi
       </SidebarLink>

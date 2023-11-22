@@ -18,6 +18,7 @@ import PictureListAdminRoute from './PictureListAdminRoute'
 import PictureUpdateRoute from './PictureUpdateRoute'
 import UploadPictureRoute from './UploadPictureRoute'
 import { QueryBoundaries } from '@/components/queryboundary/QueryBoundaries'
+import { TestPics } from '@/test-pic-css/TestPics'
 const HomePage = loadable(() => import('@/pages/HomePage'))
 const GalleriaPage = loadable(() => import('@/pages/GalleriaPage'))
 const CvPage = loadable(() => import('@/pages/CvPage'))
@@ -83,6 +84,10 @@ const routes: RouteObject[] = [
         index: true,
         element:
         <DashboardPage />,
+      },
+      {
+        path: 'testpics',
+        element: <TestPics />,
       },
       {
         path: 'albums',

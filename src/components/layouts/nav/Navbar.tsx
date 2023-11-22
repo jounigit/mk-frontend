@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import Burger from './Burger'
 import { NavbarContainer } from './Navbar.styles'
 

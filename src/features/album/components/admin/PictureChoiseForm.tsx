@@ -1,9 +1,10 @@
 import config from '@/data/config'
 import { IPicture } from '@/types'
 import React from 'react'
-import { ImageBox, Image } from './Choose.styles'
 import { formatUrl } from '@/components/atoms/utils'
-import { ChooseButton } from '@/features/albumpictures/ChooseForm.styles'
+import {
+  ChooseButton, ChooseImg, ChooseImgBox
+} from '@/features/shared/chooseImg.styles'
 
 type Props = {
     handleChoise: (id: number) => void
@@ -12,7 +13,7 @@ type Props = {
     btnColor: string
 }
 
-const picFolder = config.IMAGES_THUMB_URL as string
+const picFolder = config.IMAGES_BIG_URL as string
 
 export default function PictureChoiseForm(props : Props) {
   const { handleChoise, picture, btnTxt, btnColor } = props
@@ -24,9 +25,9 @@ export default function PictureChoiseForm(props : Props) {
   }
 
   return (
-    <ImageBox>
+    <ChooseImgBox>
       <form onSubmit={(handleCheck)}>
-        <Image src={formatUrl(picFolder, image)} />
+        <ChooseImg src={formatUrl(picFolder, image)} />
         <details>
           <summary>{title}</summary>
           <p>{picture.year} {picture.size}</p>
@@ -36,6 +37,6 @@ export default function PictureChoiseForm(props : Props) {
           {btnTxt}
         </ChooseButton>
       </form>
-    </ImageBox>
+    </ChooseImgBox>
   )
 }
