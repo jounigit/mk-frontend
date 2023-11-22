@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { IPicture } from '../../types'
-import { formatUrl } from './utils'
+import { formatUrl } from '@/components/atoms/utils'
 
 interface Props {
     data: IPicture[];

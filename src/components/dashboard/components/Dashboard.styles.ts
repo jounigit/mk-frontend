@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import { DESKTOP, LAPTOP, TABLET } from '@/styles/theme/breakpoints'
+import { BIGSCREEN, DESKTOP, LAPTOP, TABLET } from '@/styles/theme/breakpoints'
 
 interface Props {
     size?: number;
@@ -84,25 +84,25 @@ export const NavbarLink = styled(Link)`
     }
 `
 
-// export const Grid = styled.div<Props>`
-//     margin-bottom: ${(props) => props.size}px;
-//     width: 100%;
-//     @media ${LAPTOP} {
-//         /* margin: 0 1rem; */
-//         /* width: 75%; */
-//     }
-//     @media ${BIGSCREEN} {
-//         /* margin: 0 1rem; */
-//         width: 100%;
-//     }
-// `
+export const Grid = styled.div<Props>`
+    margin-bottom: ${(props) => props.size}px;
+    width: 100%;
+    @media ${LAPTOP} {
+        /* margin: 0 1rem; */
+        /* width: 75%; */
+    }
+    @media ${BIGSCREEN} {
+        /* margin: 0 1rem; */
+        width: 100%;
+    }
+`
 
-// export const Row = styled.div<Props>`
-//     display: flex;
-//     border: 1px solid grey;
-//     min-width: 100%;
-//     background-color: ${(props) => props.bgColor};
-// `
-// export const Col = styled.div<Props>`
-//     flex: ${(props) => props.size};
-// `
+export const Row = styled.div<Props>`
+    display: flex;
+    border: 1px solid grey;
+    min-width: 100%;
+    background-color: ${(props) => props.bgColor};
+`
+export const Col = styled.div<Props>`
+    flex: ${(props) => props.size};
+`

@@ -25,11 +25,11 @@ function DashboardLayout() {
   // console.log('Dash token: ', token)
   // console.log('Dash user hook: ', userQuery.isSuccess && userQuery.data)
 
-  // useEffect(() => {
-  //   if (!token) {
-  //     navigate('/login')
-  //   }
-  // }, [navigate, token])
+  useEffect(() => {
+    if (!token) {
+      navigate('/login')
+    }
+  }, [navigate, token])
 
   return (
     <GridDb>

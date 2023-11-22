@@ -1,5 +1,5 @@
+import { formatUrl } from '@/components/atoms/utils'
 import { IPicture } from '../../types'
-import { formatUrl } from './utils'
 
 interface Props {
     data: IPicture[];
