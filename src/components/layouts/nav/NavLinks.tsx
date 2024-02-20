@@ -6,6 +6,7 @@ import { Logout } from '@/features/login/components/Logout'
 import { useTranslation } from 'react-i18next'
 import SelectLangFlag from '@/components/SelectLangFlag'
 import { useTokenStore } from '@/store/tokenStore'
+import { linkFormer } from '@/features/utils/LinkFormer'
 
 type Props = {
   open: boolean,
@@ -13,12 +14,10 @@ type Props = {
 }
 
 export const NavLinks: FC<Props> = ({ open, toggle }) => {
-  // const token = userToken()
   const token = useTokenStore(state => state.token)
   const { t } = useTranslation()
 
-  console.log('Navlinks token: ', token)
-  // console.log('Navlinks lang: ', i18n.language)
+  // console.log('Navlinks token: ', token)
 
   return (
     <Ul open={open}>
@@ -60,16 +59,14 @@ export const NavLinks: FC<Props> = ({ open, toggle }) => {
 
       {/* end section */}
 
-      <li>
-        <LinkTo to="/articles" onClick={toggle}>{t('Artikkelit')}</LinkTo>
-      </li>
-      <li>
-        <LinkTo to="/cv" onClick={toggle}>CV</LinkTo>
-      </li>
+      {linkFormer(toggle, '/articles', 'Artikkelit', t, 'articleslink')}
+
+      {linkFormer(toggle, '/cv', 'CV', t, 'cvlink')}
+
+      {linkFormer(toggle, '/currents', 'Currents', t, 'currentslink')}
+
       {token &&
-        <li>
-          <LinkTo to="/dashboard" onClick={toggle}>admin</LinkTo>
-        </li>
+        linkFormer(toggle, '/dashboard', 'admin', t, 'adminlink')
       }
       {token &&
         <li>
@@ -77,9 +74,7 @@ export const NavLinks: FC<Props> = ({ open, toggle }) => {
         </li>
       }
       {!token &&
-        <li>
-          <LinkTo to="/login" onClick={toggle}>login</LinkTo>
-        </li>
+        linkFormer(toggle, '/login', 'login', t, 'loginLink')
       }
       <li>
         <SelectLangFlag />
@@ -87,3 +82,5 @@ export const NavLinks: FC<Props> = ({ open, toggle }) => {
     </Ul>
   )
 }
+
+

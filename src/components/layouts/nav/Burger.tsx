@@ -8,7 +8,7 @@ const Burger: FC = () => {
 
   return (
     <>
-      <StyledBurger open={isOpen} onClick={toggleOpen}>
+      <StyledBurger data-cy='burger' open={isOpen} onClick={toggleOpen}>
         <div />
         <div />
         <div />

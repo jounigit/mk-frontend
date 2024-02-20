@@ -1,6 +1,8 @@
 import { getAll } from '@/services/apiService'
 import { IArticle } from '@/types'
-import { UseQueryResult, useQuery } from '@tanstack/react-query'
+import {
+  UseQueryResult, UseSuspenseQueryResult, useQuery, useSuspenseQuery
+} from '@tanstack/react-query'
 
 // ####################### query hooks ########################################
 export function useArticles(): UseQueryResult<IArticle[], unknown> {
@@ -8,5 +10,13 @@ export function useArticles(): UseQueryResult<IArticle[], unknown> {
     queryKey: ['articles'],
     queryFn: async () => await getAll<IArticle>('articles'),
     throwOnError: true
+  })
+}
+
+export function useSuspenseArticles():
+UseSuspenseQueryResult<IArticle[], unknown> {
+  return useSuspenseQuery({
+    queryKey: ['articles'],
+    queryFn: async () => await getAll<IArticle>('articles')
   })
 }

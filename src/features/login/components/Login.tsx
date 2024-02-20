@@ -9,6 +9,8 @@ import { ILogin } from '@/types'
 import { useTokenStore } from '@/store/tokenStore'
 import { injectTokenToHeaders } from '@/http-common'
 import { useUserStore } from '@/store/userStore'
+import { isTestMode } from '@/constants'
+import { setToken } from '@/services/token.service'
 
 interface Params {
   email: string;
@@ -21,14 +23,13 @@ export const Login = (): JSX.Element => {
   const updateToken = useTokenStore(state => state.updateToken)
   const updateUser = useUserStore(state => state.updateUser)
 
-  localStorage.clear()
   useEffect(() => {
     if (isSuccess) {
       console.log('LOGIN: ', data)
       const logRes = data as ILoginResponse
-      toast.success('Login successfully.')
+      toast.success('Login successfully.', { className:'success' })
       updateToken(logRes.token)
-      injectTokenToHeaders(logRes.token)
+      newToken(logRes.token)
       updateUser(logRes.user)
       navigate('/dashboard')
     }
@@ -44,6 +45,10 @@ export const Login = (): JSX.Element => {
       formName='LOGIN'
     />
   )
+}
+
+function newToken(token: string): void {
+  isTestMode ? setToken(token) : injectTokenToHeaders(token)
 }
 
 function addTokenAndUser(

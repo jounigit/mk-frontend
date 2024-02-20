@@ -1,10 +1,8 @@
 import { FC, Fragment } from 'react'
-import {
-  ImageBox, Text, Title,
-} from './AlbumDetails.styles'
 import { IAlbum } from '@/types'
 import { PictureGalleria } from '@/features/picture/components/PictureGalleria'
 import { StrToCurrentLang } from '@/components/atoms/StrToCurrentLang'
+import { DetailsImgBox, DetailsText, DetailsTitle } from '@/styles/styles'
 
 interface Props {
     album: IAlbum
@@ -14,25 +12,25 @@ interface Props {
 export const AlbumDetails: FC<Props> = ({ album }) => {
 
   const images =
-  <ImageBox>
+  <DetailsImgBox>
     <PictureGalleria
       imageList={album.pictures}
       width={250}
       height={250}
     />
-  </ImageBox>
+  </DetailsImgBox>
 
   const title = StrToCurrentLang(album.title, album.en_title)
 
   return (
     <Fragment>
-      <Title>
+      <DetailsTitle>
         <h2>{title}</h2>
-      </Title>
+      </DetailsTitle>
       { images }
-      <Text>
+      <DetailsText>
         {album.content}
-      </Text>
+      </DetailsText>
     </Fragment>
   )
 }

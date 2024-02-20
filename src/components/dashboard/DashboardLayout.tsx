@@ -11,13 +11,13 @@ import NavbarDb from './components/NavbarDb'
 import SidebarDb from './components/SidebarDb'
 import { QueryBoundaries } from '../queryboundary/QueryBoundaries'
 import { useTokenStore } from '@/store/tokenStore'
-// import { IsAuthUser } from '@/features/user/User'
+import { isTestMode } from '@/constants'
+import { getToken } from '@/services/token.service'
 
 function DashboardLayout() {
   const navigate = useNavigate()
-  // const userQuery = useUser()
-  // const token = userToken()
-  const token = useTokenStore(state => state.token)
+  const devProdToken = useTokenStore(state => state.token)
+  const token = isTestMode ? getToken() : devProdToken
 
   // console.log('Dashboard user: ',
   //   userQuery.status==='success' && userQuery.data)

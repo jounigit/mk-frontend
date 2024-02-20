@@ -1,9 +1,9 @@
 import { ArticleListItem } from './ArticleListItem'
 import { ArticleContainer } from './Article.styles'
-import { useArticles } from '../useArticle'
+import { useSuspenseArticles } from '../useArticle'
 
 const ArticleList = (): JSX.Element => {
-  const { data } = useArticles()
+  const { data } = useSuspenseArticles()
 
   const showdata = data ?
     data.map(a => <ArticleListItem key={a.id} article={a} />) :

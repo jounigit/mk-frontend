@@ -66,10 +66,111 @@ export const HandlingWrapper = styled(BaseContainer)<HandlingProps>`
     color: var(--gray-4);
    }
 `
+/* ************* list related ****************************/
+// .eg albums, currents
+export const ListContainer = styled.div`
+display: grid;
+grid-template-rows: 1fr;
+width: 100vW !important;
+gap: 0.6em;
+margin: auto;
 
+@media ${TABLET} {
+  max-width: 70%;
+}
+`
+export const ListItemContainer = styled(BaseContainer)`
+    flex-wrap: wrap;
+    padding: 1.2rem;
+`
+interface IImageGridProps {
+  width: number,
+  height: number,
+}
+
+export const ListItemImageGrid = styled.div<IImageGridProps>`
+
+div {
+  height: ${({ height }) => height}px;
+  margin: auto;
+}
+
+img {
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
+  object-fit: cover;
+  }
+
+@media ${TABLET} {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: .5rem;
+
+}
+`
+
+export const ListImgBox = styled.div`
+   flex: 1 100%;
+   
+   @media ${TABLET} {
+    flex: 0 0 45%;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+   }
+`
+export const ListItemInfo = styled.div`
+    flex: 0 0 45%;
+    margin: 0 0 0.5em;
+    color: ${colors.grey3};
+    text-decoration: none;
+
+    h3 {
+      margin-bottom: 0.5rem;
+    }
+`
+export const ListItemInfoText = styled.span`
+    margin-top: 1.2rem;
+    margin-bottom: 1rem;
+    font-size: 0.9em;
+    color: black;
+    text-decoration: none;
+`
+
+export const ListTitle = styled.div`
+    flex: 1 100%;
+`
 export const BtnInline = styled.div`
     flex-direction: row;
     max-height: 50px;
+`
+/* ************* details components related ****************************/
+export const DetailsContainer = styled(BaseContainer)`
+    flex-wrap: wrap;
+    padding: 1em;
+`
+export const DetailsAdminContainer = styled(DetailsContainer)`
+    margin-right: 1.2rem;
+`
+export const DetailsTitle = styled.div`
+    /* flex: 1 100%; */
+`
+export const DetailsText = styled.div`
+    flex: 1 0 40%;
+    margin: 0.5em;
+`
+
+export const DetailsImgBox = styled.div`
+flex: 1 100%;
+
+  @media ${TABLET} {
+  flex: '1 0 100%',
+  }
+`
+
+export const detailsImgBoxTwoColumn = styled(DetailsImgBox)`
+  @media ${TABLET} {
+      flex: 0 0 55%;
+  }
 `
 
 /* ************* forms ****************************/

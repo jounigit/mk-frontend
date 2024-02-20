@@ -5,14 +5,17 @@
   "type": "module",
   "main": "vite.config.js",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
     "build:zip": "rm -rf build && yarn build && zip -r ../kolubuild_v5.zip dist",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dev:test": "NODE_ENV=test vite dev",
+    "cypress:open": "cypress open",
+    "start:test": "dev:test && cypress:open"
   },
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
@@ -54,6 +57,7 @@
     "@typescript-eslint/parser": "^5.53.0",
     "@vitejs/plugin-react": "^3.1.0",
     "@vitest/coverage-c8": "^0.29.2",
+    "cypress": "^13.6.0",
     "eslint": "^8.35.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",

@@ -1,12 +1,14 @@
 import { AlbumListItem } from './AlbumListItem'
-import { AlbumListContainer } from './AlbumList.styles'
-import { fetchAlbumList } from '../useAlbum'
+// import { fetchAlbumList } from '../useAlbum'
 import { useSuspenseQuery } from '@tanstack/react-query'
+import { ListContainer } from '@/styles/styles'
+import { IAlbum } from '@/types'
+import { getAll } from '@/services/apiService'
 
-export const AlbumsList = (): JSX.Element => {
+export const AlbumList = (): JSX.Element => {
   const { data } = useSuspenseQuery({
     queryKey: ['albums'],
-    queryFn: fetchAlbumList,
+    queryFn: async () => await getAll<IAlbum>('albums')
   })
 
   const showAlbums = data.length ?
@@ -14,12 +16,8 @@ export const AlbumsList = (): JSX.Element => {
     <h4>no albums yet.</h4>
 
   return (
-    <AlbumListContainer>
+    <ListContainer>
       {showAlbums}
-    </AlbumListContainer>
+    </ListContainer>
   )
-
-
-  // return <LoadingHandler />
-
 }

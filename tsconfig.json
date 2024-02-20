@@ -15,11 +15,19 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["node", "vitest/globals"],
+    "types": [
+      "node", 
+      "vitest/globals", 
+      "cypress", 
+      // "cypress-file-upload"
+    ],
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "cypress/**/*.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

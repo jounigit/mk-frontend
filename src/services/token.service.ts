@@ -5,6 +5,10 @@ export const getUser = () => {
   return user && JSON.parse(user)
 }
 
+export const setToken = (token: string) => {
+  localStorage.setItem('token', JSON.stringify(token))
+}
+
 export const getToken = () => {
   const token = localStorage.getItem('token') || null
   console.log('Service: ', token)

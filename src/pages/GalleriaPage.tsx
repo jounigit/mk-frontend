@@ -1,10 +1,10 @@
 import { FadeDiv } from '@/components/atoms'
-import { AlbumsList } from '@/features/album'
+import { AlbumList } from '@/features/album/components/AlbumList'
 
 const GalleriaPage = (): JSX.Element => {
   return (
     <FadeDiv timein="0.3s">
-      <AlbumsList />
+      <AlbumList />
     </FadeDiv>
   )
 }

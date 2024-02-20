@@ -1,0 +1,36 @@
+[
+    {
+        "id": 1,
+        "title": "Current 1",
+        "slug": "current-1",
+        "place": "Keskus",
+        "address": "Katu 2, 000 Kylä",
+        "content": "Veniam fugit et qui optio. Aut eaque ipsam quo officia ut sequi est. Minus nemo placeat aliquid aut quaerat.",
+        "from_date": "11-2-2000",
+        "to_date": "11-2-2000",
+        "is_published": 1,
+        "is_expired": 0,
+        "pictures": [
+            {
+                "id": "2",
+                "title": "Kuva 2",
+                "slug": "kuva-2",
+                "content": "Exercitationem perferendis incidunt vitae consequatur qui et consequuntur. Est tempore similique et. Natus velit repellendus dolorem est possimus.",
+                "image": "testikuva.jpg",
+                "pic_order": "1"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Current 2",
+        "slug": "current-2",
+        "place": "Forum",
+        "address": "Katu 10, 000 Kylä",
+        "content": "Veniam fugit et qui optio. Aut eaque ipsam quo officia ut sequi est. Minus nemo placeat aliquid aut quaerat.",
+        "from_date": "11-2-2000",
+        "to_date": "11-2-2000",
+        "is_published": 1,
+        "is_expired": 0
+    }
+]

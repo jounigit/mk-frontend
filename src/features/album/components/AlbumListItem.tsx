@@ -4,12 +4,12 @@ import { ImagesInDiv } from '../../../components/atoms/ImagesInDiv'
 import config from '../../../data/config'
 import { IAlbum } from '../../../types'
 import {
-  AlbumListItemContainer,
-  ImageBox,
-  ImageGridListItem,
-  Info,
-  InfoText,
-} from './AlbumListItem.styles'
+  ListImgBox,
+  ListItemContainer,
+  ListItemImageGrid,
+  ListItemInfo,
+  ListItemInfoText
+} from '@/styles/styles'
 
 interface ListProps {
   album: IAlbum,
@@ -37,16 +37,17 @@ export const AlbumListItem: FC<ListProps> = (props) => {
 
   // **************** return ***************************************** //
   return (
-    <AlbumListItemContainer>
+    <ListItemContainer data-cy='albumListItem'>
       <Link
+        data-cy='albumListItemLink'
         style={{ textDecoration: 'none' }}
         to={`/galleria/${slug}`}
       >
-        <ImageBox>
-          <ImageGridListItem width={200} height={200}>
+        <ListImgBox>
+          <ListItemImageGrid width={200} height={200}>
             {showPics}
-          </ImageGridListItem>
-        </ImageBox>
+          </ListItemImageGrid>
+        </ListImgBox>
 
       </Link>
 
@@ -54,14 +55,14 @@ export const AlbumListItem: FC<ListProps> = (props) => {
         style={{ textDecoration: 'none' }}
         to={`/album/${slug}`}
       >
-        <Info>
+        <ListItemInfo>
           <h3>{title}</h3>
-          <InfoText>
+          <ListItemInfoText>
             {textForGalleria}
-          </InfoText>
-        </Info>
+          </ListItemInfoText>
+        </ListItemInfo>
       </Link>
 
-    </AlbumListItemContainer>
+    </ListItemContainer>
   )
 }

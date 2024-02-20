@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom'
-import { AlbumAdminContainer } from '../AlbumDetails.styles'
 import { AlbumDetailsAdmin } from './AlbumDetailsAdmin'
 import { Col, Grid, Row }
   from '@/components/dashboard/components/Dashboard.styles'
@@ -7,6 +6,7 @@ import { ActionLinks } from './ActionLinks'
 import { useGoBack } from '@/hooks/useGoBack'
 import { Button } from '@/components/atoms/Button'
 import { useSuspenseAlbumBySlug } from '../../useAlbum'
+import { DetailsAdminContainer } from '@/styles/styles'
 
 const AlbumAdmin = (): JSX.Element => {
   const { slug } = useParams() as {slug:string}
@@ -29,9 +29,9 @@ const AlbumAdmin = (): JSX.Element => {
         </Row>
       </Grid>
 
-      <AlbumAdminContainer>
+      <DetailsAdminContainer>
         <AlbumDetailsAdmin album={data} />
-      </AlbumAdminContainer>
+      </DetailsAdminContainer>
     </>
   )
 }

@@ -1,5 +1,7 @@
 /* eslint-disable no-prototype-builtins */
 
+import { TFunction } from 'i18next'
+
 export interface BaseModel {
     id: number;
     title: string;
@@ -20,12 +22,26 @@ export interface IAlbum extends BaseModel {
     pictures: IPicture[];
 }
 
+export interface ICurrent extends BaseModel {
+  slug: string;
+  place: string;
+  address: string;
+  content: string;
+  en_content?: string;
+  from_date: string;
+  to_date: string;
+  is_published: number;
+  is_expired: number;
+  pictures?: IPicture[];
+}
+
 export interface IArticle extends BaseModel {
     year: number;
     media: string;
     pub_nm: string;
     author: string;
-    file: string;
+    link?: string;
+    file?: string;
 }
 
 export interface IPicture extends BaseModel {
@@ -74,6 +90,17 @@ export interface ILoginData {
 export interface ILogin {
   email: string;
   password: string;
+}
+
+// function interface
+export interface ILinkFormer {
+  (
+    toggle: () => void,
+    path: string,
+    text: string,
+    t: TFunction<'translation', undefined>,
+    cytxt?: string
+  ): JSX.Element
 }
 
 export type Path = 'albums' | 'pictures' | 'cvs'

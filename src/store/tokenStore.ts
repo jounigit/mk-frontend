@@ -15,3 +15,8 @@ export const useTokenStore = create<IToken>( (set) => ({
 
 export const UserTokenStore = (): string | null =>
   useTokenStore(state => state.token)
+
+
+export const getToken = (): string | null => {
+  return UserTokenStore()
+}

@@ -1,1 +1,1 @@
-export { default as routePage } from './routePage'
+export { default as routes } from './routes'

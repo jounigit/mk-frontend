@@ -19,6 +19,8 @@ import PictureUpdateRoute from './PictureUpdateRoute'
 import UploadPictureRoute from './UploadPictureRoute'
 import { QueryBoundaries } from '@/components/queryboundary/QueryBoundaries'
 import { TestPics } from '@/test-pic-css/TestPics'
+import CurrentPage from '@/pages/CurrentPage'
+import CurrentListAdminRoute from './CurrentListAdminRoute'
 const HomePage = loadable(() => import('@/pages/HomePage'))
 const GalleriaPage = loadable(() => import('@/pages/GalleriaPage'))
 const CvPage = loadable(() => import('@/pages/CvPage'))
@@ -36,7 +38,10 @@ const routes: RouteObject[] = [
       },
       {
         path: 'login',
-        element: <Login />,
+        element:
+        <QueryBoundaries>
+          <Login />
+        </QueryBoundaries>
       },
       {
         path: 'cv',
@@ -48,7 +53,16 @@ const routes: RouteObject[] = [
       {
         path: 'articles',
         element:
-          <ArticlePage />,
+        <QueryBoundaries>
+          <ArticlePage />
+        </QueryBoundaries>
+      },
+      {
+        path: 'currents',
+        element:
+        <QueryBoundaries>
+          <CurrentPage />
+        </QueryBoundaries>
       },
       {
         path: 'galleria',
@@ -59,7 +73,6 @@ const routes: RouteObject[] = [
             <QueryBoundaries>
               <GalleriaPage />
             </QueryBoundaries>
-
           },
           {
             path: ':slug',
@@ -88,6 +101,16 @@ const routes: RouteObject[] = [
       {
         path: 'testpics',
         element: <TestPics />,
+      },
+      {
+        path: 'currents',
+        children: [
+          CurrentListAdminRoute,
+          // AlbumUpdateRoute,
+          // ChoosePicturesRoute,
+          // AlbumAdminRoute,
+          // AlbumCreateRoute
+        ],
       },
       {
         path: 'albums',

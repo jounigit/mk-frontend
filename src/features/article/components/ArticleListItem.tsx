@@ -8,9 +8,9 @@ interface Props {
 }
 
 export function ArticleListItem (props: Props) {
-  const { title, media, pub_nm, author, file } = props.article
+  const { title, media, pub_nm, author, link, file } = props.article
   const artFolder: string = config.ARTICLES_URL as string
-  const fileUrl = artFolder + file
+  const fileUrl = link ? link : artFolder + file
 
   return (
     <>

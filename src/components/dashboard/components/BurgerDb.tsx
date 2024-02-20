@@ -46,7 +46,7 @@ export const BurgerDb: FC = () => {
 
   return (
     <>
-      <LaptopBurger open={isOpen} onClick={toggleOpen}>
+      <LaptopBurger data-cy='burger' open={isOpen} onClick={toggleOpen}>
         <div />
         <div />
         <div />

@@ -1,0 +1,42 @@
+[
+    {
+        "id": "1",
+        "title": "Album 1",
+        "slug": "album-1",
+        "content": "Veniam fugit et qui optio. Aut eaque ipsam quo officia ut sequi est. Minus nemo placeat aliquid aut quaerat.",
+        "status": "1",
+        "pictures": [
+            {
+                "id": "2",
+                "title": "Kuva 2",
+                "slug": "kuva-2",
+                "content": "Exercitationem perferendis incidunt vitae consequatur qui et consequuntur. Est tempore similique et. Natus velit repellendus dolorem est possimus.",
+                "image": "testikuva.jpg",
+                "pic_order": "1"
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "title": "Album 2",
+        "slug": "album-2",
+        "content": "Omnis voluptas laboriosam dignissimos quia et exercitationem. Ut et qui unde esse sed.",
+        "pictures": [
+            {
+                "id": "2",
+                "title": "Kuva 2",
+                "slug": "kuva-2",
+                "content": "Exercitationem perferendis incidunt vitae consequatur qui et consequuntur. Est tempore similique et. Natus velit repellendus dolorem est possimus.",
+                "image": "testikuva.jpg",
+                "pic_order": "1"
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "title": "Album 3",
+        "slug": "album-3",
+        "content": " Adipisci cum rerum hic perferendis corporis ratione quae.",
+        "pictures": []
+    }
+]

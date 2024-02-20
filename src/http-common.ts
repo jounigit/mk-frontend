@@ -1,49 +1,64 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import config from './data/config'
-// import { userToken } from './services/authUser.service'
-// import { UserTokenStore } from './store/tokenStore'
+import { isTestMode } from './constants'
+import { getToken } from './services/token.service'
 
+const apiUrl = isTestMode ?
+  config.API_TEST_URL :
+  config.API_URL
 
-// const token = userToken()
-// const token = UserTokenStore()
-
-export const injectTokenToHeaders = (token: string | null) =>
-  apiClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
-
+// if (process.env.NODE_ENV === 'test') {
+//   apiUrl = config.API_TEST_URL
+//   const token = JSON.parse(localStorage.getItem('token') || '{}')
+//   apiClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
+// }
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 export const apiClient = axios.create({
-  baseURL: config.API_URL,
+  baseURL: apiUrl,
 })
 
 apiClient.defaults.headers.common['Content-Type'] = 'application/json'
 apiClient.defaults.headers.common['Content-Type'] = 'multipart/form-data'
 
-// apiClient.interceptors.request.use (
-//   function (config) {
-//     console.log('HTTP token: ', token)
-//     if (token) config.headers.Authorization = `Bearer ${token}`
-//     return config
-//   },
-//   function (error) {
-//     console.log('HTTP error: ', error)
-//     return Promise.reject(error)
-//   }
-// )
+// used in login and logout
+export const injectTokenToHeaders = (token: string | null) =>
+  apiClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
+// used in testing
+if (isTestMode) {
+  const token = getToken()
+  apiClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
+}
 
-apiClient.interceptors.response.use(function (response) {
-  return response
-}, function (error) {
-  // **** Any status codes that falls outside the range of 2xx
-  if (error.response.status === 401) {
-    // console.log('ONKO TOKEN: ', localStorage.getItem('token'))
-    // console.error('INTERCEPTOR RESPONSE')
-    localStorage.clear()
-    return Promise.reject('Unauthorized')
-    // // throw new Error('401 (Unauthorized)')
-    // return window.location.href = '/login'
-    // store.dispatch('logout')
-    // router.push('/login')
+apiClient.interceptors.response.use(
+  (response: AxiosResponse) => response,
+  async (error) => {
+    if (error.response.status === 401) {
+      return Promise.reject('Unauthorized')
+    }
+    return Promise.reject(error)
   }
-  return Promise.reject(error)
-})
+)
+
+
+// apiClient.interceptors.response.use(function (response) {
+//   return response
+// }, function (error) {
+//   // **** Any status codes that falls outside the range of 2xx
+//   if (error.response.status === 401) {
+//     localStorage.clear()
+//     return Promise.reject('Unauthorized')
+//   }
+//   return Promise.reject(error)
+// })
+
+// apiClient.interceptors.response.use(function (response) {
+//   return response
+// }, function (error) {
+//   // **** Any status codes that falls outside the range of 2xx
+//   if (error.response.status === 401) {
+//     localStorage.clear()
+//     return Promise.reject('Unauthorized')
+//   }
+//   return Promise.reject(error)
+// })

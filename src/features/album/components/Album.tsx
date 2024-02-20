@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { AlbumDetails } from './AlbumDetails'
-import { AlbumContainer } from './AlbumDetails.styles'
 import { useAlbumBySlug } from '../useAlbum'
+import { DetailsContainer } from '@/styles/styles'
 
 const Album = (): JSX.Element => {
   const { slug } = useParams() as {slug:string}
@@ -12,9 +12,9 @@ const Album = (): JSX.Element => {
     <p>No data yet.</p>
 
   return (
-    <AlbumContainer>
+    <DetailsContainer data-cy='albumDetails'>
       {showData}
-    </AlbumContainer>
+    </DetailsContainer>
   )
 }
 

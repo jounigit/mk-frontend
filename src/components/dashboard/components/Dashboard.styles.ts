@@ -38,8 +38,10 @@ export const HeaderDb = styled.div`
 `
 
 export const AsideDb = styled.div`
+    visibility: hidden;
     background-color: rgb(30, 100, 97);
     @media ${LAPTOP} {
+        visibility: visible;
         grid-area: sd;
         height: 100%;
         min-height: 100vh;

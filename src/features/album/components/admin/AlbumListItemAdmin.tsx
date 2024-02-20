@@ -1,8 +1,4 @@
 import { FC, Fragment } from 'react'
-import {
-  ImageGridListItem,
-  InfoText,
-} from '../AlbumListItem.styles'
 import config from '@/data/config'
 import { IAlbum } from '@/types'
 import styled from 'styled-components'
@@ -13,8 +9,9 @@ import { AlbumDelete } from './AlbumDelete'
 import { ImageInDiv } from '@/components/atoms/ImageInDiv'
 import { colors } from '@/styles/theme'
 import { MOBILE } from '@/styles'
+import { ListItemImageGrid, ListItemInfoText } from '@/styles/styles'
 
-const ImageItem = styled(ImageGridListItem)`
+const ImageItem = styled(ListItemImageGrid)`
     grid-template-columns: 1fr;
     margin: 0.5rem 1rem 0.5rem 0;
 `
@@ -68,16 +65,16 @@ export const AlbumListItemAdmin: FC<ListProps> = (props) => {
   return (
     <Fragment>
 
-      <Container>
+      <Container data-cy='listItem'>
         <ImageItem width={150} height={150}>
           {showFirstPic}
         </ImageItem>
 
         <Content>
           <h3>{title}</h3>
-          <InfoText>
+          <ListItemInfoText>
             {textForGalleria}
-          </InfoText>
+          </ListItemInfoText>
         </Content>
 
         <section>
