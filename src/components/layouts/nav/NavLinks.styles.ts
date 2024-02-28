@@ -114,17 +114,21 @@ export const LinkTo = styled(NavLink)`
     text-decoration: 'none' !important;
     font-size: x-large;
     font-weight: 700;
+    transition: transform .2s;
     /* color: white; */
     /* color: white  !important; */
     &:link,
     &:visited{
       color: ${colors.grey1};
   };
-    &:hover,
-    &:focus,
+  
+    &:hover{
+      transform: scale(1.2);
+    }; 
+    &:focus,   
     &:active{
-      color: ${colors.grey4};
-    };
+      color: ${colors.grey3};
+    }
 `
 export const DropLink = styled(NavLink)`
   color: ${colors.grey4};

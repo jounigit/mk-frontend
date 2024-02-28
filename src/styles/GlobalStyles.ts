@@ -3,7 +3,7 @@ import {
   DESKTOP, LAPTOP, MOBILE, TABLET,
 } from './theme/breakpoints'
 import painter from '../assets/maalari-1.png'
-import img_1 from '../assets/penkki-laaja-sumea.png'
+import img_1 from '../assets/kuva-1.png'
 import { colors } from './theme'
 
 interface Prop {
@@ -57,11 +57,7 @@ const GlobalStyles = createGlobalStyle<Prop>`
     display: flex;
     flex-direction: column;
     /* don't show picture if dashboard */
-    background: 
-    url(${props => (!props.dashboard && img_1)}) center center no-repeat;
-    background-attachment: fixed;
-    background-size: 105vw auto;
-    background-color: var(--bg-color);
+    background-color: var(--gray-4);
     /* change color if dashboard */
     background-color: ${props => (props.dashboard && 'white')};
   }
@@ -71,6 +67,12 @@ const GlobalStyles = createGlobalStyle<Prop>`
     /* url(${props => ( props.homePage && painter)}) 
       bottom 0 right 20px no-repeat, */
     /* background-color: ${props => ( !props.homePage && '#cee')}; */
+
+    /* background: url(${props => ( props.homePage && img_1)})var(--bg-color);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    /* background-attachment: fixed; */
+    /* transition: all .5s ease-in-out;  */
 
   .headerMiddle {
     font-size: 1.75rem;
@@ -124,63 +126,6 @@ const GlobalStyles = createGlobalStyle<Prop>`
   text-decoration:none;
   /* cursor: crosshair; */
 }
-
-  /* .dropdown {
-    display: none;
-  }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    margin-top: -10px;
-    background-color: #f9f9f9;
-    border: 2px solid ${colors.grey2};
-    border-radius: 5px;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-
-    & > a {
-      color: ${colors.grey4};
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      text-align: left;
-      &:hover {
-        background-color: ${colors.grey2};
-      }
-    }
-  } */
-
-  /* .dropdown {
-      display: inline-block;
-
-       > .dropdown-content {
-        display: none;
-        position: absolute;
-        margin-top: -10px;
-        background-color: #f9f9f9;
-        border: 2px solid ${colors.grey2};
-        border-radius: 5px;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-
-        & > a {
-          color: ${colors.grey4};
-          padding: 12px 16px;
-          text-decoration: none;
-          display: block;
-          text-align: left;
-          &:hover {
-            background-color: ${colors.grey2};
-          }
-        }
-      }
-
-      &:hover .dropdown-content {
-        display: block
-      }
-  } */
   
 /* mobile */
   @media ${MOBILE} {
@@ -219,3 +164,16 @@ const GlobalStyles = createGlobalStyle<Prop>`
 `
 
 export default GlobalStyles
+
+// #root, body {
+//   display: flex;
+//   flex-direction: column;
+//   /* don't show picture if dashboard */
+//   background:
+//   url(${props => (!props.dashboard && img_1)}) center center no-repeat;
+//   background-attachment: fixed;
+//   background-size: 105vw auto;
+//   background-color: var(--bg-color);
+//   /* change color if dashboard */
+//   background-color: ${props => (props.dashboard && 'white')};
+// }

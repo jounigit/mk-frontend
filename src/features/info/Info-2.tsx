@@ -4,7 +4,7 @@ import config from '@/data/config'
 
 export const InfoB: FC = () => (
 
-  <StyledInfoB>
+  <StyledInfoB style={{ zIndex: 2 }}>
     <ItemAllB>
       <h2>{config.OWNER_NAME}</h2>
       <h4>{config.OWNER_OCCUPATION}</h4>

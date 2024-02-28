@@ -1,4 +1,4 @@
-import { BaseContainer, TABLET } from '@/styles'
+import { BaseContainer, MOBILE, TABLET } from '@/styles'
 import { colors } from '@/styles/theme'
 import styled from 'styled-components/macro'
 
@@ -20,6 +20,9 @@ export const StyledInfo = styled(BaseContainer)`
 `
 
 export const StyledInfoB = styled.div`
+  @media ${MOBILE} {
+    margin-top: 0;
+  }
   margin: auto;
   margin-top: 50%;
   padding: 1em;

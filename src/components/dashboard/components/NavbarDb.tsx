@@ -25,7 +25,10 @@ const Container = styled.div`
 const NavbarDb: FC = () => (
   <Container>
     <BurgerDb />
-    <NavbarLink to="/" style={{ marginLeft: '50%' }}>
+    <NavbarLink
+      to="/"
+      style={{ marginLeft: '50%' }}
+    >
       Etusivu/yleisösivu
     </NavbarLink>
     <div className="name">
@@ -35,3 +38,5 @@ const NavbarDb: FC = () => (
 )
 
 export default NavbarDb
+
+{/* <a href={dynamicStrValue} target='_blank' rel='noreferrer'>Link</a> */}

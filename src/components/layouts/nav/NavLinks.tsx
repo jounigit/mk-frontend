@@ -63,7 +63,7 @@ export const NavLinks: FC<Props> = ({ open, toggle }) => {
 
       {linkFormer(toggle, '/cv', 'CV', t, 'cvlink')}
 
-      {linkFormer(toggle, '/currents', 'Currents', t, 'currentslink')}
+      {/* {linkFormer(toggle, '/currents', 'Currents', t, 'currentslink')} */}
 
       {token &&
         linkFormer(toggle, '/dashboard', 'admin', t, 'adminlink')
